@@ -9,10 +9,10 @@
 #' @export
 #'
 #' @examples ReflMat(5)
-ReflMat = function(dim1){
-  Rmat = matrix(rep(0, dim1^2), nrow = dim1)
-  rowmat = matrix(rep(1:dim1, dim1), nrow = dim1, byrow = F)
-  colmat = matrix(rep(1:dim1, dim1), nrow = dim1, byrow = T)
-  Rmat[rowmat + colmat == (dim1 + 1)] = 1
+ReflMat <- function(dim1) {
+  Rmat <- matrix(rep(0, dim1^2), nrow = dim1)
+  rowmat <- matrix(rep(1:dim1, dim1), nrow = dim1, byrow = F)
+  colmat <- matrix(rep(1:dim1, dim1), nrow = dim1, byrow = T)
+  Rmat[rowmat + colmat == (dim1 + 1)] <- 1
   return(Rmat)
 }
