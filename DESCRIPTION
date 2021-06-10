@@ -1,0 +1,21 @@
+Package: ICvectorfields
+Title: An R package for producing vector fields based on spatial time series of population abundance
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Devin",
+           family = "Goodsman",
+           role = c("aut", "cre"),
+           email = "devin.goodsman@canada.ca",
+           comment = c(ORCID = "https://orcid.org/0000-0003-1935-5779"))
+Description: This package takes time series of abundance data in raster format and produces vector fields of population movement using the digital image correlation technique. More specifically, the functions in the package compute cross-covariance using discrete fast Fourier transforms for computational efficiency. Vectors point in the direction of highest two dimensional cross-covariance. The package has a novel implementation of the digital image correlation agorithm that is designed to detect persistant directional movement when image time series extend beyond two frames. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    fftwtools,
+    terra
