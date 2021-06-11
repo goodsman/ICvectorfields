@@ -3,11 +3,11 @@
 #' Here is a function that will find the row and column associated with a vector index.
 #'
 #' Often when applying functions like the R function which.max(matrix) to a matrix a vector index
-#' is returned when the coder would prefer to have a row and index number. This function converts
-#' the index to row and column numbers.
+#' is returned when the coder would prefer to have a row and column indices. This function converts
+#' the vector index to row and column indices.
 #'
 #' The function assumes that the elements of the matrix are filled by row (byrow = TRUE),
-#' which is the default
+#' which is the default R matrix behaviour.
 #'
 #' @param Index an integer vector index
 #' @param dim1 integer row dimension of the matrix from which the row and column indices are to be extracted
