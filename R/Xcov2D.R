@@ -32,13 +32,18 @@
 #' @export
 #'
 #' @examples
-#' dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))
-#' GetRowCol(which.max(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3))),
-#'     dim1 = dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))[1],
-#'     dim2 = dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))[2])
-#' max(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))
-#' # This implies that the shift is 6 - (10/2 + 1) in the vertical direction and
-#' # 7 - (10/2 + 1) in the horizonatal direction.
+#' dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3),
+#'     matrix(c(rep(0, 3), 1:6), nrow = 3)))
+#' ICvectorfields::GetRowCol(
+#'     which.max(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3),
+#'         matrix(c(rep(0, 3), 1:6), nrow = 3))),
+#'     dim1 = dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3),
+#'         matrix(c(rep(0, 3), 1:6), nrow = 3)))[1],
+#'     dim2 = dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3),
+#'         matrix(c(rep(0, 3), 1:6), nrow = 3)))[2]
+#'         )
+#' # This implies that the shift is 6 - (10/2 + 1) in the vertical
+#' direction and 7 - (10/2 + 1) in the horizonatal direction.
 Xcov2D <- function(mat1, mat2) {
   if (dim(mat1)[1] != dim(mat2)[1] || dim(mat1)[2] != dim(mat2)[2]) {
     stop("unequal dimensions")
