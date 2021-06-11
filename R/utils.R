@@ -106,7 +106,7 @@ ThinMat <- function(inputmat, factv, facth) {
 
   # Removing locations that bump against the edge
   Outdf[Outdf < 1] <- NA
-  Outdf <- na.omit(Outdf)
+  Outdf <- stats::na.omit(Outdf)
   Outdf <- subset(Outdf, frowmax <= dim(inputmat)[1])
   Outdf <- subset(Outdf, fcolmax <= dim(inputmat)[2])
 
