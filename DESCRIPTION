@@ -29,6 +29,6 @@ Imports:
     ggplot2,
     metR,
     sf,
-    stars
+    stars,
     terra
 
