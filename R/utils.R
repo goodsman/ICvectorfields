@@ -114,7 +114,7 @@ ThinMat <- function(inputmat, factv, facth) {
 }
 
 # Here is a function that will find the row and column associated with a vector index
-RowColumn <- function(Index, dim1, dim2) {
+GetRowCol <- function(Index, dim1, dim2) {
   Col1 <- ceiling(Index / dim1)
   Row1 <- Index - (Col1 - 1) * dim1
   return(c(Row1, Col1))
