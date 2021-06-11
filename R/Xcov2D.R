@@ -30,8 +30,8 @@
 #' cross-covariance see
 #' \href{https://en.wikipedia.org/wiki/Cross-correlation}{cross-correlation}.
 #'
-#' @param mat1 a numeric real valued matrix
-#' @param mat2 a numeric real valued matrix of equal dimension to mat1
+#' @param mat1 a real valued matrix
+#' @param mat2 a real valued matrix of equal dimension to mat1
 #'
 #' @return a real valued matrix showing cross-covariance in each direction
 #' @export

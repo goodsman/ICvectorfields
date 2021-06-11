@@ -7,9 +7,9 @@
 Xcov2D(mat1, mat2)
 }
 \arguments{
-\item{mat1}{a numeric real valued matrix}
+\item{mat1}{a real valued matrix}
 
-\item{mat2}{a numeric real valued matrix of equal dimension to mat1}
+\item{mat2}{a real valued matrix of equal dimension to mat1}
 }
 \value{
 a real valued matrix showing cross-covariance in each direction
