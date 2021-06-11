@@ -1,9 +1,11 @@
 #' ReflMat
 #'
-#' This function creates a reflection matrix with ones along the diagonal that traverses from the lower
-#' left corner to the upper right corner of the square matrix of dimension dim1 X dim1.
+#' This function creates a reflection matrix with ones along the diagonal that
+#' traverses from the lower left corner to the upper right corner of the square
+#' matrix of dimension dim1 X dim1.
 #'
-#' @param dim1 is the dimension (number of rows and columns) of the output matrix
+#' @param dim1 is the dimension (number of rows and columns) of the output
+#'   matrix
 #'
 #' @return numeric matrix
 #' @export
