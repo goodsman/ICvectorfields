@@ -8,7 +8,7 @@
 <!-- badges: end -->
 
 An R package for producing vector fields based on spatial time series of
-population abundance
+population abundance or density
 
 ## Installation
 
