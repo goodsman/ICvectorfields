@@ -42,11 +42,16 @@ details on cross-covariance see
 \href{https://en.wikipedia.org/wiki/Cross-correlation}{cross-correlation}.
 }
 \examples{
-dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))
-GetRowCol(which.max(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3))),
-    dim1 = dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))[1],
-    dim2 = dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))[2])
-max(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))
-# This implies that the shift is 6 - (10/2 + 1) in the vertical direction and
-# 7 - (10/2 + 1) in the horizonatal direction.
+dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3),
+    matrix(c(rep(0, 3), 1:6), nrow = 3)))
+ICvectorfields::GetRowCol(
+    which.max(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3),
+        matrix(c(rep(0, 3), 1:6), nrow = 3))),
+    dim1 = dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3),
+        matrix(c(rep(0, 3), 1:6), nrow = 3)))[1],
+    dim2 = dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3),
+        matrix(c(rep(0, 3), 1:6), nrow = 3)))[2]
+        )
+# This implies that the shift is 6 - (10/2 + 1) in the vertical
+direction and 7 - (10/2 + 1) in the horizonatal direction.
 }
