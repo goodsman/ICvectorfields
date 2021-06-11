@@ -113,13 +113,6 @@ ThinMat <- function(inputmat, factv, facth) {
   return(Outdf)
 }
 
-# Here is a function that will find the row and column associated with a vector index
-GetRowCol <- function(Index, dim1, dim2) {
-  Col1 <- ceiling(Index / dim1)
-  Row1 <- Index - (Col1 - 1) * dim1
-  return(c(Row1, Col1))
-}
-
 # This function takes a raster file in terra format and converts it to a rectangular
 # matrix of the same dimensions as the input raster. It also converts NA values to zero.
 RastToMatrix <- function(inrast) {
