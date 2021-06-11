@@ -4,7 +4,7 @@
 #' are associated with a vector index.
 #'
 #' Often when applying functions like the R function which.max(matrix) to a
-#' matrix a vector index is returned when the coder would prefer to have a row
+#' matrix, a vector index is returned when the coder would prefer to have a row
 #' and column indices. This function converts the vector index to row and column
 #' indices.
 #'
