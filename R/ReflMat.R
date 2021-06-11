@@ -4,8 +4,8 @@
 #' traverses from the lower left corner to the upper right corner of the square
 #' matrix of dimension dim1 X dim1.
 #'
-#' @param dim1 is the dimension (number of rows and columns) of the output
-#'   matrix
+#' @param dim1 This is the dimension (number of rows and columns) of the square
+#'   output matrix.
 #'
 #' @return numeric matrix
 #' @export
