@@ -13,6 +13,11 @@
 #' Then to compute cross-covariance, the first matrix is convolved with the
 #' flipped second matrix as described in the convolution theorem.
 #'
+#' This function is called by the main functions that compute digital image
+#' cross-covariance and is included here primarily for demonstration purposes.
+#' Specifically, the method for computing the magnitude and direction of
+#' shifts is demonstrated in the examples.
+#'
 #' The shift that produces the maximum cross-covariance between the two input
 #' matrices can be obtained by finding the row and column indices associated
 #' with the maximum cross-covariance. The shift in each direction is obtained by

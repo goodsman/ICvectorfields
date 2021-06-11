@@ -53,5 +53,5 @@ ICvectorfields::GetRowCol(
         matrix(c(rep(0, 3), 1:6), nrow = 3)))[2]
         )
 # This implies that the shift is 6 - (10/2 + 1) in the vertical
-direction and 7 - (10/2 + 1) in the horizonatal direction.
+# direction and 7 - (10/2 + 1) in the horizonatal direction.
 }
