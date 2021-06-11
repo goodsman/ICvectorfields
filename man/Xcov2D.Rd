@@ -31,8 +31,8 @@ flipped second matrix as described in the convolution theorem.
 
 This function is called by the main functions that compute digital image
 cross-covariance and is included here primarily for demonstration purposes.
-Specifically, the method for computing the magnitude and direction of
-shifts is demonstrated in the examples.
+Specifically, the method for computing the magnitude and direction of shifts
+is demonstrated in the examples.
 
 The shift that produces the maximum cross-covariance between the two input
 matrices can be obtained by finding the row and column indices associated
@@ -42,11 +42,12 @@ rows and columns) from the row and column values that are associated with the
 maximum cross-covariance as demonstrated in the examples below. Note that
 shifts to the right and up are denoted with positive numbers and shifts to
 the left and down are denoted by negative numbers. This is contrary to some
-conventions but efficient for producing producing vector fields. For more
-details on cross-covariance see
+conventions but efficient for producing vector fields. For more details on
+cross-covariance see
 \href{https://en.wikipedia.org/wiki/Cross-correlation}{cross-correlation}.
 }
 \examples{
+matrix(c(1:6, rep(0, 3)), nrow = 3); matrix(c(rep(0, 3), 1:6), nrow = 3)
 dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3),
     matrix(c(rep(0, 3), 1:6), nrow = 3)))
 ICvectorfields::GetRowCol(
