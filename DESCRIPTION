@@ -16,7 +16,7 @@ Description: This package takes time series of abundance or density data in rast
     digital image correlation agorithm that is designed to detect persistent 
     directional movement when image time series extend beyond a sequence of 
     two raster images. 
-License: MIT + file LICENSE
+License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
