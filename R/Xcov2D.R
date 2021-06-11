@@ -6,11 +6,24 @@
 #'
 #' The algorithm first pads each matrix so that the outer edges of the matrices
 #' do not interact with one another due to the circular nature of the discrete
-#' fast Fourier transform. Cross-correlation is then computed by computing the
-#' complex conjugate of the second matrix assuming all of it's elements are
-#' real. This operation is equivalent to flipping the matrix in the horizontal
-#' and vertical directions. Then the first matrix is convolved with the flipped
-#' second matrix using the convolution theorem.
+#' fast Fourier transform. Cross-covariance calculations require computation of
+#' the complex conjugate of one of the two imput matrices. Assuming all of it's
+#' elements are real, computing the complex conjugate is equivalent to flipping
+#' the matrix in the horizontal and vertical directions. Then to compute cross
+#' covariance, the first matrix is convolved with the flipped second matrix as
+#' described in the convolution theorem.
+#'
+#' The shift that produces the maximum cross-covariance between the two input
+#' matrices can be obtained by finding the row and column indices associated
+#' with the maximum cross covariance. The shift in each direction is obtained by
+#' subracting one plus the half the dimension of the output matrix (the same for
+#' rows and columns) from the row and column values that are associated with the
+#' maximum cross-covariance as demonstrated in the examples below. Note that
+#' shifts to the right and up are denoted with positive numbers and shifts to
+#' the left and down are denoted by negative numbers. This is contrary to some
+#' conventions but efficient for producing producing vector fields. to For more
+#' details on cross-covariance see
+#' \href{https://en.wikipedia.org/wiki/Cross-correlation}{cross-correlation}.
 #'
 #' @param mat1 a numeric real valued matrix
 #' @param mat2 a numeric real valued matrix of equal dimension to mat1
@@ -24,6 +37,8 @@
 #'     dim1 = dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))[1],
 #'     dim2 = dim(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))[2])
 #' max(Xcov2D(matrix(c(1:6, rep(0, 3)), nrow = 3), matrix(c(rep(0, 3), 1:6), nrow = 3)))
+#' # This implies that the shift is 6 - (10/2 + 1) in the vertical direction and
+#' # 7 - (10/2 + 1) in the horizonatal direction.
 Xcov2D <- function(mat1, mat2) {
   if (dim(mat1)[1] != dim(mat2)[1] || dim(mat1)[2] != dim(mat2)[2]) {
     stop("unequal dimensions")
