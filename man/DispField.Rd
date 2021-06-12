@@ -21,8 +21,8 @@ by terra::rast}
 \value{
 a data frame is returned with the followin column names: rowcent,
 colcent, frowmin, frowmax, fcolmin, fcolmax, centx, centy, dispx, dispy.
-The rowcent and colcent are the row and column indices for the center of each
-subgrid; frowmin and frowmax are the sub-grid minimum and maximum row
+The rowcent and colcent are the row and column indices for the center of
+each subgrid; frowmin and frowmax are the sub-grid minimum and maximum row
 indices; fcolmin and fcolmax are the sub-grid minimum and maximum column
 indices; centx and centy are the projected coordinates of the centre of the
 subgrid derived from the raster input files; dispx and dispy are the
@@ -75,11 +75,6 @@ rast2 = terra::rast(Mat2)
 terra::plot(rast2)
 
 (VFdf1 = DispField(rast1, rast2, factv1 = 9, facth1 = 9))
-
 # The second raster is shifted down by 0.1111111 units relative to the first raster
 # dispy = -0.1111111
-ggplot2::ggplot() +
-    annotate("segment", x = VFdf1$centx, y = VFdf1$centy,
-      xend = VFdf1$centx + VFdf1$dispx, yend = VFdf1$centy + VFdf1$dispy,
-      arrow = arrow(length = unit(.2,"cm")))
 }
