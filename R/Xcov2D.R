@@ -1,6 +1,6 @@
-#' Xcov2D
+#' Cross-Covariance in 2D
 #'
-#' This function efficiently computes 2D cross-covariance of two equal
+#' This function efficiently computes two dimensional cross-covariance of two equal
 #' dimensioned matrices of real numbers using efficient discrete fast Fourier
 #' trasforms.
 #'

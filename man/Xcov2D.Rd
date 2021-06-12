@@ -2,7 +2,7 @@
 % Please edit documentation in R/Xcov2D.R
 \name{Xcov2D}
 \alias{Xcov2D}
-\title{Xcov2D}
+\title{Cross-Covariance in 2D}
 \usage{
 Xcov2D(mat1, mat2)
 }
@@ -15,7 +15,7 @@ Xcov2D(mat1, mat2)
 a real valued matrix showing cross-covariance in each direction
 }
 \description{
-This function efficiently computes 2D cross-covariance of two equal
+This function efficiently computes two dimensional cross-covariance of two equal
 dimensioned matrices of real numbers using efficient discrete fast Fourier
 trasforms.
 }
