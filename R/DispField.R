@@ -65,7 +65,7 @@
 #'
 #' # The second raster is shifted down by 0.1111111 units relative to the first raster
 #' # dispy = -0.1111111
-#' ggplot2:ggplot() +
+#' ggplot2::ggplot() +
 #'     annotate("segment", x = VFdf1$centx, y = VFdf1$centy,
 #'       xend = VFdf1$centx + VFdf1$dispx, yend = VFdf1$centy + VFdf1$dispy,
 #'       arrow = arrow(length = unit(.2,"cm")))
