@@ -57,6 +57,9 @@ coordinates.
 
 The coordinates are assumed to increase vertically and horizontally from the
 lower left corner of the two-dimensional domain.
+
+Caution is warranted when defining the sub-grid dimensions because the function can
+produce erroneous results when sub-grids are too small.
 }
 \examples{
 Vec1 = c(1:5, 0, 0, 0, 0)

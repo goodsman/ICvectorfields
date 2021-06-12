@@ -26,6 +26,9 @@
 #' The coordinates are assumed to increase vertically and horizontally from the
 #' lower left corner of the two-dimensional domain.
 #'
+#' Caution is warranted when defining the sub-grid dimensions because the function can
+#' produce erroneous results when sub-grids are too small.
+#'
 #' @param inputrast1 a raster as produced by terra::rast
 #' @param inputrast2 a raster of equivalent dimension to inputrast1 as produced
 #'   by terra::rast
