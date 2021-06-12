@@ -48,12 +48,10 @@
 #' @export
 #'
 #' @examples
-#' Vec1 = c(1:5, 0, 0, 0, 0)
-#' Mat1 = Vec1
-#' for(i in 2:9) Mat1 = rbind(Mat1, Vec1)
-#' Mat1
+#' rseq = stats::runif(5)
+#' Mat1 =
 #'
-#' Vec2 = c(0, 1:5, 0, 0, 0)
+#' Vec2 = c(0, rseq, 0, 0, 0)
 #' Mat2 = Vec2
 #' for(i in 2:9) Mat2 = rbind(Mat2, Vec2)
 #' Mat2

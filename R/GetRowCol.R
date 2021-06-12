@@ -8,8 +8,8 @@
 #' and column indices. This function converts the vector index to row and column
 #' indices.
 #'
-#' The function assumes that the elements of the matrix are filled by row (byrow
-#' = TRUE), which is the default R matrix behaviour.
+#' The function assumes that the elements of the matrix are filled by column
+#' (byrow = FALSE), which is the default R matrix behaviour.
 #'
 #' @param Index an integer vector index
 #' @param dim1 integer row dimension of the matrix from which the row and column
