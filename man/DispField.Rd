@@ -37,8 +37,8 @@ two different instances of time.
 }
 \details{
 The input rasters are first converted to equivalent matrices. The function
-then subdivides the domain up into sub-grids of size factv1 X facth1, which
-are vertical and horizontal sub-grid dimensions.
+then divides the domain up into sub-grids of size factv1 X facth1, which are
+vertical and horizontal sub-grid dimensions.
 
 If restricted is set to FALSE (the default), the function computes
 cross-covariance between each sub-grid of the first input raster and the
@@ -58,8 +58,8 @@ coordinates.
 The coordinates are assumed to increase vertically and horizontally from the
 lower left corner of the two-dimensional domain.
 
-Caution is warranted when defining the sub-grid dimensions because the function can
-produce erroneous results when sub-grids are too small.
+Caution is warranted when defining the sub-grid dimensions because the
+function can produce erroneous results when sub-grids are too small.
 }
 \examples{
 Vec1 = c(1:5, 0, 0, 0, 0)
