@@ -1,4 +1,4 @@
-#' DispField
+#' Displacement Fields Based on 2D Cross-Covariance
 #'
 #' Calculates a displacement field based on the cross-covariance of two input
 #' rasters presumably representing spatial population abundance or density at
