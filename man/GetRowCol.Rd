@@ -2,7 +2,7 @@
 % Please edit documentation in R/GetRowCol.R
 \name{GetRowCol}
 \alias{GetRowCol}
-\title{GetRowCol}
+\title{Retrieve matrix row and column indices}
 \usage{
 GetRowCol(Index, dim1, dim2)
 }

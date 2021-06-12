@@ -1,4 +1,4 @@
-#' GetRowCol
+#' Retrieve matrix row and column indices
 #'
 #' Here is a function that will find the row and column indices of a matrix that
 #' are associated with a vector index.
