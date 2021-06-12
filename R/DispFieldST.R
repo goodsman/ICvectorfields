@@ -29,10 +29,9 @@
 #' spatial (either rows or columns) and one dimension is temporal. One of each
 #' pair correpsonds to the  unlagged spatiotemporal array and the other
 #' corresponds to the lagged spatiotemporal array. Displacement in the vertical
-#' direction is computed using pairs of unlagged and lagged matrices that have
-#' been averaged along rows and displacement in the horizontal direction is
-#' computed using pairs of unlagged and lagged matrices that have been averaged
-#' along columns.
+#' direction is computed using unlagged and lagged matrices that have been
+#' averaged along rows and displacement in the horizontal direction is computed
+#' using unlagged and lagged matrices that have been averaged along columns.
 #'
 #' If restricted is set to FALSE (the default), the function computes
 #' cross-covariance between each sub-grid of the unlagged row-averaged
@@ -40,18 +39,21 @@
 #' and betweem each sub-grid of the unlagged column-averaged spatiotemporal
 #' matrix and the entirety corresponding lagged matrix.
 #'
-#' If restricted is set to TRUE, the function uses cross-covariance between each
-#' sub-grid in the first input raster and the equivalent sub-grid in the second
-#' input raster to estimate vertical and horizontal displacement.
+#' If restricted is set to TRUE, the function uses cross-covariance between
+#' lagged and unlagged version of row-averaged and column averaged
+#' spatiotemporal matrices that have all been either row or column-averaged
+#' within sub-gridsnto estimate vertical and horizontal displacement.
 #'
-#' Regardless of whether restricted is set to TRUE or FALSE, for each subgrid
+#' Regardless of whether restricted is set to TRUE or FALSE, for each sub-grid,
 #' displacement in the x and y direction is divided by the shift in the time
-#' dimension to produce orthogonal velocity vetors.
+#' dimension to produce orthogonal velocity vetors. Note that for this reason,
+#' the lag1 argument of the function does not necessarily determine the time lag
+#' that is used to produce each orthoganal velocity vector.
 #'
 #' Reference coordinates and cell size are extracted from the first raster stack
 #' such that the locations from whence displacement is estimated as well as
-#' displacement estimates can be expressed in the units of the projected
-#' coordinates.
+#' displacement (or velocity) estimates can be expressed in the units of the
+#' projected coordinates.
 #'
 #' The coordinates are assumed to increase vertically and horizontally from the
 #' lower left corner of the two-dimensional domain.
