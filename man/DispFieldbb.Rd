@@ -2,7 +2,7 @@
 % Please edit documentation in R/DispFieldbb.R
 \name{DispFieldbb}
 \alias{DispFieldbb}
-\title{Displacement Fields Based on 2D Cross-Covariance using bounding box}
+\title{Displacement fields based on 2D cross-covariance using bounding box}
 \usage{
 DispFieldbb(
   inputrast1,
