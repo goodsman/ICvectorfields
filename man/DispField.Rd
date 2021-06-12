@@ -12,9 +12,9 @@ DispField(inputrast1, inputrast2, factv1, facth1, restricted = FALSE)
 \item{inputrast2}{a raster of equivalent dimension to inputrast1 as produced
 by terra::rast}
 
-\item{factv1}{an odd integer for the vertical dimension of subgrids}
+\item{factv1}{an odd integer for the vertical dimension of sub-grids}
 
-\item{facth1}{an odd integer for the horizontal dimension of subgrids}
+\item{facth1}{an odd integer for the horizontal dimension of sub-grids}
 
 \item{restricted}{logical (TRUE or FALSE)}
 }

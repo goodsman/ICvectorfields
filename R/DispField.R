@@ -32,8 +32,8 @@
 #' @param inputrast1 a raster as produced by terra::rast
 #' @param inputrast2 a raster of equivalent dimension to inputrast1 as produced
 #'   by terra::rast
-#' @param factv1 an odd integer for the vertical dimension of subgrids
-#' @param facth1 an odd integer for the horizontal dimension of subgrids
+#' @param factv1 an odd integer for the vertical dimension of sub-grids
+#' @param facth1 an odd integer for the horizontal dimension of sub-grids
 #' @param restricted logical (TRUE or FALSE)
 #'
 #' @return A data frame is returned with the following column names: rowcent,
