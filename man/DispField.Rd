@@ -2,7 +2,7 @@
 % Please edit documentation in R/DispField.R
 \name{DispField}
 \alias{DispField}
-\title{Displacement Fields Based on 2D Cross-Covariance}
+\title{Displacement fields based on 2D cross-covariance}
 \usage{
 DispField(inputrast1, inputrast2, factv1, facth1, restricted = FALSE)
 }
