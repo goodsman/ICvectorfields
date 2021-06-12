@@ -124,8 +124,8 @@ DispFieldbb <- function(inputrast1, inputrast2, rowmn, rowmx, colmn, colmx, rest
       # XcovMat = Xcov2D(mat1sub, inputmat2)
       XcovMat <- Xcov2D(mat1sub, mat2sub)
       # Computing displacement vector
-      xcoord1 <- terra::GetRowCol(which.max(XcovMat), dim1 = dim(XcovMat)[1], dim2 = dim(XcovMat)[2])[2]
-      ycoord1 <- terra::GetRowCol(which.max(XcovMat), dim1 = dim(XcovMat)[1], dim2 = dim(XcovMat)[2])[1]
+      xcoord1 <- GetRowCol(which.max(XcovMat), dim1 = dim(XcovMat)[1], dim2 = dim(XcovMat)[2])[2]
+      ycoord1 <- GetRowCol(which.max(XcovMat), dim1 = dim(XcovMat)[1], dim2 = dim(XcovMat)[2])[1]
       # translate rows and columns to coordinates
       Outdf$centx[i] <- terra::xFromCol(inputrast1, col = Outdf$colcent[i])
       Outdf$centy[i] <- terra::yFromRow(inputrast1, row = Outdf$rowcent[i])
