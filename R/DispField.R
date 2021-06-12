@@ -99,8 +99,8 @@ DispField <- function(inputrast1, inputrast2, factv1, facth1, restricted = FALSE
   Outdf$dispy <- rep(NA, dim(Outdf)[1])
 
   # resolution variables
-  dx <- xres(inputrast1)
-  dy <- yres(inputrast1)
+  dx <- terra::xres(inputrast1)
+  dy <- terra::yres(inputrast1)
 
   # cycling through all grid locations
   for (i in 1:dim(Outdf)[1]) {
