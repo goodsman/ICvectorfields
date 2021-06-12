@@ -18,9 +18,10 @@
 #' sub-grid in the first input raster and the equivalent sub-grid in the second
 #' input raster to estimate vertical and horizontal displacement.
 #'
-#' Reference coordinates and cell size are extracted from the input raster such
-#' that the locations from whence displacement is estimated as well as
-#' displacement estimates themselves can be expressed in projected coordinates.
+#' Reference coordinates and cell size are extracted from the first input raster
+#' such that the locations from whence displacement is estimated as well as
+#' displacement estimates can be expressed in the units of the projected
+#' coordinates.
 #'
 #' The coordinates are assumed to increase vertically and horizontally from the
 #' lower left corner of the two-dimensional domain.
@@ -32,15 +33,16 @@
 #' @param facth1 an odd integer for the horizontal dimension of subgrids
 #' @param restricted logical (TRUE or FALSE)
 #'
-#' @return a data frame is returned with the followin column names: rowcent,
-#'   colcent, frowmin, frowmax, fcolmin, fcolmax, centx, centy, dispx, dispy.
-#'   The rowcent and colcent are the row and column indices for the center of
-#'   each subgrid; frowmin and frowmax are the sub-grid minimum and maximum row
-#'   indices; fcolmin and fcolmax are the sub-grid minimum and maximum column
-#'   indices; centx and centy are the projected coordinates of the centre of the
-#'   subgrid derived from the raster input files; dispx and dispy are the
-#'   displacement in the horizontal and vertical directions in the same units as
-#'   the projected corrdinates of the raster input files.
+#' @return A data frame is returned with the following column names: rowcent,
+#'   colcent, frowmin, frowmax, fcolmin, fcolmax, centx, centy, dispx, and
+#'   dispy. The rowcent and colcent column names are the row and column indices
+#'   for the center of each subgrid; frowmin and frowmax are the sub-grid
+#'   minimum and maximum row indices; fcolmin and fcolmax are the sub-grid
+#'   minimum and maximum column indices; centx and centy are the projected
+#'   coordinates of the centre of the subgrid derived from the raster input
+#'   files; dispx and dispy are the displacement in the horizontal and vertical
+#'   directions in the same units as the projected corrdinates of the raster
+#'   input files.
 #' @export
 #'
 #' @examples
