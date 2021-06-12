@@ -93,6 +93,10 @@ DispFieldbb <- function(inputrast1, inputrast2, rowmn, rowmx, colmn, colmx, rest
   rowcent <- rowmn + floor((rowmx - rowmn) / 2)
   colcent <- colmn + floor((colmx - colmn) / 2)
   Outdf <- data.frame(rowcent, colcent)
+  Outdf$frowmin <- rowmn
+  Outdf$frowmax <- rowmx
+  Outdf$fcolmin <- colmn
+  Outdf$fcolmax <- colmx
 
   # Adding columns for central coordinates and displacement
   Outdf$centx <- rep(NA, dim(Outdf)[1])
