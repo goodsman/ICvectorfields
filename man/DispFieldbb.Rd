@@ -69,6 +69,9 @@ coordinates.
 
 The coordinates are assumed to increase vertically and horizontally from the
 lower left corner of the two-dimensional domain.
+
+Caution is warranted when defining the bounding box because the function can
+produce erroneous results when the bounding box is too small.
 }
 \examples{
 rseq = stats::runif(72)
