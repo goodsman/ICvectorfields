@@ -20,10 +20,10 @@ by terra::rast}
 }
 \value{
 a data frame is returned with the followin column names: rowcent,
-colcent, frowmin, frowmax, fcolmin, fcolmax, centx, centy, dispx, dispy
-rowcent and colcent are the row and column index for the center of each
+colcent, frowmin, frowmax, fcolmin, fcolmax, centx, centy, dispx, dispy.
+The rowcent and colcent are the row and column indices for the center of each
 subgrid; frowmin and frowmax are the sub-grid minimum and maximum row
-indices; fcolmin and fcolmax are the sub-grid minimu and maximum column
+indices; fcolmin and fcolmax are the sub-grid minimum and maximum column
 indices; centx and centy are the projected coordinates of the centre of the
 subgrid derived from the raster input files; dispx and dispy are the
 displacement in the horizontal and vertical directions in the same units as
