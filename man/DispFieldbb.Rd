@@ -71,7 +71,7 @@ The coordinates are assumed to increase vertically and horizontally from the
 lower left corner of the two-dimensional domain.
 }
 \examples{
-rseq = stats::runif(5)
+rseq = stats::runif(72)
 Mat1 = matrix(rep(0, 81), nrow = 9)
 Mat2 = Mat1
 Mat1[1:9, 1:8] = rseq
