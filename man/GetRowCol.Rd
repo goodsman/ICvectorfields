@@ -29,8 +29,8 @@ matrix, a vector index is returned when the coder would prefer to have a row
 and column indices. This function converts the vector index to row and column
 indices.
 
-The function assumes that the elements of the matrix are filled by row (byrow
-= TRUE), which is the default R matrix behaviour.
+The function assumes that the elements of the matrix are filled by column
+(byrow = FALSE), which is the default R matrix behaviour.
 }
 \examples{
 GetRowCol(6, dim1 = 3, dim2 = 3) # should return c(3, 2)
