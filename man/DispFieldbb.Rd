@@ -71,7 +71,7 @@ The coordinates are assumed to increase vertically and horizontally from the
 lower left corner of the two-dimensional domain.
 }
 \examples{
-#' Vec1 = c(1:5, 0, 0, 0, 0)
+Vec1 = c(1:5, 0, 0, 0, 0)
 Mat1 = Vec1
 for(i in 2:9) Mat1 = rbind(Mat1, Vec1)
 Mat1
