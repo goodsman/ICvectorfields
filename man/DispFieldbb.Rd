@@ -71,14 +71,12 @@ The coordinates are assumed to increase vertically and horizontally from the
 lower left corner of the two-dimensional domain.
 }
 \examples{
-Vec1 = c(1:5, 0, 0, 0, 0)
-Mat1 = Vec1
-for(i in 2:9) Mat1 = rbind(Mat1, Vec1)
+rseq = stats::runif(5)
+Mat1 = matrix(rep(0, 81), nrow = 9)
+Mat2 = Mat1
+Mat1[1:9, 1:8] = rseq
 Mat1
-
-Vec2 = c(0, 1:5, 0, 0, 0)
-Mat2 = Vec2
-for(i in 2:9) Mat2 = rbind(Mat2, Vec2)
+Mat2[1:9, 2:9] = rseq
 Mat2
 
 # Note that rasterizing a matrix causes it to be rotated 90 degrees.
