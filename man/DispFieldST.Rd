@@ -7,6 +7,15 @@
 DispFieldST(inputstack1, lag1, factv1, facth1, restricted = FALSE)
 }
 \arguments{
+\item{inputstack1}{a raster stack with each raster layer representing an
+instance of time. The raster stack should be organized such that the first
+raster in the stack is the first observed spatial dataset and time
+progresses forward with the third dimension index of the raster stack. The
+raster stack should contain only numeric values. Any NA value will be
+converted to a zero.}
+
+\item{lag1}{an integer time lag}
+
 \item{factv1}{an odd integer for the vertical dimension of subgrids}
 
 \item{facth1}{an odd integer for the horizontal dimension of subgrids}
@@ -14,8 +23,111 @@ DispFieldST(inputstack1, lag1, factv1, facth1, restricted = FALSE)
 \item{restricted}{logical (TRUE or FALSE)}
 }
 \value{
-
+A data frame is returned with the following column names: rowcent,
+colcent, frowmin, frowmax, fcolmin, fcolmax, centx, centy, dispx, and
+dispy. The rowcent and colcent column names are the row and column indices
+for the center of each sub-grid; frowmin and frowmax are the sub-grid
+minimum and maximum row indices; fcolmin and fcolmax are the sub-grid
+minimum and maximum column indices; centx and centy are the projected
+coordinates of the centre of the subgrid derived from the raster input
+files; dispx and dispy are the orthoganal velocity vectors in the
+horizontal and vertical directions in the same units as the projected
+corrdinates of the raster input files.
 }
 \description{
-Displacement fields for spatiotemporal data
+This is an implementation of a novel algorithm that differs from more
+traditional digital image correlation implementations that are applied in the
+\code{\link{DispField}} and \code{\link{DispFieldbb}} functions. The function
+calculates a displacement field representing persistent movement based on the
+cross-covariance in a raster stack (in this case a sequential series of
+rasters) presumably representing spatial population abundance or density at
+more than two different instances of time. If analysis is restricted to only
+two time instances, \code{\link{DispField}} is more appropriate.
+}
+\details{
+The input rasters in the raster stack are first converted to equivalent
+matrices, which togther represent a three-dimensional array with two spatial
+dimensions and one time dimension. The prescribed lag is applied to the three
+dimensional array derived from the raster stack by first producing two
+equivalent arrays and then removing appropriate numbers of layers from the
+top of one and the bottom of the other. These are referred to as unlagged and
+lagged spatiotemporal arrays in the description that follows.
+
+Prior to computing displacement based on direction of maximum
+cross-covariance, the function divides the spatial domain up into sub-grids
+of size factv1 X facth1, which are vertical and horizontal sub-grid spatial
+dimensions.
+
+The function converts three dimensional lagged and unlagged spatiotemporal
+arrays to two-dimensional lagged and unlagged spatiotemporal matrices by
+averaging along one of the spatial dimensions (either rows or columns) to
+obtain two pairs of two-dimensional matrices in which one dimension is
+spatial (either rows or columns) and one dimension is temporal. One of each
+pair correpsonds to the  unlagged spatiotemporal array and the other
+corresponds to the lagged spatiotemporal array. Displacement in the vertical
+direction is computed using pairs of unlagged and lagged matrices that have
+been averaged along rows and displacement in the horizontal direction is
+computed using pairs of unlagged and lagged matrices that have been averaged
+along columns.
+
+If restricted is set to FALSE (the default), the function computes
+cross-covariance between each sub-grid of the unlagged row-averaged
+spatiotemporal matrix and the whole row-averaged lagged spatiotemporal matrix
+and betweem each sub-grid of the unlagged column-averaged spatiotemporal
+matrix and the entirety corresponding lagged matrix.
+
+If restricted is set to TRUE, the function uses cross-covariance between each
+sub-grid in the first input raster and the equivalent sub-grid in the second
+input raster to estimate vertical and horizontal displacement.
+
+Regardless of whether restricted is set to TRUE or FALSE, for each subgrid
+displacement in the x and y direction is divided by the shift in the time
+dimension to produce orthogonal velocity vetors.
+
+Reference coordinates and cell size are extracted from the first raster stack
+such that the locations from whence displacement is estimated as well as
+displacement estimates can be expressed in the units of the projected
+coordinates.
+
+The coordinates are assumed to increase vertically and horizontally from the
+lower left corner of the two-dimensional domain.
+
+Caution is warranted when defining the sub-grid dimensions because the
+function can produce erroneous results when sub-grids are too small.
+}
+\examples{
+Vec1 = c(1:5, 0, 0, 0, 0)
+Mat1 = Vec1
+for(i in 2:9) Mat1 = rbind(Mat1, Vec1)
+Mat1
+
+Vec2 = c(0, 1:5, 0, 0, 0)
+Mat2 = Vec2
+for(i in 2:9) Mat2 = rbind(Mat2, Vec2)
+Mat2
+
+Vec3 = c(0, 0, 1:5, 0, 0)
+Mat3 = Vec3
+for(i in 2:9) Mat3 = rbind(Mat3, Vec3)
+Mat3
+
+Vec4 = c(0, 0, 0, 1:5, 0)
+Mat4 = Vec4
+for(i in 2:9) Mat4 = rbind(Mat4, Vec4)
+Mat4
+
+# Note that rasterizing a matrix causes it to be rotated 90 degrees.
+# Therefore, any shift in the x direction is in fact now a shift in the y direction
+rast1 = terra::rast(Mat1)
+plot(rast1)
+rast2 = terra::rast(Mat2)
+plot(rast2)
+rast3 = terra::rast(Mat3)
+plot(rast3)
+rast4 = terra::rast(Mat4)
+plot(rast4)
+
+teststack1 = terra::c(rast1, rast2, rast3, rast4)
+(VFdf2 = DispFieldST(teststack1, lag1 = 1, factv1 = 9, facth1 = 9))
+
 }
