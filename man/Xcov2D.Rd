@@ -2,7 +2,7 @@
 % Please edit documentation in R/Xcov2D.R
 \name{Xcov2D}
 \alias{Xcov2D}
-\title{Cross-Covariance in 2D}
+\title{Cross-covariance in 2D}
 \usage{
 Xcov2D(mat1, mat2)
 }
