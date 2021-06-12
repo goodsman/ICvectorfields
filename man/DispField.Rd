@@ -22,7 +22,7 @@ by terra::rast}
 A data frame is returned with the following column names: rowcent,
 colcent, frowmin, frowmax, fcolmin, fcolmax, centx, centy, dispx, and
 dispy. The rowcent and colcent column names are the row and column indices
-for the center of each subgrid; frowmin and frowmax are the sub-grid
+for the center of each sub-grid; frowmin and frowmax are the sub-grid
 minimum and maximum row indices; fcolmin and fcolmax are the sub-grid
 minimum and maximum column indices; centx and centy are the projected
 coordinates of the centre of the subgrid derived from the raster input
