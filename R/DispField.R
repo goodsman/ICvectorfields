@@ -121,15 +121,15 @@ DispField <- function(inputrast1, inputrast2, factv1, facth1, restricted = FALSE
       xcoord1 <- GetRowCol(which.max(XcovMat), dim1 = dim(XcovMat)[1], dim2 = dim(XcovMat)[2])[2]
       ycoord1 <- GetRowCol(which.max(XcovMat), dim1 = dim(XcovMat)[1], dim2 = dim(XcovMat)[2])[1]
       # translate rows and columns to coordinates
-      Outdf$centx[i] <- xFromCol(inputrast1, col = Outdf$colcent[i])
-      Outdf$centy[i] <- yFromRow(inputrast1, row = Outdf$rowcent[i])
+      Outdf$centx[i] <- terra::xFromCol(inputrast1, col = Outdf$colcent[i])
+      Outdf$centy[i] <- terra::yFromRow(inputrast1, row = Outdf$rowcent[i])
       # Computing displacement: because this is a square matrix with an even number of rows,
       # the center is at the center.
       Outdf$dispx[i] <- (xcoord1 - (dim(XcovMat)[1] / 2 + 1)) * dx
       Outdf$dispy[i] <- ((dim(XcovMat)[2] / 2 + 1) - ycoord1) * dy
     } else {
-      Outdf$centx[i] <- xFromCol(inputrast1, col = Outdf$colcent[i])
-      Outdf$centy[i] <- yFromRow(inputrast1, row = Outdf$rowcent[i])
+      Outdf$centx[i] <- terra::xFromCol(inputrast1, col = Outdf$colcent[i])
+      Outdf$centy[i] <- terra::yFromRow(inputrast1, row = Outdf$rowcent[i])
       Outdf$dispx[i] <- 0
       Outdf$dispy[i] <- 0
     }
