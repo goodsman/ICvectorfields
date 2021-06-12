@@ -1,3 +1,74 @@
+#' DispField
+#'
+#' Calculates a displacement field based on the cross-covariance of two input
+#' rasters presumably representing spatial population abundance or density at
+#' two different instances of time.
+#'
+#' The input rasters are first converted to equivalent matrices. The function
+#' then subdivides the domain up into sub-grids of size factv1 X facth1, which
+#' are vertical and horizontal sub-grid dimensions.
+#'
+#' If restricted is set to FALSE (the default), the function computes
+#' cross-covariance between each sub-grid of the first input raster and the
+#' entirety of the second input raster and then uses the location of maximum
+#' cross-covariance to estimate displacement in the vertical and horizontal
+#' directions from the centre of each sub-grid.
+#'
+#' If restricted is set to TRUE, the function uses cross-covariance between each
+#' sub-grid in the first input raster and the equivalent sub-grid in the second
+#' input raster to estimate vertical and horizontal displacement.
+#'
+#' Reference coordinates and cell size are extracted from the input raster such
+#' that the locations from whence displacement is estimated as well as
+#' displacement estimates themselves can be expressed in projected coordinates.
+#'
+#' The coordinates are assumed to increase vertically and horizontally from the
+#' lower left corner of the two-dimensional domain.
+#'
+#' @param inputrast1 a raster as produced by terra::rast
+#' @param inputrast2 a raster of equivalent dimension to inputrast1 as produced
+#'   by terra::rast
+#' @param factv1 an odd integer for the vertical dimension of subgrids
+#' @param facth1 an odd integer for the horizontal dimension of subgrids
+#' @param restricted logical (TRUE or FALSE)
+#'
+#' @return a data frame is returned with the followin column names: rowcent,
+#'   colcent, frowmin, frowmax, fcolmin, fcolmax, centx, centy, dispx, dispy
+#'   rowcent and colcent are the row and column index for the center of each
+#'   subgrid; frowmin and frowmax are the sub-grid minimum and maximum row
+#'   indices; fcolmin and fcolmax are the sub-grid minimu and maximum column
+#'   indices; centx and centy are the projected coordinates of the centre of the
+#'   subgrid derived from the raster input files; dispx and dispy are the
+#'   displacement in the horizontal and vertical directions in the same units as
+#'   the projected corrdinates of the raster input files.
+#' @export
+#'
+#' @examples
+#' Vec1 = c(1:5, 0, 0, 0, 0)
+#' Mat1 = Vec1
+#' for(i in 2:9) Mat1 = rbind(Mat1, Vec1)
+#' Mat1
+#'
+#' Vec2 = c(0, 1:5, 0, 0, 0)
+#' Mat2 = Vec2
+#' for(i in 2:9) Mat2 = rbind(Mat2, Vec2)
+#' Mat2
+#'
+#' # Note that rasterizing a matrix causes it to be rotated 90 degrees.
+#' # Therefore, any shift in the x direction is in fact now a shift in the y direction
+#' rast1 = rast(Mat1)
+#' plot(rast1)
+#' rast2 = rast(Mat2)
+#' plot(rast2)
+#'
+#' VFdf1 = DispField(rast1, rast2, factv1 = 9, facth1 = 9)
+#'
+#' # The second raster is shifted down by 0.1111111 units relative to the first raster
+#' # dispy = -0.1111111
+#' ggplot2:ggplot() +
+#'     annotate("segment", x = VFdf1$centx, y = VFdf1$centy,
+#'       xend = VFdf1$centx + VFdf1$dispx, yend = VFdf1$centy + VFdf1$dispy,
+#'       arrow = arrow(length = unit(.2,"cm")))
 DispField <- function(inputrast1, inputrast2, factv1, facth1, restricted = FALSE) {
   if (factv1 / 2 == round(factv1 / 2)) {
     stop("factv1 and facth1 must be odd integers")
