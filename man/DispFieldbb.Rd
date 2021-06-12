@@ -88,7 +88,7 @@ terra::plot(rast1)
 rast2 = terra::rast(Mat2)
 terra::plot(rast2)
 
-(VFdf1 = DispField(rast1, rast2, 1, 9, 1, 9))
+(VFdf1 = DispFieldbb(rast1, rast2, 1, 9, 1, 9))
 # The second raster is shifted down by 0.1111111 units relative to the first raster
 # dispy = -0.1111111
 }
