@@ -6,7 +6,7 @@
 #' \code{\link{DispFieldSTall}}, \code{\link{DispFieldSTbball}}.
 #'
 #' Once a raster stack has been created, individual layers can be subsetted using
-#' rasterstack[[index]], where index is an integer index for the third dimension
+#' rasterstack[\[index\]], where index is an integer index for the third dimension
 #' of the raster stack. Two individual raster layers are the only accepted data input
 #' format for the following ICvectorfields functions: \code{\link{DispField}},
 #' \code{\link{DispFieldbb}}.
