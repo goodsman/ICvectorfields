@@ -46,7 +46,7 @@ two time instances, \code{\link{DispField}} is more appropriate.
 }
 \details{
 The input rasters in the raster stack are first converted to equivalent
-matrices, which togther represent a three-dimensional array with two spatial
+matrices, which together represent a three-dimensional array with two spatial
 dimensions and one time dimension. The prescribed lag is applied to the three
 dimensional array derived from the raster stack by first producing two
 equivalent arrays and then removing appropriate numbers of layers from the
@@ -78,7 +78,7 @@ matrix and the entirety corresponding lagged matrix.
 If restricted is set to TRUE, the function uses cross-covariance between
 lagged and unlagged version of row-averaged and column averaged
 spatiotemporal matrices that have all been either row or column-averaged
-within sub-gridsnto estimate vertical and horizontal displacement.
+within sub-grids to estimate vertical and horizontal displacement.
 
 Regardless of whether restricted is set to TRUE or FALSE, for each sub-grid,
 displacement in the x and y direction is divided by the shift in the time
