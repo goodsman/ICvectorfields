@@ -1,4 +1,4 @@
-test_that("DispFieldST correctly estimates vertical velocity", {
+test_that("DispFieldSTall correctly estimates vertical velocity", {
   Vec1 <- c(1:5, 0, 0, 0, 0)
   Mat1 <- Vec1
   for (i in 2:9) Mat1 <- rbind(Mat1, Vec1)
