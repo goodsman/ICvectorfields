@@ -47,7 +47,7 @@ RastStackData <- function(inputdf) {
   # creating the stack
   for (i in 3:dim(inputdf)[2]) {
     inputdfrast <- terra::rast(as.matrix(inputdf[, c(1:2, i)]), type = "xyz")
-    ext(inputdfrast) <- c(min(inputdf[, 1]), max(inputdf[,1]), min(inputdf[, 2]), max(inputdf[, 2]))
+    terra::ext(inputdfrast) <- c(min(inputdf[, 1]), max(inputdf[,1]), min(inputdf[, 2]), max(inputdf[, 2]))
     inputdfstack <- c(inputdfstack, inputdfrast)
   }
 
