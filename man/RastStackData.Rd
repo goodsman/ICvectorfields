@@ -41,7 +41,7 @@ xyzdf$z1 <- runif(9)
 xyzdf$z2 <- 2*xyzdf$z1
 xyzdf$z3 <- 2*xyzdf$z2
 
-zstack ,- RastStackData(xyzdf)
+zstack <- RastStackData(xyzdf)
 
 dim(zstack)
 terra::plot(zstack[[1]])
