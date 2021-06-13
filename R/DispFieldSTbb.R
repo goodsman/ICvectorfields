@@ -106,7 +106,7 @@
 #' rast4 <- terra::rast(Mat4)
 #' terra::plot(rast4)
 #'
-#' teststack1 = c(rast1, rast2, rast3, rast4)
+#' teststack1 <- c(rast1, rast2, rast3, rast4)
 #' (VFdf3 <- DispFieldSTbb(teststack1, lag1 = 1, 2, 8, 2, 8))
 #' # block is moving downward at a speed of 0.1111111 units of space per unit of time
 #' # dispy = -0.1111111
