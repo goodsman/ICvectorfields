@@ -2,6 +2,7 @@
 
 export(DispField)
 export(DispFieldST)
+export(DispFieldSTbb)
 export(DispFieldbb)
 export(GetRowCol)
 export(Xcov2D)
