@@ -79,9 +79,9 @@
 #'   minimum and maximum row indices; fcolmin and fcolmax are the sub-grid
 #'   minimum and maximum column indices; centx and centy are the projected
 #'   coordinates of the centre of the subgrid derived from the raster input
-#'   files; dispx and dispy are the orthoganal velocity vectors in the
-#'   horizontal and vertical directions in the same units as the projected
-#'   corrdinates of the raster input files.
+#'   files; dispx and dispy are the orthoganal velocity vectors in units of
+#'   space per timestep in the horizontal and vertical directions in the same
+#'   spatial units as the projected coordinates of the raster input files.
 #' @export
 #'
 #' @examples

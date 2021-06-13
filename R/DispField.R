@@ -44,7 +44,7 @@
 #'   minimum and maximum column indices; centx and centy are the projected
 #'   coordinates of the centre of the subgrid derived from the raster input
 #'   files; dispx and dispy are the displacement in the horizontal and vertical
-#'   directions in the same units as the projected corrdinates of the raster
+#'   directions in the same units as the projected coordinates of the raster
 #'   input files.
 #' @export
 #'
