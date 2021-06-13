@@ -38,10 +38,10 @@ format for the following ICvectorfields functions: \code{\link{DispField}},
 # creating random data in the correct data format
 xyzdf <- expand.grid(x = c(1:3), y = c(1:3))
 xyzdf$z1 <- runif(9)
-xyzdf$z2 <- 2*xydf$z1
-xyzdf$z3 <- 2*xydf$z2
+xyzdf$z2 <- 2*xyzdf$z1
+xyzdf$z3 <- 2*xyzdf$z2
 
-zstack = RastStackData(xyzdf)
+zstack ,- RastStackData(xyzdf)
 
 dim(zstack)
 terra::plot(zstack[[1]])
