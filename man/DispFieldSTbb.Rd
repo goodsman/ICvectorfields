@@ -109,13 +109,13 @@ function can produce erroneous results when sub-grids are too small.
 rseq <- stats::runif(54)
 Mat1 <- matrix(rep(0, 9*9), nrow = 9)
 Mat2 <- Mat1; Mat3 <- Mat1; Mat4 <- Mat1
-Mat1[1:9, 1:6] = rseq
+Mat1[1:9, 1:6] <- rseq
 Mat1
-Mat2[1:9, 2:7] = rseq
+Mat2[1:9, 2:7] <- rseq
 Mat2
-Mat3[1:9, 3:8] = rseq
+Mat3[1:9, 3:8] <- rseq
 Mat3
-Mat4[1:9, 4:9] = rseq
+Mat4[1:9, 4:9] <- rseq
 Mat4
 
 # Note that rasterizing a matrix causes it to be rotated 90 degrees.
