@@ -31,3 +31,5 @@ Imports:
     sf,
     stars,
     terra
+Depends: 
+    R (>= 2.10)
