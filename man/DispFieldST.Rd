@@ -2,7 +2,7 @@
 % Please edit documentation in R/DispFieldST.R
 \name{DispFieldST}
 \alias{DispFieldST}
-\title{Displacement fields for spatiotemporal data}
+\title{Displacement fields for spatiotemporal data when velocity is spatially constant}
 \usage{
 DispFieldST(inputstack1, lag1, factv1, facth1, restricted = FALSE)
 }
@@ -137,4 +137,15 @@ teststack1 <- c(rast1, rast2, rast3, rast4)
 (VFdf2 <- DispFieldST(teststack1, lag1 = 1, factv1 = 9, facth1 = 9))
 # block is moving downward at a speed of 0.1111111 units of space per unit of time
 # dispy = -0.1111111
+}
+\seealso{
+\code{\link{DispField}} for a similar function with a grid of focal
+regions for only two time instances, \code{\link{DispFieldSTbb}} for a
+version designed to quantify persistent directional movement when the time
+series features more than two time instances but using a bounding pox to
+define a focal region, see \code{\link{DispFieldSTall}} for a version
+designed to quantify persistent directional movement when velocity is
+variable in space, and \code{\link{Xcov2D}} for demonstration of how
+two-dimensional cross-covariance is used to determine displacement (see
+examples of Xcov2D function documentation).
 }

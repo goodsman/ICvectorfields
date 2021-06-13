@@ -87,6 +87,16 @@
 #'   spatial units as the projected coordinates of the raster input files.
 #' @export
 #'
+#' @seealso \code{\link{DispField}} for a similar function with a grid of focal
+#'   regions for only two time instances, \code{\link{DispFieldST}} for a
+#'   version designed to quantify persistent directional movement when the time
+#'   series features more than two time instances but using a grid to define
+#'   focal regions, see \code{\link{DispFieldSTbball}} for a version designed to
+#'   quantify persistent directional movement when velocity is variable in
+#'   space, and \code{\link{Xcov2D}} for demonstration of how two-dimensional
+#'   cross-covariance is used to determine displacement (see examples of Xcov2D
+#'   function documentation).
+#'
 #' @examples
 #' rseq <- stats::runif(54)
 #' Mat1 <- matrix(rep(0, 9*9), nrow = 9)

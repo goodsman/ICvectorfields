@@ -11,8 +11,8 @@
 #' is set to FALSE (the default), the function computes cross-covariance between
 #' the sub-grid of the first input raster and the entirety of the second input
 #' raster and then uses the location of maximum cross-covariance to estimate
-#' displacement in the vertical and horizontal directions from the centre of
-#' the sub-grid.
+#' displacement in the vertical and horizontal directions from the centre of the
+#' sub-grid.
 #'
 #' If restricted is set to TRUE, the function uses cross-covariance between the
 #' sub-grid of the first input raster and the equivalent sub-grid of the second
@@ -49,6 +49,15 @@
 #'   directions in the same units as the projected coordinates of the raster
 #'   input files.
 #' @export
+#'
+#' @seealso \code{\link{DispField}} for a similar function with a grid of focal
+#'   regions, \code{\link{DispFieldSTbb}} for a version designed to quantify
+#'   persistent directional movement when the time series features more than two
+#'   time instances, \code{\link{DispFieldSTbball}} for a version designed to
+#'   quantify persistent directional movement when velocity is variable in
+#'   space, and \code{\link{Xcov2D}} for demonstration of how two-dimensional
+#'   cross-covariance is used to determine displacement (see examples of Xcov2D
+#'   function documentation).
 #'
 #' @examples
 #' rseq <- stats::runif(72)

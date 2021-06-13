@@ -2,7 +2,7 @@
 % Please edit documentation in R/DispFieldSTall.R
 \name{DispFieldSTall}
 \alias{DispFieldSTall}
-\title{Diplacement fields for spatiotemporal data when time lag is unknown}
+\title{Diplacement fields for spatiotemporal data when velocity varies spatially}
 \usage{
 DispFieldSTall(inputstack1, lagmax, factv1, facth1, restricted = FALSE)
 }
@@ -53,8 +53,9 @@ appropriate.
 The DispFieldSTall function has the same inner workings as the
 \code{\link{DispFieldST}} function except that instead of specifying a
 specific time lag, the user specifies a maximum time lag. The function then
-cycles through all possible lags up to the maximum time lag and choses the
-for each location the maximum speed.
+cycles through all lags up to the maximum time lag and choses the for each
+location the maximum speed. The DispFieldSTall function is more appropriate
+than \code{\link{DispFieldST}} when velocity is variable in space.
 
 Caution is warranted when defining the sub-grid dimensions because the
 function can produce erroneous results when sub-grids are too small.
@@ -95,4 +96,15 @@ teststack1 <- c(rast1, rast2, rast3, rast4)
 (VFdf4 <- DispFieldSTall(teststack1, lagmax = 2, factv1 = 9, facth1 = 9))
 # block is moving downward at a speed of 0.1111111 units of space per unit of time
 # dispy = -0.1111111
+}
+\seealso{
+\code{\link{DispField}} for a similar function with a grid of focal
+regions for only two time instances, \code{\link{DispFieldST}} for a
+version designed to quantify persistent directional movement when the time
+series features more than two time instances and the velocity is constant
+in space, \code{\link{DispFieldSTbball}} for a version designed to quantify
+persistent directional movement when velocity is variable in space and the
+focal region is defined using a bounding box, and \code{\link{Xcov2D}} for
+demonstration of how two-dimensional cross-covariance is used to determine
+displacement (see examples of Xcov2D function documentation).
 }

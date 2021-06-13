@@ -2,7 +2,7 @@
 % Please edit documentation in R/DispFieldSTbball.R
 \name{DispFieldSTbball}
 \alias{DispFieldSTbball}
-\title{Diplacement fields using bounding box when time lag is unknown}
+\title{Diplacement fields using bounding box when velocity varies spatially}
 \usage{
 DispFieldSTbball(
   inputstack1,
@@ -65,8 +65,9 @@ appropriate.
 The DispFieldSTbball function has the same inner workings as the
 \code{\link{DispFieldSTbb}} function except that instead of specifying a
 specific time lag, the user specifies a maximum time lag. The function then
-cycles through all possible lags up to the maximum time lag and choses the
-for each location the maximum speed.
+cycles through all lags up to the maximum time lag and choses the for each
+location the maximum speed. The DispFieldSTbball function is more appropriate
+than \code{\link{DispFieldSTbb}} when velocity is variable in space.
 
 Caution is warranted when defining the bounding box dimensions because the
 function can produce erroneous results when the bounding box is too small.
@@ -108,4 +109,16 @@ teststack1 <- c(rast1, rast2, rast3, rast4)
 # block is moving downward at a speed of 0.1111111 units of space per unit of time
 # dispy = -0.1111111
 
+}
+\seealso{
+\code{\link{DispFieldbb}} for a similar function with focal region
+defined using a bounding box for only two time instances,
+\code{\link{DispFieldSTbb}} for a version designed to quantify persistent
+directional movement when velocity is constant in space and the focal
+region is defined using a bounding box, see \code{\link{DispFieldSTall}}
+for a version designed to quantify persistent directional movement when
+velocity is variable in space and focal regions are defined based on a
+grid, and \code{\link{Xcov2D}} for demonstration of how two-dimensional
+cross-covariance is used to determine displacement (see examples of Xcov2D
+function documentation).
 }

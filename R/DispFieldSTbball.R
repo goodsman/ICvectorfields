@@ -1,4 +1,4 @@
-#' Diplacement fields using bounding box when time lag is unknown
+#' Diplacement fields using bounding box when velocity varies spatially
 #'
 #' This is an implementation of a novel algorithm that differs from more
 #' traditional digital image correlation implementations that are applied in the
@@ -17,8 +17,9 @@
 #' The DispFieldSTbball function has the same inner workings as the
 #' \code{\link{DispFieldSTbb}} function except that instead of specifying a
 #' specific time lag, the user specifies a maximum time lag. The function then
-#' cycles through all possible lags up to the maximum time lag and choses the
-#' for each location the maximum speed.
+#' cycles through all lags up to the maximum time lag and choses the for each
+#' location the maximum speed. The DispFieldSTbball function is more appropriate
+#' than \code{\link{DispFieldSTbb}} when velocity is variable in space.
 #'
 #' Caution is warranted when defining the bounding box dimensions because the
 #' function can produce erroneous results when the bounding box is too small.
@@ -47,6 +48,17 @@
 #'   space per timestep in the horizontal and vertical directions in the same
 #'   spatial units as the projected coordinates of the raster input files.
 #' @export
+#'
+#' @seealso \code{\link{DispFieldbb}} for a similar function with focal region
+#'   defined using a bounding box for only two time instances,
+#'   \code{\link{DispFieldSTbb}} for a version designed to quantify persistent
+#'   directional movement when velocity is constant in space and the focal
+#'   region is defined using a bounding box, see \code{\link{DispFieldSTall}}
+#'   for a version designed to quantify persistent directional movement when
+#'   velocity is variable in space and focal regions are defined based on a
+#'   grid, and \code{\link{Xcov2D}} for demonstration of how two-dimensional
+#'   cross-covariance is used to determine displacement (see examples of Xcov2D
+#'   function documentation).
 #'
 #' @examples
 #' Vec1 <- c(1:5, 0, 0, 0, 0)

@@ -1,4 +1,4 @@
-#' Displacement fields for spatiotemporal data
+#' Displacement fields for spatiotemporal data when velocity is spatially constant
 #'
 #' This is an implementation of a novel algorithm that differs from more
 #' traditional digital image correlation implementations that are applied in the
@@ -87,6 +87,16 @@
 #'   space per timestep in the horizontal and vertical directions in the same
 #'   spatial units as the projected coordinates of the raster input files.
 #' @export
+#'
+#' @seealso \code{\link{DispField}} for a similar function with a grid of focal
+#'   regions for only two time instances, \code{\link{DispFieldSTbb}} for a
+#'   version designed to quantify persistent directional movement when the time
+#'   series features more than two time instances but using a bounding pox to
+#'   define a focal region, see \code{\link{DispFieldSTall}} for a version
+#'   designed to quantify persistent directional movement when velocity is
+#'   variable in space, and \code{\link{Xcov2D}} for demonstration of how
+#'   two-dimensional cross-covariance is used to determine displacement (see
+#'   examples of Xcov2D function documentation).
 #'
 #' @examples
 #' Vec1 <- c(1:5, 0, 0, 0, 0)

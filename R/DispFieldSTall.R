@@ -1,4 +1,4 @@
-#' Diplacement fields for spatiotemporal data when time lag is unknown
+#' Diplacement fields for spatiotemporal data when velocity varies spatially
 #'
 #' This is an implementation of a novel algorithm that differs from more
 #' traditional digital image correlation implementations that are applied in the
@@ -17,8 +17,9 @@
 #' The DispFieldSTall function has the same inner workings as the
 #' \code{\link{DispFieldST}} function except that instead of specifying a
 #' specific time lag, the user specifies a maximum time lag. The function then
-#' cycles through all possible lags up to the maximum time lag and choses the
-#' for each location the maximum speed.
+#' cycles through all lags up to the maximum time lag and choses the for each
+#' location the maximum speed. The DispFieldSTall function is more appropriate
+#' than \code{\link{DispFieldST}} when velocity is variable in space.
 #'
 #' Caution is warranted when defining the sub-grid dimensions because the
 #' function can produce erroneous results when sub-grids are too small.
@@ -45,6 +46,16 @@
 #'   space per timestep in the horizontal and vertical directions in the same
 #'   spatial units as the projected coordinates of the raster input files.
 #' @export
+#'
+#' @seealso \code{\link{DispField}} for a similar function with a grid of focal
+#'   regions for only two time instances, \code{\link{DispFieldST}} for a
+#'   version designed to quantify persistent directional movement when the time
+#'   series features more than two time instances and the velocity is constant
+#'   in space, \code{\link{DispFieldSTbball}} for a version designed to quantify
+#'   persistent directional movement when velocity is variable in space and the
+#'   focal region is defined using a bounding box, and \code{\link{Xcov2D}} for
+#'   demonstration of how two-dimensional cross-covariance is used to determine
+#'   displacement (see examples of Xcov2D function documentation).
 #'
 #' @examples
 #' Vec1 <- c(1:5, 0, 0, 0, 0)

@@ -139,3 +139,14 @@ teststack1 <- c(rast1, rast2, rast3, rast4)
 # block is moving downward at a speed of 0.1111111 units of space per unit of time
 # dispy = -0.1111111
 }
+\seealso{
+\code{\link{DispField}} for a similar function with a grid of focal
+regions for only two time instances, \code{\link{DispFieldST}} for a
+version designed to quantify persistent directional movement when the time
+series features more than two time instances but using a grid to define
+focal regions, see \code{\link{DispFieldSTbball}} for a version designed to
+quantify persistent directional movement when velocity is variable in
+space, and \code{\link{Xcov2D}} for demonstration of how two-dimensional
+cross-covariance is used to determine displacement (see examples of Xcov2D
+function documentation).
+}
