@@ -29,8 +29,8 @@
 #' # creating random data in the correct data format
 #' xyzdf <- expand.grid(x = c(1:3), y = c(1:3))
 #' xyzdf$z1 <- runif(9)
-#' xyzdf$z2 <- 2*xyzdf$z1
-#' xyzdf$z3 <- 2*xyzdf$z2
+#' xyzdf$z2 <- runif(9)
+#' xyzdf$z3 <- runif(9)
 #'
 #' zstack <- RastStackData(xyzdf)
 #'
