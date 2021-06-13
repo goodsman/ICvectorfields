@@ -85,7 +85,7 @@
 #' @examples
 #' rseq = stats::runif(54)
 #' Mat1 <- matrix(rep(0, 9*9), nrow = 9)
-#' Mat2 <- Mat1; Mat3 <- Mat1; Mat3 <- Mat1
+#' Mat2 <- Mat1; Mat3 <- Mat1; Mat4 <- Mat1
 #' Mat1[1:9, 1:6] = rseq
 #' Mat1
 #' Mat2[1:9, 2:7] = rseq
