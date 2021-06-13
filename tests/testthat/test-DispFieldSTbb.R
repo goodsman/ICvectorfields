@@ -18,7 +18,7 @@ test_that("DispFieldST correctly estimates vertical velocity", {
   rast4 <- terra::rast(Mat4)
 
   teststack1 <- c(rast1, rast2, rast3, rast4)
-  VFdf3 <- DispFieldSTbb(teststack1, lag1 = 1, 2, 8, 2, 8)
+  VFdf3 <- DispFieldSTbb(teststack1, lag1 = 1, 1, 9, 1, 9)
   expect_equal(round(VFdf3$dispy, 7), -0.1111111)
   expect_equal(VFdf3$dispx, 0)
 })
