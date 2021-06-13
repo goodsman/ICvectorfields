@@ -98,29 +98,28 @@ Caution is warranted when defining the sub-grid dimensions because the
 function can produce erroneous results when sub-grids are too small.
 
 In addition, results can be quite sensitive to specification of the time lag.
-If time velocities are highly variable in space or over time, avoid
-specifying a single time lag by calling the related
-\code{\link{DispFieldSTall}} function.
+If velocities are highly variable in space or over time, avoid specifying a
+single time lag by calling the related \code{\link{DispFieldSTall}} function.
 }
 \examples{
 Vec1 <- c(1:5, 0, 0, 0, 0)
 Mat1 <- Vec1
-for(i in 2:9) Mat1 <- rbind(Mat1, Vec1)
+for (i in 2:9) Mat1 <- rbind(Mat1, Vec1)
 Mat1
 
 Vec2 <- c(0, 1:5, 0, 0, 0)
 Mat2 <- Vec2
-for(i in 2:9) Mat2 <- rbind(Mat2, Vec2)
+for (i in 2:9) Mat2 <- rbind(Mat2, Vec2)
 Mat2
 
 Vec3 <- c(0, 0, 1:5, 0, 0)
 Mat3 <- Vec3
-for(i in 2:9) Mat3 <- rbind(Mat3, Vec3)
+for (i in 2:9) Mat3 <- rbind(Mat3, Vec3)
 Mat3
 
 Vec4 <- c(0, 0, 0, 1:5, 0)
 Mat4 <- Vec4
-for(i in 2:9) Mat4 <- rbind(Mat4, Vec4)
+for (i in 2:9) Mat4 <- rbind(Mat4, Vec4)
 Mat4
 
 # Note that rasterizing a matrix causes it to be rotated 90 degrees.
