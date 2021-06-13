@@ -66,7 +66,7 @@
 #'   raster in the stack is the first observed spatial dataset and time
 #'   progresses forward with the third dimension index of the raster stack. The
 #'   raster stack should contain only numeric values. Any NA value will be
-#'   converted to a zero.
+#'   converted to a zero
 #' @param lag1 an integer time lag
 #' @param factv1 an odd integer for the vertical dimension of subgrids
 #' @param facth1 an odd integer for the horizontal dimension of subgrids

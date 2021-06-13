@@ -12,7 +12,7 @@ instance of time. The raster stack should be organized such that the first
 raster in the stack is the first observed spatial dataset and time
 progresses forward with the third dimension index of the raster stack. The
 raster stack should contain only numeric values. Any NA value will be
-converted to a zero.}
+converted to a zero}
 
 \item{lag1}{an integer time lag}
 
