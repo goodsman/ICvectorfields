@@ -106,7 +106,7 @@ Caution is warranted when defining the sub-grid dimensions because the
 function can produce erroneous results when sub-grids are too small.
 }
 \examples{
-rseq = stats::runif(54)
+rseq <- stats::runif(54)
 Mat1 <- matrix(rep(0, 9*9), nrow = 9)
 Mat2 <- Mat1; Mat3 <- Mat1; Mat4 <- Mat1
 Mat1[1:9, 1:6] = rseq
@@ -120,17 +120,17 @@ Mat4
 
 # Note that rasterizing a matrix causes it to be rotated 90 degrees.
 # Therefore, any shift in the x direction is in fact now a shift in the y direction
-rast1 = terra::rast(Mat1)
+rast1 <- terra::rast(Mat1)
 terra::plot(rast1)
-rast2 = terra::rast(Mat2)
+rast2 <- terra::rast(Mat2)
 terra::plot(rast2)
-rast3 = terra::rast(Mat3)
+rast3 <- terra::rast(Mat3)
 terra::plot(rast3)
-rast4 = terra::rast(Mat4)
+rast4 <- terra::rast(Mat4)
 terra::plot(rast4)
 
 teststack1 = c(rast1, rast2, rast3, rast4)
-(VFdf3 = DispFieldSTbb(teststack1, lag1 = 1, 2, 8, 2, 8))
+(VFdf3 <- DispFieldSTbb(teststack1, lag1 = 1, 2, 8, 2, 8))
 # block is moving downward at a speed of 0.1111111 units of space per unit of time
 # dispy = -0.1111111
 }

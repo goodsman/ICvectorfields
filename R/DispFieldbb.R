@@ -51,22 +51,22 @@
 #' @export
 #'
 #' @examples
-#' rseq = stats::runif(72)
-#' Mat1 = matrix(rep(0, 81), nrow = 9)
-#' Mat2 = Mat1
-#' Mat1[1:9, 1:8] = rseq
+#' rseq <- stats::runif(72)
+#' Mat1 <- matrix(rep(0, 81), nrow = 9)
+#' Mat2 <- Mat1
+#' Mat1[1:9, 1:8] <- rseq
 #' Mat1
-#' Mat2[1:9, 2:9] = rseq
+#' Mat2[1:9, 2:9] <- rseq
 #' Mat2
 #'
 #' # Note that rasterizing a matrix causes it to be rotated 90 degrees.
 #' # Therefore, any shift in the x direction is in fact now a shift in the y direction
-#' rast1 = terra::rast(Mat1)
+#' rast1 <- terra::rast(Mat1)
 #' terra::plot(rast1)
-#' rast2 = terra::rast(Mat2)
+#' rast2 <- terra::rast(Mat2)
 #' terra::plot(rast2)
 #'
-#' (VFdf1 = DispFieldbb(rast1, rast2, 2, 8, 2, 8))
+#' (VFdf1 <- DispFieldbb(rast1, rast2, 2, 8, 2, 8))
 #' # The second raster is shifted down by 0.1111111 units relative to the first raster
 #' # dispy = -0.1111111
 DispFieldbb <- function(inputrast1, inputrast2, rowmn, rowmx, colmn, colmx, restricted = FALSE) {
