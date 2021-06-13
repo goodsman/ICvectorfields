@@ -61,6 +61,11 @@
 #' Caution is warranted when defining the sub-grid dimensions because the
 #' function can produce erroneous results when sub-grids are too small.
 #'
+#' In addition, results can be quite sensitive to specification of the time lag.
+#' If time velocities are highly variable in space or over time, avoid
+#' specifying a single time lag by calling the related
+#' \code{\link{DispFieldSTall}} function.
+#'
 #' @param inputstack1 a raster stack with each raster layer representing an
 #'   instance of time. The raster stack should be organized such that the first
 #'   raster in the stack is the first observed spatial dataset and time
