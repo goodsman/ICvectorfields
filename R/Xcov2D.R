@@ -1,4 +1,4 @@
-#' Cross-covariance in 2D
+#' Cross-covariance in two spatial dimensions
 #'
 #' This function efficiently computes two dimensional cross-covariance of two equal
 #' dimensioned matrices of real numbers using efficient discrete fast Fourier
