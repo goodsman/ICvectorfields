@@ -8,9 +8,7 @@ test_that("DispFieldbb correctly estimates displacement", {
   # Note that rasterizing a matrix causes it to be rotated 90 degrees.
   # Therefore, any shift in the x direction is in fact now a shift in the y direction
   rast1 <- terra::rast(Mat1)
-  terra::plot(rast1)
   rast2 <- terra::rast(Mat2)
-  terra::plot(rast2)
 
   VFdf1 <- DispFieldbb(rast1, rast2, 2, 8, 2, 8)
   expect_equal(round(VFdf1$dispy, 7), -0.1111111)
