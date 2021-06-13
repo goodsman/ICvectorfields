@@ -129,7 +129,7 @@ terra::plot(rast3)
 rast4 = terra::rast(Mat4)
 terra::plot(rast4)
 
-teststack1 = terra::c(rast1, rast2, rast3, rast4)
+teststack1 = c(rast1, rast2, rast3, rast4)
 (VFdf2 = DispFieldST(teststack1, lag1 = 1, factv1 = 9, facth1 = 9))
 
 }
