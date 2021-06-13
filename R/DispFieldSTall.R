@@ -2,18 +2,23 @@
 #'
 #' This is an implementation of a novel algorithm that differs from more
 #' traditional digital image correlation implementations that are applied in the
-#' \code{\link{DispField}} and \code{\link{DispFieldbb}} functions. The function
-#' calculates a displacement field representing persistent movement based on the
-#' cross-covariance in a raster stack (in this case a sequential series of
-#' rasters) presumably representing spatial population abundance or density at
-#' more than two different instances of time. If analysis is restricted to only
-#' two time instances, \code{\link{DispField}} is more appropriate.
+#' \code{\link{DispField}} and \code{\link{DispFieldbb}} functions. This version
+#' is similar to the \code{\link{DispFieldST}} function except that it does not
+#' require a specific time lag. Instead the user specifies a maximum time lag
+#' and the function computes displacement vectors using the time lag that
+#' produces the maximum speed (magnitude of displacement divided by time lag).
+#' The function calculates a displacement field representing persistent movement
+#' based on the cross-covariance in a raster stack (in this case a sequential
+#' series of rasters) presumably representing spatial population abundance or
+#' density at more than two different instances of time. If analysis is
+#' restricted to only two time instances, \code{\link{DispField}} is more
+#' appropriate.
 #'
 #' The DispFieldSTall function has the same inner workings as the
 #' \code{\link{DispFieldST}} function except that instead of specifying a
 #' specific time lag, the user specifies a maximum time lag. The function then
 #' cycles through all possible lags up to the maximum time lag and choses the
-#' for each location the maximum velocity.
+#' for each location the maximum speed.
 #'
 #' Caution is warranted when defining the sub-grid dimensions because the
 #' function can produce erroneous results when sub-grids are too small.
