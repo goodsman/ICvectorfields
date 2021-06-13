@@ -83,3 +83,11 @@ terra::plot(rast2)
 # The second raster is shifted down by 0.1111111 units relative to the first raster
 # dispy = -0.1111111
 }
+\seealso{
+\code{\link{DispFieldbb}} for a similar function with the focal
+region defined by a bounding box, \code{\link{DispFieldST}} for a version
+designed to quantify persistent directional movement when the time series
+features more than two time instances, \code{\link{Xcov2D}} for
+demonstration of how two-dimensional cross-covariance is used to determine
+displacement (see examples of Xcov2D function documentation).
+}
