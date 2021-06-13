@@ -15,9 +15,9 @@ Xcov2D(mat1, mat2)
 a real valued matrix showing cross-covariance in each direction
 }
 \description{
-This function efficiently computes two dimensional cross-covariance of two equal
-dimensioned matrices of real numbers using efficient discrete fast Fourier
-trasforms.
+This function efficiently computes two dimensional cross-covariance of two
+equal dimensioned matrices of real numbers using efficient discrete fast
+Fourier trasforms.
 }
 \details{
 The algorithm first pads each matrix with zeros so that the outer edges of

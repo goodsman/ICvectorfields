@@ -1,8 +1,8 @@
 #' Cross-covariance in two spatial dimensions
 #'
-#' This function efficiently computes two dimensional cross-covariance of two equal
-#' dimensioned matrices of real numbers using efficient discrete fast Fourier
-#' trasforms.
+#' This function efficiently computes two dimensional cross-covariance of two
+#' equal dimensioned matrices of real numbers using efficient discrete fast
+#' Fourier trasforms.
 #'
 #' The algorithm first pads each matrix with zeros so that the outer edges of
 #' the matrices do not interact with one another due to the circular nature of
