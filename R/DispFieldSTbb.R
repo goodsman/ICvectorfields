@@ -115,7 +115,7 @@ DispFieldSTbb <- function(inputstack1, lag1, rowmn, rowmx, colmn, colmx, restric
     stop("lag1 must be an integer larger than zero")
   }
   if (lag1 >= (dim(inputstack1)[3] - 1)) {
-    stop("lag must be at least one smaller than the time demension")
+    stop("lag must be at least two smaller than the time demension")
   }
   if (rowmn != round(rowmn)) {
     stop("rowmn and rowmx must be positive integers")

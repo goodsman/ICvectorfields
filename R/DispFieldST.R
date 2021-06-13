@@ -130,7 +130,7 @@ DispFieldST <- function(inputstack1, lag1, factv1, facth1, restricted = FALSE) {
     stop("lag1 must be an integer larger than zero")
   }
   if (lag1 >= (dim(inputstack1)[3] - 1)) {
-    stop("lag must be at least one smaller than the time demension")
+    stop("lag must be at least two smaller than the time demension")
   }
   if (factv1 / 2 == round(factv1 / 2)) {
     stop("factv1 and facth1 must be odd integers")
