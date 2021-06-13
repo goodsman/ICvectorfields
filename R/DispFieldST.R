@@ -108,13 +108,13 @@
 #' # Note that rasterizing a matrix causes it to be rotated 90 degrees.
 #' # Therefore, any shift in the x direction is in fact now a shift in the y direction
 #' rast1 = terra::rast(Mat1)
-#' plot(rast1)
+#' terra::plot(rast1)
 #' rast2 = terra::rast(Mat2)
-#' plot(rast2)
+#' terra::plot(rast2)
 #' rast3 = terra::rast(Mat3)
-#' plot(rast3)
+#' terra::plot(rast3)
 #' rast4 = terra::rast(Mat4)
-#' plot(rast4)
+#' terra::plot(rast4)
 #'
 #' teststack1 = terra::c(rast1, rast2, rast3, rast4)
 #' (VFdf2 = DispFieldST(teststack1, lag1 = 1, factv1 = 9, facth1 = 9))
