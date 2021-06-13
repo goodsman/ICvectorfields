@@ -63,7 +63,7 @@ arrays to two-dimensional lagged and unlagged spatiotemporal matrices by
 averaging along one of the spatial dimensions (either rows or columns) to
 obtain two pairs of two-dimensional matrices in which one dimension is
 spatial (either rows or columns) and one dimension is temporal. One of each
-pair correpsonds to the  unlagged spatiotemporal array and the other
+pair corresponds to the  unlagged spatiotemporal array and the other
 corresponds to the lagged spatiotemporal array. Displacement in the vertical
 direction is computed using unlagged and lagged matrices that have been
 averaged along rows and displacement in the horizontal direction is computed
@@ -72,7 +72,7 @@ using unlagged and lagged matrices that have been averaged along columns.
 If restricted is set to FALSE (the default), the function computes
 cross-covariance between each sub-grid of the unlagged row-averaged
 spatiotemporal matrix and the whole row-averaged lagged spatiotemporal matrix
-and betweem each sub-grid of the unlagged column-averaged spatiotemporal
+and between each sub-grid of the unlagged column-averaged spatiotemporal
 matrix and the entirety corresponding lagged matrix.
 
 If restricted is set to TRUE, the function uses cross-covariance between
