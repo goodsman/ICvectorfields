@@ -23,7 +23,7 @@ data(SimData)
 ICvectorfields::RastStackData(SimData)
 }
 \description{
-Data based on a partial differential equation were simulated Using the
+Data based on a partial differential equation were simulated using the
 ReacTran R package. The simulation algorith uses a finite differencing scheme
 with backwards differencing. The model used for simulation is a reaction
 diffusion-advection equation in which the advection term is variable in space
@@ -33,8 +33,11 @@ but diffusion and reactions are constant in space:
 \deqn{\frac{\partial(c)}{\partial{t}} = \grad (D \grad c) - \grad \bold(v) c + r}
 
 The parameters used in the partial differntial equation above are
+
 D = 0.01 per squared spatial unit
+
 r = 0.5 per unit time
+
 v (advection is variable in space): in the upper left quadrant of the
 square domain v = (0.2, 0); in the upper right quadrant v = (0, -0.2);
 in the lower right quadrant v = (-0.2, 0); in the lower right quadrant
