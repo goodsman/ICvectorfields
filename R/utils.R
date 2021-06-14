@@ -1,6 +1,7 @@
 # Here are some utility functions, mostly related to matrix manipulation.
 # These are called by the main functions in the ICvectorfields package.
 
+## =============================================================================
 # This function creates a reflection matrix with ones along the diagonal that
 # traverses from the lower left corner to the upper right corner of the square
 # matrix of dimension dim1 X dim1.
@@ -12,6 +13,7 @@ ReflMat <- function(dim1) {
   return(Rmat)
 }
 
+## =============================================================================
 # It is much faster to do the matrix flipping using linear algebra
 # This flips horizontally and vertically along the central axis.
 # Currently the matrix must be square.
@@ -21,6 +23,7 @@ FlipMat <- function(inputmat) {
   return(outputmat)
 }
 
+## =============================================================================
 # This function pads any shape of matrix to make a square
 # matrix by surrounding the input matrix with a pad of zeros.
 # It makes sure that the matrix has an even number of rows and
@@ -58,6 +61,7 @@ PadMat <- function(inputmat) {
   return(PadMat)
 }
 
+## =============================================================================
 # This function takes an imput matrix and bounding box coordinates and returns
 # a matrix of the same size with zeros at all locations outside the bounding box
 ExtractMat <- function(inputmat, rowmin, rowmax, colmin, colmax) {
@@ -69,6 +73,7 @@ ExtractMat <- function(inputmat, rowmin, rowmax, colmin, colmax) {
   return(Outmat)
 }
 
+## =============================================================================
 # This function takes as input a matrix and returns a data-frame object
 # containing references to cells in the original matrix by row and column.
 # It does so by subsetting the input matrix into smaller matrices of dimension
@@ -113,8 +118,10 @@ ThinMat <- function(inputmat, factv, facth) {
   return(Outdf)
 }
 
-# This function takes a raster file in terra format and converts it to a rectangular
-# matrix of the same dimensions as the input raster. It also converts NA values to zero.
+## =============================================================================
+# This function takes a raster file in terra format and converts it to a
+# rectangular matrix of the same dimensions as the input raster. It also converts
+# NA values to zero.
 RastToMatrix <- function(inrast) {
   outmat <- matrix(as.vector(inrast), nrow = dim(inrast)[1], ncol = dim(inrast)[2], byrow = T)
   outmat[is.na(outmat) == TRUE] <- 0
