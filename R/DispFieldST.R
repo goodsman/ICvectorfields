@@ -156,6 +156,7 @@ DispFieldST <- function(inputstack1, lag1, factv1, facth1, restricted = FALSE) {
 
   # breaking the stack into component rasters and converting to matrix form
   # and converting NA values to zero.
+  inputmat1 <- matrix(rep(0, 9), nrow = 3) # added a dummy object to suppress note warning
   for (i in 1:dim(inputstack1)[3]) assign(paste("inputmat", i, sep = ""), RastToMatrix(inputstack1[[i]]))
 
   # Obtaining the row and column indices for subsamples
