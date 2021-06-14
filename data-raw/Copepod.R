@@ -34,7 +34,7 @@ colnames(JulCop)
 JulCop <- JulCop[, c(1, 2, 4)]
 colnames(JulCop) <- c("Longitude", "Latitude", "wtmass7")
 
-CopeDF <- merge(MayCop, JunCop, by = c("Longitude", "Latitude"))
-CopeDF <- merge(CopeDF, JulCop, by = c("Longitude", "Latitude"))
+Copepod <- merge(MayCop, JunCop, by = c("Longitude", "Latitude"))
+Copepod <- merge(CopeDF, JulCop, by = c("Longitude", "Latitude"))
 
 usethis::use_data(Copepod, overwrite = TRUE)
