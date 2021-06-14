@@ -29,6 +29,6 @@ grid is 0.25 X 0.25 degree.
 \references{
 Moriarty, R., and O'Brien,  T. D. (2013) Distribution of
 mesozooplankton biomass in the global ocean. Earth Syst. Sci. Data,
-5, 45–55. \url{https://doi.org/10.5194/essd-5-45-2013}
+5, 45-55. \url{https://doi.org/10.5194/essd-5-45-2013}
 }
 \keyword{datasets}
