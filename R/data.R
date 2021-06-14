@@ -44,4 +44,4 @@
 #'
 #' @keywords datasets
 
-"Copeopod"
+"Copepod"
