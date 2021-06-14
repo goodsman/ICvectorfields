@@ -19,12 +19,16 @@ A data-frame with 321 rows and 5 columns.
 }
 \usage{
 data(Copepod)
+
+ICvectorfields::RastStackData(Copepod)
 }
 \description{
 Data are an amalgamation of many years of sampling. They show seasonal
 patterns of Copepod abundance in the world's oceans. The original dataset was
-clipped so that the region around Japan is central in the dataset. Sampling
-grid is 0.25 X 0.25 degrees.
+clipped so that the region around Japan is central in the dataset supplied
+with the ICvectorfields package. Sampling grid is 0.25 X 0.25 degrees. The
+data are formatted such that they can easily be converted to a raster stack
+using ICvectorfields::RastStackData(Copepod).
 }
 \references{
 Moriarty, R., and O'Brien,  T. D. (2013) Distribution of

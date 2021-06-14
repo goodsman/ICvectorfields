@@ -14,9 +14,14 @@ years 1961 through 1998.
 }
 \usage{
 data(LBMfromncfpkg)
+
+ICvectorfields::RastStackData(LBMfromncfpkg)
 }
 \description{
-These are the data in Bjornstad et al. (2002).
+These are the data in Bjornstad et al. (2002). The data
+are formatted such that they can easily be converted to
+a raster stack using
+ICvectorfields::RastStackData(LBMfromncfpkg).
 }
 \references{
 Bjornstad, O.N., Peltonen, M., Liebhold, A.M., and Baltensweiler,
