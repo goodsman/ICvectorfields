@@ -23,7 +23,7 @@
 #' Data are an amalgamation of many years of sampling. They show seasonal
 #' patterns of Copepod abundance in the world's oceans. The original dataset was
 #' clipped so that the region around Japan is central in the dataset. Sampling
-#' grid is 0.25 X 0.25 degree.
+#' grid is 0.25 X 0.25 degrees.
 #'
 #' @usage data(Copepod)
 #'
