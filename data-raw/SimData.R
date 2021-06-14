@@ -69,6 +69,7 @@ outb <- ode.2D (y = y, func = DiffAdv2Db, t = times, parms = NULL,
 
 # constructing a data-frame
 SimData = expand.grid(grid2D$x.mid, grid2D$y.mid)
+colnames(SimData) = c("xcoord", "ycoord")
 SimData$t1 = as.numeric(subset(outb, subset = (time == 1)))
 SimData$t2 = as.numeric(subset(outb, subset = (time == 2)))
 SimData$t3 = as.numeric(subset(outb, subset = (time == 3)))
