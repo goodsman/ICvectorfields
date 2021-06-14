@@ -30,7 +30,7 @@ diffusion-advection equation in which the advection term is variable in space
 but diffusion and reactions are constant in space:
 }
 \details{
-\deqn{\frac{\partial(c)}{\partial{t}} = \grad (D \grad c) - \grad \bold(v) c + r}
+\deqn{\frac{\partial(c)}{\partial{t}} = \nabla (D \nabla c) - \nabla (v c) + r}
 
 The parameters used in the partial differntial equation above are
 
