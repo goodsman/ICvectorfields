@@ -1,17 +1,13 @@
 ## code to prepare `Copepod` dataset goes here
 
 # Here I process the data off the coast of Japan to make a simplified dataset
+AllCop = read.csv("C:/Users/goods/Desktop/WSBW Synch/Copepod/copepod-2012__biomass-fields/data/copepod-2012__wetmass-m00-qtr.csv")
 
 MayCop <- read.csv("C:/Users/goods/Desktop/WSBW Synch/Copepod/copepod-2012__biomass-fields/data/copepod-2012__wetmass-m05-qtr.csv")
 JunCop <- read.csv("C:/Users/goods/Desktop/WSBW Synch/Copepod/copepod-2012__biomass-fields/data/copepod-2012__wetmass-m06-qtr.csv")
 JulCop <- read.csv("C:/Users/goods/Desktop/WSBW Synch/Copepod/copepod-2012__biomass-fields/data/copepod-2012__wetmass-m07-qtr.csv")
 
-LongLatdf1 <- MayCop[, c(1:2)]
-LongLatdf2 <- JunCop[, c(1:2)]
-LongLatdf3 <- JulCop[, c(1:2)]
-
-LongLatdf <- merge(LongLatdf1, LongLatdf2, by = c("Longitude", "Latitude"))
-LongLatdf <- merge(LongLatdf, LongLatdf3, by = c("Longitude", "Latitude"))
+LongLatdf <- AllCop[, c(1:2)]
 
 # restricting to the region around Japan
 LongLatdf <- subset(LongLatdf, Longitude > 120)
