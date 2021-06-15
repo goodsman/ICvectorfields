@@ -73,3 +73,11 @@ VFdf1
 ```
 
 The function divides the spatial domain up into sub-grids of 101 pixels, which in this case, is the size of each of the quadrants of the planar spatial domain. Displacement from the centre of each sub-grid is calculated in the vertical (dispy in the data-frame output printed above) and horizontal (dispx) directions. In the five time steps between t1 and t6, the concentration in the upper left quadrant (first row of table output) moves down by approximately 0.98 spatial units; the concentration in the lower left quadrant (second row of table output) moves to the right by 0.98 spatial units; the concentration in the upper right quadrant (third row of table output) moves to the left by 0.98 spatial units, and the concentration in the lower right quadrant (fourth row of table output) moves up by 0.98 spatial units. An estimate of the speed of movment can be obtained by dividing 0.98 by five time steps, which results in a speed estimate of 0.196 spatial units per unit time, a little under the simulated advection speed of 0.2 spatial units per unit time in all directions. The bias in the estimate is likely due to the diffusion term in the partial differential equation as diffusion obfuscates the impact of advection.
+
+Because speed is constant in the simulation model, the *DispFieldST* function is appropriate for estimating orthogonal velocity vectors:
+
+```{r}
+VFdf2 <- DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101)
+VFdf2
+```
+
