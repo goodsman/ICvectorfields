@@ -77,7 +77,9 @@ The function divides the spatial domain up into sub-grids of 101 pixels, which i
 Because speed is constant in the simulation model, the *DispFieldST* function is appropriate for estimating orthogonal velocity vectors:
 
 ```{r}
-VFdf2 <- DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101)
-VFdf2
+dim(SimStack)
+length(SimStack)
+# VFdf2 <- DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101)
+# VFdf2
 ```
 
