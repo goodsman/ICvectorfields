@@ -1,8 +1,8 @@
 ---
-title: "Using_ICvectorfields"
+title: "ICvectorfields: Producing vector fields from spatial time series data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Using_ICvectorfields}
+  %\VignetteIndexEntry{ICvectorfields: Producing vector fields from spatial time series data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -17,3 +17,59 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(ICvectorfields)
 ```
+
+# Overview
+
+The package name *ICvectorfields* stands for Image Correlation vector fields. The *ICvectorfields* package is designed to facilitate vector field construction and visualization using empirical data. Vector fields are heavily used in mathematics and meteorology to represent system dynamics. They comprise multiple spatially separated vectors or arrows that point in the direction of movement and whose length represents displacement magnitude. In many systems movement is not unidirectional nor is movement speed spatially constant. Picture a meteorological wind field for example: Wind speeds and directions are complex functions of underlying topography and atmospheric dynamics. As a result, wind fields are quite variable when visualized at a regional scale. In such systems a single wind vector or speed metric does not describe spatiotemporal patterns in the data well and movement in the system is better visualized using a vector field. The techniques used to construct vector fields in *ICvectorfields* are inspired by the the digital image correlation technique that is often abbreviated to DIC. However, an extention of the DIC technique has been implemented in *ICvectorfields*, which is designed to quantify persistent movement in spatial time series data that extend beyond two time instances.
+
+## Digital Image Correlation approach
+
+A detailed mathematical and algorithmic description of the approach used in *ICvectorfields* will be presented elsewhere. Here a brief summary of the general DIC technique is presented. When first conceived, DIC was nothing more than a comparison of two digital images using two-dimensional cross-correlation or cross-covariance. Currently, the digital image correlation approach has been widely adopted in enginering and materials science as a method for estimating displacement, strain, and torsion when a force is applied to a planar material. Specifically, the surface of the material of interest is speckled and then photographed multiple times before, during, and after force application. Comparison of sequences of images using digital image correlation allows calculation of displacement based on movement of speckles from one image to the next. More complex calculations produce estimates of strain and torsion. In modern implementations of DIC, regions of interest can be defined before analysis and displacement is estimated based on where cross-covariance between series of images is maximized.
+
+## 2D Cross-covariance in the ICvectorfields package
+
+The most efficent algorithms for two-dimensional cross-correlation exploit discrete fast Fourier transforms and return a two-dimensional surface of cross-correlation or cross-covariance estimates as does the *Xcov2D* function in *ICvectorfields*. Along with typical displacement estimation using the DIC technique, *ICvectorfields* also includes a novel algorithm for estimating persistent movement direction and speed. Because it is quantifying persistent movement, the novel algorithm requires a stack of at least three images in chronological sequence. The stack of images is a three-dimensional array with two planar space dimensions and a time dimension. The three-dimensional array is replicated and then lagged by removing a user-specified number of layers from the top of one 3D-array and the bottom of the other. Then, data in focal regions and comparison regions are dimension reduced by averaging either along rows or colunns in the pixelated images. Two dimensional cross-covariance is computed using four pairs of images that have one space dimension and one time dimension. One pair of images is the lagged and unlagged spatiotemporal matrices that have been row-averaged and the other is the lagged and unlagged spatiotemporal matrices that have been column-averaged. Orthogonal velocity vectors in the vertical and horizontal directions are computed using two-dimensional cross-covariance. In the remainder of this document, the novel algorithm will be called Space Time Image correlation or STIC. When velocity vectors are highly variable in space, a single time lag may not be efficient for estimating velocities. In this case a variation on the STIC algorithm (STIC+) allows the user to define a maximum time lag. The STIC+ algorith then computes velocites for all integer time lags up to the maximum time lag and returns the horizontal and vertical orthogonal velocity vectors that result in the largest total velocity magnitude for each location in the vector field. A general overview of the functions in *ICvectorfields* that use DIC or related algorithms and the type of image correlation algorithm they rely on is provided in the table below.
+
+| function        | algorithm| use context                                                                          |
+|:----------------|:---------|:-------------------------------------------------------------------------------------|
+| DispField       | DIC      | Two sequental images with regions of interest defined on a grid                      |
+| DispFieldbb     | DIC      | Two sequental images with region of interest defined using a bounding box            |
+| DispFieldST     | STIC     | 3+ images with region of interest defined on a grid, velocity less spatially variable|
+| DispFieldSTall  | STIC+    | 3+ images with region of interest defined on a grid, variable velocity               |
+| DispFieldSTbb   | STIC     | 3+ images with region of interest defined using bounding box, less variable velocity |
+| DispFieldSTbball| STIC+    | 3+ images with region of interest defined using bounding box, variable velocity      |
+
+# Demonstrations
+
+The functionality of *ICvectorfields* is demonstrated using one simulated dataset and two empirical datasets that accompany the package.
+
+## Demonstration using simulated data
+
+One of the key advantages of the functions in *ICvectorfields* over other software that uses cross-correlation or cross-covariance to estimate displacement is that the functions in *ICvectorfields* can estimate displacement in multiple, and opposing directions simultaneously. To demonstrate this capability a simulated dataset was produced using a convection reaction equation, which is a partial differential equation with a diffusion term, an advection term for directed movement and a reaction term. Advection in the simulation was spatially variable: In the upper left quadrant of the spatial domain, advection was to the bottom of the domain, in the lower left quadrant, advection was to the right, in the lower right quadrant, advection was toward the top of the domain, and in the upper right quadrant, advection was to the left (see figure below). In all cases the speed of advection was 0.2 spatial units per unit time.
+
+```{r, fig.show = 'hold'}
+# import simulated data
+data(SimData)
+
+# convert to raster stack
+SimStack <- ICvectorfields::RastStackData(SimData)
+
+# visualizing
+terra::plot(SimStack[[1]], legend = FALSE, main = "t1")
+terra::plot(SimStack[[2]], legend = FALSE, main = "t2")
+terra::plot(SimStack[[3]], legend = FALSE, main = "t3")
+terra::plot(SimStack[[4]], legend = FALSE, main = "t4")
+terra::plot(SimStack[[5]], legend = FALSE, main = "t5")
+terra::plot(SimStack[[6]], legend = FALSE, main = "t6")
+```
+
+
+To decide which ICvectorfields function to use, the user can consult the table in the overview section of this vignette. We will first use the *DispField* funtion look displacement based on a pair of images using a grid to
+define regions of interest from whence displacement will be estimated:
+
+```{r}
+VFdf1 <- DispField(SimStack[[1]], SimStack[[6]], factv1 = 101, facth1 = 101)
+VFdf1
+```
+
+The function divides the spatial domain up into sub-grids of 101 pixels, which in this case, is the size of each of the quadrants of the planar spatial domain. Displacement from the centre of each sub-grid is calculated in the vertical (dispy in the data-frame output printed above) and horizontal (dispx) directions. In the five time steps between t1 and t6, the concentration in the upper left quadrant (first row of table output) moves down by approximately 0.98 spatial units; the concentration in the lower left quadrant (second row of table output) moves to the right by 0.98 spatial units; the concentration in the upper right quadrant (third row of table output) moves to the left by 0.98 spatial units, and the concentration in the lower right quadrant (fourth row of table output) moves up by 0.98 spatial units. An estimate of the speed of movment can be obtained by dividing 0.98 by five time steps, which results in a speed estimate of 0.196 spatial units per unit time, a little under the simulated advection speed of 0.2 spatial units per unit time in all directions. The bias in the estimate is likely due to the diffusion term in the partial differential equation as diffusion obfuscates the impact of advection.
