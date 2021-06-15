@@ -109,9 +109,70 @@ SimVF = ggplot() +
               aes(x = centx, y = centy, 
                   mag = Mag(dispx, dispy), 
                   angle = Angle(dispx, dispy)),
+              size = 1,
               color = "red") + 
   theme_bw()
 SimVF
 ```
 
 ## Demonstration using Larch Budmoth Defoliation Data
+
+```{r, fig.show = 'hold'}
+# import simulated data
+data("LBMfromncfpkg")
+
+# convert to raster stack
+LBMStack <- ICvectorfields::RastStackData(LBMfromncfpkg)
+
+# Note that terra does not recognize the result as 
+# SpatRaster type so the dim() function does not work.
+dim(LBMStack)
+
+# ensuring that terra recognises output as rast
+LBMStack <- terra::rast(LBMStack)
+dim(LBMStack)
+
+# visualizing
+terra::plot(LBMStack[[1]], legend = FALSE, main = "1961")
+terra::plot(LBMStack[[2]], legend = FALSE, main = "1962")
+terra::plot(LBMStack[[3]], legend = FALSE, main = "1963")
+terra::plot(LBMStack[[4]], legend = FALSE, main = "1964")
+terra::plot(LBMStack[[5]], legend = FALSE, main = "1965")
+```
+
+Because the geographic extent of the data is large, it is likely that population movement varies from one location to another. For this reason, the *DispFieldSTall* function is the most appropriate choice to produce vector fields. Previous analyses have also demonstrated that populations appear to move at high speeds of up to two hundred km per year and so the default unrestricted mode (restricted == FALSE) of the function is appropriate. Previous analyses also detrmined that a lag of between two and three years captured the nonlinearities inherent in the larch budmoth system.
+
+```{r, fig.width = 7, fig.height = 5}
+VFdf3 <- DispFieldSTall(LBMStack[[1:23]], lagmax = 3, factv1 = 3, facth1 = 3, restricted = FALSE)
+
+LBMVF = ggplot() +
+  geom_raster(data = LBMfromncfpkg,
+              aes(x = x, y = y, fill = X1963)) +
+  geom_vector(data = VFdf3, 
+              aes(x = centx, y = centy, 
+                  mag = Mag(dispx, dispy), 
+                  angle = Angle(dispx, dispy)),
+              size = 1,
+              color = "red") + 
+  theme_bw()
+LBMVF
+```
+
+Jhonson et al noticed that at smaller spatial scales there appeared to be two outbreak epicentres and that outbreaks spread outwards from each of epicentre. Multiple epicentres become evident when analysis is restricted to a maximum two year time lag.
+
+```{r, fig.width = 7, fig.height = 5}
+# VFdf4 <- DispFieldSTall(LBMStack[[1:23]], lagmax = 2, factv1 = 3, facth1 = 3, restricted = FALSE)
+VFdf4 <- DispFieldST(LBMStack[[1:23]], lag1 = 1, factv1 = 3, facth1 = 3, restricted = FALSE)
+
+LBMVF2 = ggplot() +
+  geom_raster(data = LBMfromncfpkg,
+              aes(x = x, y = y, fill = X1963)) +
+  geom_vector(data = VFdf4, 
+              aes(x = centx, y = centy, 
+                  mag = Mag(dispx, dispy), 
+                  angle = Angle(dispx, dispy)),
+              size = 1,
+              color = "red") + 
+  theme_bw()
+LBMVF2
+```
