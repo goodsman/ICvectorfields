@@ -54,6 +54,14 @@ data(SimData)
 # convert to raster stack
 SimStack <- ICvectorfields::RastStackData(SimData)
 
+# Note that terra does not recognize the result as 
+# SpatRaster type so the dim() function does not work.
+dim(SimStack)
+
+# ensuring that terra recognises output as rast
+SimStack <- terra::rast(SimStack)
+dim(SimStack)
+
 # visualizing
 terra::plot(SimStack[[1]], legend = FALSE, main = "t1")
 terra::plot(SimStack[[2]], legend = FALSE, main = "t2")
@@ -77,9 +85,7 @@ The function divides the spatial domain up into sub-grids of 101 pixels, which i
 Because speed is constant in the simulation model, the *DispFieldST* function is appropriate for estimating orthogonal velocity vectors:
 
 ```{r}
-dim(SimStack)
-length(SimStack)
-# VFdf2 <- DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101)
-# VFdf2
+VFdf2 <- DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101)
+VFdf2
 ```
 
