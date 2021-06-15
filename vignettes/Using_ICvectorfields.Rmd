@@ -17,7 +17,9 @@ knitr::opts_chunk$set(
 ```{r setup}
 library(ICvectorfields)
 library(ggplot2)
+library(ggnewscale)
 library(metR)
+library(terra)
 ```
 
 # Overview
@@ -105,12 +107,17 @@ To plot vector fields, *ICvectorfields* depends on on ggplot2 and its extensions
 SimVF = ggplot() +
   xlim(c(-5, 5)) +
   ylim(c(-5, 5)) +
+  geom_raster(data = SimData,
+              aes(x = xcoord, y = ycoord, fill = t1)) +
+  scale_fill_gradient(low = "white", high = "blue", na.value = NA) +
+  new_scale("fill") +
+  geom_raster(data = SimData,
+              aes(x = xcoord, y = ycoord, fill = t6), alpha = 0.5) +
+  scale_fill_gradient(low = "white", high = "red", na.value = NA) +
   geom_vector(data = VFdf2, 
               aes(x = centx, y = centy, 
                   mag = Mag(dispx, dispy), 
-                  angle = Angle(dispx, dispy)),
-              size = 1,
-              color = "red") + 
+                  angle = Angle(dispx, dispy))) + 
   theme_bw()
 SimVF
 ```
@@ -145,21 +152,24 @@ Because the geographic extent of the data is large, it is likely that population
 ```{r, fig.width = 7, fig.height = 5}
 VFdf3 <- DispFieldSTall(LBMStack[[1:23]], lagmax = 3, factv1 = 3, facth1 = 3, restricted = FALSE)
 
-LBMVF = ggplot() +
+LBMVF1 = ggplot() +
   geom_raster(data = LBMfromncfpkg,
-              aes(x = x, y = y, fill = X1963)) +
+              aes(x = x, y = y, 
+                  fill = X1962)) +
+  scale_fill_gradient(low = "white", high = "blue", na.value = NA) +
+  new_scale("fill") +
+  geom_raster(data = LBMfromncfpkg,
+              aes(x = x, y = y, fill = X1964), alpha = 0.5) +
+  scale_fill_gradient(low = "white", high = "red", na.value = NA) +
   geom_vector(data = VFdf3, 
               aes(x = centx, y = centy, 
                   mag = Mag(dispx, dispy), 
-                  angle = Angle(dispx, dispy)),
-              size = 1,
-              color = "red") + 
+                  angle = Angle(dispx, dispy))) + 
   theme_bw()
-LBMVF
+LBMVF1
 ```
 
-The analysis reveals that northward movement is slower than movement from the east to the west. In addition,
-average speed and standard deviation can be computed.
+The vector field reveals that the true directions of movement are at approximately right angles first to the north and then to the east and not at an angle in between as previously reported. Moreover, the vector field elucidats how directed movement slows down when it changes from northward to eastward spread. Average population movement speed and its standard deviation can be computed in order to construct Wald-type 95 percent confidence intervals on the average population movement speed.
 
 ```{r}
 VFdf3$speed <- sqrt((VFdf3$dispx^2) + VFdf3$dispy^2)
@@ -178,3 +188,4 @@ mean(VFdf4$speed)/1000 + qt(0.975, dim(VFdf4)[1] - 1)*sd(VFdf4$speed)/1000/sqrt(
 mean(VFdf4$speed)/1000 + qt(0.025, dim(VFdf4)[1] - 1)*sd(VFdf4$speed)/1000/sqrt(dim(VFdf4)[1] - 1)
 ```
 
+# References
