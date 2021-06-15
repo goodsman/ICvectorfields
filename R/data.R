@@ -22,37 +22,6 @@
 
 "LBMfromncfpkg"
 
-#' Copepod abundance data
-#'
-#' Data are an amalgamation of many years of sampling. They show seasonal
-#' patterns of Copepod abundance in the world's oceans. The original dataset was
-#' clipped so that the region around Japan is central in the dataset supplied
-#' with the ICvectorfields package. Sampling grid is 0.25 X 0.25 degrees. The
-#' data are formatted such that they can easily be converted to a raster stack
-#' using ICvectorfields::RastStackData(Copepod).
-#'
-#' @usage data(Copepod)
-#' @usage ICvectorfields::RastStackData(Copepod)
-#'
-#' @format A data-frame with 321 rows and 5 columns.
-#' \describe{
-#'   \item{Longitude}{in degrees}
-#'   \item{Latitude}{in degrees}
-#'   \item{wtmass5}{wet mass in May in milligrams per cubic meter}
-#'   \item{wtmass6}{wet mass in June in milligrams per cubic meter}
-#'   \item{wtmass7}{wet mass in July in milligrams per cubic meter}
-#' }
-#'
-#' @source \url{https://www.st.nmfs.noaa.gov/copepod/about/spatial-fields.html}
-#'
-#' @references Moriarty, R., and O'Brien,  T. D. (2013) Distribution of
-#' mesozooplankton biomass in the global ocean. Earth Syst. Sci. Data,
-#' 5, 45-55. \url{https://doi.org/10.5194/essd-5-45-2013}
-#'
-#' @keywords datasets
-
-"Copepod"
-
 #' Simulated movement data
 #'
 #' Data based on a partial differential equation were simulated using the
