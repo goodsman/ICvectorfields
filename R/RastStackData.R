@@ -53,5 +53,8 @@ RastStackData <- function(inputdf) {
     inputdfstack <- c(inputdfstack, inputdfrast)
   }
 
+  # ensuring the terra recognizes output as rast
+  inputdfstack = terra::rast(inputdfstack)
+
   return(inputdfstack)
 }
