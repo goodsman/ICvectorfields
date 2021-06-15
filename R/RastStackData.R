@@ -55,6 +55,9 @@ RastStackData <- function(inputdf) {
 
   # ensurring that this is recognized as a raster object
   inputdfstack = terra::rast(inputdfstack)
+  terra::dim(inputdfstack) <- c(terra::dim(inputdfrast)[1],
+                                terra::dim(inputdfrast)[2],
+                                (dim(inputdf)[2] - 2))
 
   return(inputdfstack)
 }
