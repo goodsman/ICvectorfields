@@ -163,11 +163,18 @@ average speed and standard deviation can be computed.
 
 ```{r}
 VFdf3$speed <- sqrt((VFdf3$dispx^2) + VFdf3$dispy^2)
+
+# subsetting to remove locations where speed is zero
 VFdf4 <- subset(VFdf3, speed > 0)
+
+# computing mean, standard deviation and dimension of data frame
+# to obtain sample size
 mean(VFdf4$speed)
 sd(VFdf4$speed)
-dim(VFdf4)[1]
-176 + 1.96*110/sqrt(28)
-176 - 1.96*110/sqrt(28)
+dim(VFdf4)
+
+ # upper and lower Wald-type 95 percent confidence interval on average speed
+mean(VFdf4$speed)/1000 + qt(0.975, dim(VFdf4)[1] - 1)*sd(VFdf4$speed)/1000/sqrt(dim(VFdf4)[1] - 1)
+mean(VFdf4$speed)/1000 + qt(0.025, dim(VFdf4)[1] - 1)*sd(VFdf4$speed)/1000/sqrt(dim(VFdf4)[1] - 1)
 ```
 
