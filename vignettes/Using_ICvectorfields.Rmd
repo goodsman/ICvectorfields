@@ -16,6 +16,8 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(ICvectorfields)
+library(ggplot2)
+library(metR)
 ```
 
 # Overview
@@ -85,7 +87,55 @@ The function divides the spatial domain up into sub-grids of 101 pixels, which i
 Because speed is constant in the simulation model, the *DispFieldST* function is appropriate for estimating orthogonal velocity vectors:
 
 ```{r}
-VFdf2 <- DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101)
+VFdf2 <- DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted = TRUE)
 VFdf2
+```
+
+The movement speed is estimated as 0.196 in each of the quadrats and the directions are consistent with simulated advection directions. Note that in the function above, restricted is set to TRUE, whereas the default is FALSE. The restricted argument restricts the search for cross-covariance to areas within each of the grids that are designated using the factv1, and vacth1 arguments to the function when set to TRUE. When restricted is set to false the algorithm searches the entire spatial domain to look for maximum cross-covariance. 
+
+```{r}
+DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted = FALSE)
+```
+
+When restricted is set to FALSE as above, the algorithm fails to correctly approximate movement speed because maximum cross-covariance is observed across quadrants. By not restricting the search window, false signals can be interpreted as large movement vectors by the algorithm. It is important, therefore, to critically assess any estimate movement estimated using DIC-based approaches--especially when estimates of speed are unusually large.
+
+Plotting vector fields capitlizes on ggplot extensions in the metR package:
+
+```{r, fig.width = 7, fig.height = 5}
+SimVF = ggplot() +
+  xlim(c(-5, 5)) +
+  ylim(c(-5, 5)) +
+  geom_vector(data = VFdf2, 
+              aes(x = centx, y = centy, 
+                  mag = Mag(dispx, dispy), 
+                  angle = Angle(dispx, dispy)),
+              color = "red") + 
+  theme_bw()
+SimVF
+```
+
+## Demonstration using Seasonal Copepod Abundance Data
+
+asdfds
+
+```{r, fig.show = 'hold'}
+# import simulated data
+data(Copepod)
+
+# convert to raster stack
+CopeStack <- ICvectorfields::RastStackData(Copepod)
+
+# Note that terra does not recognize the result as 
+# SpatRaster type so the dim() function does not work.
+dim(CopeStack)
+
+# ensuring that terra recognises output as rast
+CopeStack <- terra::rast(CopeStack)
+dim(CopeStack)
+
+# visualizing
+terra::plot(CopeStack[[1]], legend = FALSE, main = "May")
+terra::plot(CopeStack[[2]], legend = FALSE, main = "June")
+terra::plot(CopeStack[[3]], legend = FALSE, main = "July")
 ```
 
