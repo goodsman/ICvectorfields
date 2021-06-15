@@ -1,6 +1,7 @@
 ---
 title: "ICvectorfields: Producing vector fields from spatial time series data"
 output: rmarkdown::html_vignette
+bibliography: ICVF.bib
 vignette: >
   %\VignetteIndexEntry{ICvectorfields: Producing vector fields from spatial time series data}
   %\VignetteEngine{knitr::rmarkdown}
