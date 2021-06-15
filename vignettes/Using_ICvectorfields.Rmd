@@ -43,7 +43,7 @@ The most efficent algorithms for two-dimensional cross-correlation exploit discr
 
 # Demonstrations
 
-The functionality of *ICvectorfields* is demonstrated using one simulated dataset and two empirical datasets that accompany the package.
+The functionality of *ICvectorfields* is demonstrated using one simulated dataset and one empirical dataset both of which are embedded in the package.
 
 ## Demonstration using simulated data
 
@@ -114,28 +114,4 @@ SimVF = ggplot() +
 SimVF
 ```
 
-## Demonstration using Seasonal Copepod Abundance Data
-
-asdfds
-
-```{r, fig.show = 'hold'}
-# import simulated data
-data(Copepod)
-
-# convert to raster stack
-CopeStack <- ICvectorfields::RastStackData(Copepod)
-
-# Note that terra does not recognize the result as 
-# SpatRaster type so the dim() function does not work.
-dim(CopeStack)
-
-# ensuring that terra recognises output as rast
-CopeStack <- terra::rast(CopeStack)
-dim(CopeStack)
-
-# visualizing
-terra::plot(CopeStack[[1]], legend = FALSE, main = "May")
-terra::plot(CopeStack[[2]], legend = FALSE, main = "June")
-terra::plot(CopeStack[[3]], legend = FALSE, main = "July")
-```
-
+## Demonstration using Larch Budmoth Defoliation Data
