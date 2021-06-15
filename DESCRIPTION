@@ -28,10 +28,9 @@ Suggests:
 Config/testthat/edition: 3
 Imports: 
     fftwtools,
+    ggnewscale,
     ggplot2,
     metR,
-    sf,
-    stars,
     terra
 Depends: 
     R (>= 2.10)
