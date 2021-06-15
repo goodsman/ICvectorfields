@@ -91,7 +91,7 @@ VFdf2 <- DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted 
 VFdf2
 ```
 
-The movement speed is estimated as 0.196 in each of the quadrats and the directions are consistent with simulated advection directions. Note that in the function above, restricted is set to TRUE, whereas the default is FALSE. The restricted argument restricts the search for cross-covariance to areas within each of the grids that are designated using the factv1, and vacth1 arguments to the function when set to TRUE. When restricted is set to false the algorithm searches the entire spatial domain to look for maximum cross-covariance. 
+The movement speed is estimated as 0.196 in each of the quadrats and the directions are consistent with simulated advection directions. Note that in the function above, restricted is set to TRUE, whereas the default is FALSE. The restricted argument restricts the search for cross-covariance to areas within each of the grids that are designated using the factv1, and facth1 arguments to the function when set to TRUE. When restricted is set to false the algorithm searches the entire spatial domain to look for maximum cross-covariance. 
 
 ```{r}
 DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted = FALSE)
