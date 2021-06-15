@@ -12,20 +12,28 @@
 #' accepted data input format for the following ICvectorfields functions:
 #' \code{\link{DispField}}, \code{\link{DispFieldbb}}.
 #'
-#' @param inputdf a data frame object in which the first column is longitude,
-#'   the second column is latitude, and all of the subsequent columns represent
-#'   a measure of population abundance or density at a unique instance of time.
-#'   Each row of the input data frame, therefore, represents a unique spatial
-#'   location, which should be on an evenly spaced grid. Note, however, that not
-#'   all grid locations need to have observations; some grid locations can have
-#'   values of NA or can be missing entirely.
+#' @param inputdf a data frame object in which the first column is longitude (or
+#'   x coordinate), the second column is latitude (or y coordinate), and all of
+#'   the subsequent columns represent a measure of population abundance or
+#'   density at a unique instance of time. Each row of the input data frame,
+#'   therefore, represents a unique spatial location, which should be on an
+#'   evenly spaced grid. Note, however, that not all grid locations need to have
+#'   observations; some grid locations can have values of NA or can be missing
+#'   entirely.
 #'
 #' @return The function returns a raster stack constructed using inputdf. Each
 #'   layer in the stack corresponds to a column of the input dataset (after the
 #'   first two columns, which are longitude and latitude). The extent of all of
 #'   the rasters in the stack is constructed using the minimum and maximum
-#'   longitudes and latitudes.
+#'   longitudes and latitudes. \bold{It is very important that the output object
+#'   be coerced to a Spatial Raster object prior to subsequent analyses as
+#'   demonstrated under the usage heading and in the examples secton below.}
+#'   Otherwise some of the characteristics and operability of raster stacks in
+#'   the terra package will not be transferred to the output object.
 #' @export
+#'
+#' @usage outputstack <- RastStackData(inputdf)
+#' @usage outputstack <- terra::rast(outputstack)
 #'
 #' @examples
 #'
@@ -36,6 +44,11 @@
 #' xyzdf$z3 <- runif(9)
 #'
 #' zstack <- RastStackData(xyzdf)
+#'
+#' # This step is important to ensure that
+#' # terra recognizes the output object as
+#' # SpatRaster
+#' zstack <- terra::rast(zstack)
 #'
 #' dim(zstack)
 #' terra::plot(zstack[[1]])
