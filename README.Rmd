@@ -43,7 +43,7 @@ library(metR)
 library(terra)
 ```
 
-One of the key advantages of the functions in *ICvectorfields* over other software that uses cross-correlation or cross-covariance to estimate displacement is that the functions in *ICvectorfields* can estimate displacement in multiple, and opposing directions simultaneously. To demonstrate this capability a simulated dataset was produced using a convection reaction equation, which is a partial differential equation with a diffusion term, an advection term for directed movement and a reaction term. Advection in the simulation was spatially variable: In the upper left quadrant of the spatial domain, advection was to the bottom of the domain, in the lower left quadrant, advection was to the right, in the lower right quadrant, advection was toward the top of the domain, and in the upper right quadrant, advection was to the left (see figure below). In all cases the speed of advection was 0.2 spatial units per unit time.
+One of the key advantages of the functions in *ICvectorfields* over other software that uses cross-correlation or cross-covariance to estimate displacement is that the functions in *ICvectorfields* can estimate displacement in multiple, and opposing directions simultaneously. To demonstrate this capability a simulated data set was produced using a convection reaction equation, which is a partial differential equation with a diffusion term, an advection term for directed movement and a reaction term. Advection in the simulation was spatially variable: In the upper left quadrant of the spatial domain, advection was to the bottom of the domain, in the lower left quadrant, advection was to the right, in the lower right quadrant, advection was toward the top of the domain, and in the upper right quadrant, advection was to the left (see figure below). In all cases the speed of advection was 0.2 spatial units per unit time.
 
 ```{r, fig.show = 'hold'}
 # import simulated data
@@ -63,7 +63,7 @@ VFdf2 <- DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted 
 VFdf2
 ```
 
-The movement speed is estimated as 0.196 units of space per unit time in each of the quadrats and the directions are consistent with simulated advection directions. Note that in the function above, the logical restricted argument is set to TRUE, whereas the default is FALSE. The restricted argument restricts the search for cross-covariance to areas within each of the grids that are designated using the factv1, and facth1 arguments to the function when set to TRUE. When restricted is set to false the algorithm searches the entire spatial domain to look for maximum cross-covariance. 
+The movement speed is estimated as 0.196 units of space per unit time in each of the quadrants and the directions are consistent with simulated advection directions. Note that in the function above, the logical restricted argument is set to TRUE, whereas the default is FALSE. The restricted argument restricts the search for cross-covariance to areas within each of the grids that are designated using the factv1, and facth1 arguments to the function when set to TRUE. When restricted is set to false the algorithm searches the entire spatial domain to look for maximum cross-covariance. 
 
 ```{r}
 DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted = FALSE)

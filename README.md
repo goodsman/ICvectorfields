@@ -40,7 +40,7 @@ One of the key advantages of the functions in *ICvectorfields* over
 other software that uses cross-correlation or cross-covariance to
 estimate displacement is that the functions in *ICvectorfields* can
 estimate displacement in multiple, and opposing directions
-simultaneously. To demonstrate this capability a simulated dataset was
+simultaneously. To demonstrate this capability a simulated data set was
 produced using a convection reaction equation, which is a partial
 differential equation with a diffusion term, an advection term for
 directed movement and a reaction term. Advection in the simulation was
@@ -82,7 +82,7 @@ VFdf2
 ```
 
 The movement speed is estimated as 0.196 units of space per unit time in
-each of the quadrats and the directions are consistent with simulated
+each of the quadrants and the directions are consistent with simulated
 advection directions. Note that in the function above, the logical
 restricted argument is set to TRUE, whereas the default is FALSE. The
 restricted argument restricts the search for cross-covariance to areas
