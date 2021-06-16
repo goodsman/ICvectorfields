@@ -16,7 +16,8 @@ You can install the released version of ICvectorfields from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-ggsave("Fig1DemoWithSimData.tiff", width = 14, height = 10, units = "cm", path = "C:/Users/goods/Documents/R/win-library/Pkg development/ICvectorfields/man/figures")
+install.packages("devtools")
+devtools::install_github("goodsman/ICvectorfields")
 ```
 
 ## Example
@@ -111,8 +112,8 @@ It is important, therefore, to critically assess any estimate movement
 estimated using DIC-based approaches–especially when estimates of speed
 are unusually large.
 
-To plot vector fields, *ICvectorfields* depends on on ggplot2, and its
-extensions in the metR, and ggnewscale packages:
+To plot vector fields produced by functions in *ICvectorfields* one can
+use ggplot2, and its extensions in the metR, and ggnewscale packages:
 
 ``` r
 SimVF = ggplot() +

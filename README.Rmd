@@ -25,7 +25,8 @@ An R package for producing vector fields based on spatial time series of populat
 You can install the released version of ICvectorfields from [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
-ggsave("Fig1DemoWithSimData.tiff", width = 14, height = 10, units = "cm", path = "C:/Users/goods/Documents/R/win-library/Pkg development/ICvectorfields/man/figures")
+install.packages("devtools")
+devtools::install_github("goodsman/ICvectorfields")
 ```
 
 ## Example
@@ -68,7 +69,7 @@ DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted = FALSE)
 
 When restricted is set to FALSE as above, the algorithm fails to correctly approximate movement speed because maximum cross-covariance is observed across quadrants. By not restricting the search window, false signals can be interpreted as large movement vectors by the algorithm. It is important, therefore, to critically assess any estimate movement estimated using DIC-based approaches--especially when estimates of speed are unusually large.
 
-To plot vector fields, *ICvectorfields* depends on on ggplot2, and its extensions in the metR, and  ggnewscale packages:
+To plot vector fields produced by functions in *ICvectorfields* one can use ggplot2, and its extensions in the metR, and  ggnewscale packages:
 
 ```{r, fig.width = 7, fig.height = 5}
 SimVF = ggplot() +
