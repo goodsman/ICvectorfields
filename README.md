@@ -12,8 +12,9 @@ population abundance or density
 
 ## Installation
 
-You can install the released version of ICvectorfields from
-[CRAN](https://CRAN.R-project.org) with:
+<!-- You can install the released version of ICvectorfields from [CRAN](https://CRAN.R-project.org) with: -->
+
+You can install the released version of ICvectorfields from GitHub with:
 
 ``` r
 install.packages("devtools")
