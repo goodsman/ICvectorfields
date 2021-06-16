@@ -37,7 +37,7 @@ library(terra)
 ```
 
 One of the key advantages of the functions in *ICvectorfields* over
-other software that uses cross-correlation or cross-covariance to
+other R software that uses cross-correlation or cross-covariance to
 estimate displacement is that the functions in *ICvectorfields* can
 estimate displacement in multiple, and opposing directions
 simultaneously. To demonstrate this capability a simulated data set was
