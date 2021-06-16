@@ -60,8 +60,7 @@ data(SimData, package = "ICvectorfields")
 # convert to raster stack
 SimStack <- ICvectorfields::RastStackData(SimData)
 
-# Note that terra does not recognize the result as 
-# SpatRaster type so the dim() function does not work.
+# confirming dimension
 dim(SimStack)
 
 # visualizing
@@ -74,7 +73,7 @@ terra::plot(SimStack[[6]], legend = FALSE, main = "t6")
 ```
 
 
-To decide which ICvectorfields function to use, the user can consult the table in the overview section of this vignette. We will first use the *DispField* funtion estimate displacement based on a pair of images using a grid to
+To decide which *ICvectorfields* function to use, the user can consult the table in the overview section of this vignette. We will first use the *DispField* funtion estimate displacement based on a pair of images using a grid to
 define regions of interest from whence displacement will be estimated:
 
 ```{r}
@@ -129,12 +128,7 @@ data(lbm, package = "ncf")
 # convert to raster stack
 LBMStack <- ICvectorfields::RastStackData(lbm)
 
-# Note that terra does not recognize the result as 
-# SpatRaster type so the dim() function does not work.
-dim(LBMStack)
-
-# ensuring that terra recognises output as rast
-LBMStack <- terra::rast(LBMStack)
+# confirming dimension
 dim(LBMStack)
 
 # visualizing
