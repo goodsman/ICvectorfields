@@ -47,11 +47,11 @@ The most efficient algorithms for two-dimensional cross-correlation exploit disc
 
 # Demonstrations
 
-The functionality of *ICvectorfields* is demonstrated using one simulated data set embedded in the *ICvectorfields* package and one empirical data set from [@ncf].
+The functionality of *ICvectorfields* is demonstrated using one simulated data set embedded in the *ICvectorfields* package and one empirical data set from the ncf R package [@ncf].
 
 ## Demonstration using simulated data
 
-One of the key advantages of the functions in *ICvectorfields* over other software that uses cross-correlation or cross-covariance to estimate displacement is that the functions in *ICvectorfields* can estimate displacement in multiple, and opposing directions simultaneously. To demonstrate this capability a simulated data set was produced using a convection reaction equation, which is a partial differential equation with a diffusion term, an advection term for directed movement and a reaction term. Advection in the simulation was spatially variable: In the upper left quadrant of the spatial domain, advection was to the bottom of the domain, in the lower left quadrant, advection was to the right, in the lower right quadrant, advection was toward the top of the domain, and in the upper right quadrant, advection was to the left (see figure below). In all cases the speed of advection was 0.2 spatial units per unit time.
+One of the key advantages of the functions in *ICvectorfields* over other software that uses cross-correlation or cross-covariance to estimate displacement is that the functions in *ICvectorfields* can estimate displacement in multiple, and opposing directions simultaneously. To demonstrate this capability a simulated data set was produced using a convection-diffusion equation, which is a partial differential equation with a diffusion term, an advection term for directed movement and a reaction term. Advection in the simulation was spatially variable: In the upper left quadrant of the spatial domain, advection was to the bottom of the domain, in the lower left quadrant, advection was to the right, in the lower right quadrant, advection was toward the top of the domain, and in the upper right quadrant, advection was to the left (see figure below). In all cases the speed of advection was 0.2 spatial units per unit time. The convection-diffusion model was simulated in R using a finite differencing scheme [@ReacTran].
 
 ```{r, fig.show = 'hold'}
 # import simulated data
@@ -72,9 +72,7 @@ terra::plot(SimStack[[5]], legend = FALSE, main = "t5")
 terra::plot(SimStack[[6]], legend = FALSE, main = "t6")
 ```
 
-
-To decide which *ICvectorfields* function to use, the user can consult the table in the overview section of this vignette. We will first use the *DispField* function estimate displacement based on a pair of images using a grid to
-define regions of interest from whence displacement will be estimated:
+To decide which *ICvectorfields* function to use, the user can consult the table in the overview section of this vignette. We will first use the *DispField* function estimate displacement based on a pair of images using a grid to define regions of interest from whence displacement will be estimated:
 
 ```{r}
 VFdf1 <- DispField(SimStack[[1]], SimStack[[6]], factv1 = 101, facth1 = 101)
@@ -90,7 +88,7 @@ VFdf2 <- DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted 
 VFdf2
 ```
 
-The movement speed is estimated as 0.196 units of space per unit time in each of the quadrants and the directions are consistent with simulated advection directions. Note that in the function above, the logical restricted argument is set to TRUE, whereas the default is FALSE. The restricted argument restricts the search for cross-covariance to areas within each of the grids that are designated using the factv1, and facth1 arguments to the function when set to TRUE. When restricted is set to false the algorithm searches the entire spatial domain to look for maximum cross-covariance. 
+The movement speed is estimated as 0.196 units of space per unit time in each of the quadrants and the directions are consistent with simulated advection directions. Note that in the function above, the logical restricted argument is set to TRUE, whereas the default is FALSE. The restricted argument restricts the search for cross-covariance to areas within each of the grids that are designated using the factv1, and facth1 arguments to the function when set to TRUE. When restricted is set to FALSE the algorithm searches the entire spatial domain to look for maximum cross-covariance. 
 
 ```{r}
 DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted = FALSE)
@@ -98,7 +96,7 @@ DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted = FALSE)
 
 When restricted is set to FALSE as above, the algorithm fails to correctly approximate movement speed because maximum cross-covariance is observed across quadrants. By not restricting the search window, false signals can be interpreted as large movement vectors by the algorithm. It is important, therefore, to critically assess any estimate movement estimated using DIC-based approaches--especially when estimates of speed are unusually large.
 
-To plot vector fields, *ICvectorfields* depends on on ggplot2 and its extensions in the metR package:
+To plot vector fields, *ICvectorfields* depends on on ggplot2 [@ggplot2] and its extensions in the metR [@metR] and ggnewscale [@ggnewscale] packages:
 
 ```{r, fig.width = 7, fig.height = 5}
 SimVF = ggplot() +
@@ -120,6 +118,8 @@ SimVF
 ```
 
 ## Demonstration using Larch Budmoth Defoliation Data
+
+Aggregated larch budmoth data that were used to demonstrate the existence of wave-trains [@Bjornstad2002] are provided as part of the ncf package [@ncf]. In the plot below the first five years of a time series that extends from 1961 to 1998 are plotted.
 
 ```{r, fig.show = 'hold'}
 # import larch budmoth data from ncf package
@@ -179,5 +179,21 @@ dim(VFdf4)
 mean(VFdf4$speed)/1000 + qt(0.975, dim(VFdf4)[1] - 1)*sd(VFdf4$speed)/1000/sqrt(dim(VFdf4)[1] - 1)
 mean(VFdf4$speed)/1000 + qt(0.025, dim(VFdf4)[1] - 1)*sd(VFdf4$speed)/1000/sqrt(dim(VFdf4)[1] - 1)
 ```
+
+The estimate of average speed is smaller than previous estimates of east-northeast movement at a speed of 220 km per year [@Bjornstad2002] and 254 km per year [@Johnson2004]. A likely reason for the difference in average speeds 
+between estimates from the literature and estimates produced by *ICvectorfields* is that both of the referenced estimates project populations onto lines at a variety of angles before estimating speed [@ncf], whereas functions in *ICvectorfields* do not. Therefore, the mostly horizontal and vertical movement vectors evident in the figure produced for larch budmoth above are translated to vectors at an angle using previous methods. Simple geometry shows estimates produced by projecting onto a line are larger than component horizontal and vertical vectors (see R code below):
+
+```{r}
+# the hypotenuse of a right angled triangle whose vertical and horizontal sides are vectors of magnitude
+# 176 (coresponding to average speed estimated in the previous R-chunk) has a length of
+sqrt((176^2) + (176^2))
+# (pythagorean theorem)
+```
+
+The hypotenuse of a right angle triangle with velocities in the horizontal and vertical direction of 176 km per year produces a velocity vector in the north-eastern direction with speed equal to 249 km per year--an estimate that is much closer to previous published estimates of larch budmoth population movement speed [@Bjornstad2002, @Johnson2004].
+
+# Expected Uses of Software
+
+The *ICvectorfields* software will most likely be useful for exploratory and confirmatory research applications and for visualization of data for hypothesis generation. The caveats that researchers should consider when using *ICvectorfields* or related approaches are embodied in the often quoted statement that correlation is not causation. The functions in the *ICvectorfields* package infer displacement based on cross-covariance, which is essentially a form of correlation. Moreover, by changing the arguments of the functions in this package, it is very possible to obtain different results as demonstrated in this vignette. For these reasons, users must be vigilant when using these approaches or any others that rely on cross-correlation or cross-covariance.
 
 # References
