@@ -22,7 +22,11 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Suggests: 
+    ggnewscale,
+    ggplot2,
     knitr,
+    metR,
+    ncf,
     rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
