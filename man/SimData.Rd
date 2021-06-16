@@ -19,8 +19,6 @@ A data-frame with 40804 rows and 8 columns.
 }
 \usage{
 data(SimData)
-
-ICvectorfields::RastStackData(SimData)
 }
 \description{
 Data based on a partial differential equation were simulated using the

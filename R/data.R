@@ -31,7 +31,6 @@
 #' stack using ICvectorfields::RastStackData(SimData).
 #'
 #' @usage data(SimData)
-#' @usage ICvectorfields::RastStackData(SimData)
 #'
 #' @format A data-frame with 40804 rows and 8 columns.
 #' \describe{
