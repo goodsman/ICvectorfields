@@ -21,6 +21,7 @@ library(ggplot2)
 library(ggnewscale)
 library(metR)
 library(terra)
+library(ncf)
 ```
 
 # Overview
@@ -46,7 +47,7 @@ The most efficent algorithms for two-dimensional cross-correlation exploit discr
 
 # Demonstrations
 
-The functionality of *ICvectorfields* is demonstrated using one simulated dataset and one empirical dataset both of which are embedded in the package.
+The functionality of *ICvectorfields* is demonstrated using one simulated dataset embedded in the *ICvectorfields* package and one empirical dataset from [@ncf].
 
 ## Demonstration using simulated data
 
@@ -126,11 +127,11 @@ SimVF
 ## Demonstration using Larch Budmoth Defoliation Data
 
 ```{r, fig.show = 'hold'}
-# import simulated data
-data("LBMfromncfpkg")
+# import larch budmoth data from ncf package
+data("lbm")
 
 # convert to raster stack
-LBMStack <- ICvectorfields::RastStackData(LBMfromncfpkg)
+LBMStack <- ICvectorfields::RastStackData(lbm)
 
 # Note that terra does not recognize the result as 
 # SpatRaster type so the dim() function does not work.
@@ -154,12 +155,12 @@ Because the geographic extent of the data is large, it is likely that population
 VFdf3 <- DispFieldSTall(LBMStack[[1:23]], lagmax = 3, factv1 = 3, facth1 = 3, restricted = FALSE)
 
 LBMVF1 = ggplot() +
-  geom_raster(data = LBMfromncfpkg,
+  geom_raster(data = lbm,
               aes(x = x, y = y, 
                   fill = X1962)) +
   scale_fill_gradient(low = "white", high = "blue", na.value = NA) +
   new_scale("fill") +
-  geom_raster(data = LBMfromncfpkg,
+  geom_raster(data = lbm,
               aes(x = x, y = y, fill = X1964), alpha = 0.5) +
   scale_fill_gradient(low = "white", high = "red", na.value = NA) +
   geom_vector(data = VFdf3, 
