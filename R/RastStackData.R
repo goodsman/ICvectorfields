@@ -25,15 +25,8 @@
 #'   layer in the stack corresponds to a column of the input dataset (after the
 #'   first two columns, which are longitude and latitude). The extent of all of
 #'   the rasters in the stack is constructed using the minimum and maximum
-#'   longitudes and latitudes. \bold{It is very important that the output object
-#'   be coerced to a Spatial Raster object prior to subsequent analyses as
-#'   demonstrated under the usage heading and in the examples secton below.}
-#'   Otherwise some of the characteristics and operability of raster stacks in
-#'   the terra package will not be transferred to the output object.
+#'   longitudes and latitudes.
 #' @export
-#'
-#' @usage outputstack <- RastStackData(inputdf)
-#' @usage outputstack <- terra::rast(outputstack)
 #'
 #' @examples
 #'
@@ -44,11 +37,6 @@
 #' xyzdf$z3 <- runif(9)
 #'
 #' zstack <- RastStackData(xyzdf)
-#'
-#' # This step is important to ensure that
-#' # terra recognizes the output object as
-#' # SpatRaster
-#' zstack <- terra::rast(zstack)
 #'
 #' dim(zstack)
 #' terra::plot(zstack[[1]])
