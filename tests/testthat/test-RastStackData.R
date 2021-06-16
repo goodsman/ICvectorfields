@@ -5,6 +5,7 @@ test_that("RastStackData produces a raster stack with appropriate dimensions", {
   xyzdf$z3 <- runif(9)
 
   zstack <- RastStackData(xyzdf)
+  zstack <- terra::rast(zstack)
   expect_equal(length(zstack), 3)
   expect_equal(dim(zstack[[1]]), c(3, 3, 1))
 })
