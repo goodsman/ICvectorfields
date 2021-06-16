@@ -55,7 +55,7 @@ One of the key advantages of the functions in *ICvectorfields* over other softwa
 
 ```{r, fig.show = 'hold'}
 # import simulated data
-data(SimData, package = "ICvectorFields")
+data(SimData, package = "ICvectorfields")
 
 # convert to raster stack
 SimStack <- ICvectorfields::RastStackData(SimData)
