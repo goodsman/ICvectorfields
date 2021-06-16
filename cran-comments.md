@@ -8,6 +8,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Test environments
+* Local windows 10 install R 4.0.5
+*
 
 
 ## R CMD check results
