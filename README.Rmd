@@ -65,12 +65,6 @@ VFdf2
 
 The movement speed is estimated as 0.196 units of space per unit time in each of the quadrants and the directions are consistent with simulated advection directions. Note that in the function above, the logical restricted argument is set to TRUE, whereas the default is FALSE. The restricted argument restricts the search for cross-covariance to areas within each of the grids that are designated using the factv1, and facth1 arguments to the function when set to TRUE. When restricted is set to false the algorithm searches the entire spatial domain to look for maximum cross-covariance. 
 
-```{r}
-DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted = FALSE)
-```
-
-When restricted is set to FALSE as above, the algorithm fails to correctly approximate movement speed because maximum cross-covariance is observed across quadrants. By not restricting the search window, false signals can be interpreted as large movement vectors by the algorithm. It is important, therefore, to critically assess any estimate movement estimated using DIC-based approaches--especially when estimates of speed are unusually large.
-
 To plot vector fields produced by functions in *ICvectorfields* one can use ggplot2, and its extensions in the metR, and  ggnewscale packages:
 
 ```{r, fig.width = 7, fig.height = 5}

@@ -91,28 +91,6 @@ facth1 arguments to the function when set to TRUE. When restricted is
 set to false the algorithm searches the entire spatial domain to look
 for maximum cross-covariance.
 
-``` r
-DispFieldST(SimStack, lag1 = 1, factv1 = 101, facth1 = 101, restricted = FALSE)
-#>   rowcent colcent frowmin frowmax fcolmin fcolmax     centx     centy
-#> 1      51      51       1     101       1     101 -2.499878  2.499878
-#> 2     152      51     102     202       1     101 -2.499878 -2.450861
-#> 3      51     152       1     101     102     202  2.450861  2.499878
-#> 4     152     152     102     202     102     202  2.450861 -2.450861
-#>         dispx       dispy
-#> 1  0.09803443 -3.87236014
-#> 2  3.87236014  0.09803443
-#> 3 -3.87236014 -0.09803443
-#> 4 -0.09803443  3.87236014
-```
-
-When restricted is set to FALSE as above, the algorithm fails to
-correctly approximate movement speed because maximum cross-covariance is
-observed across quadrants. By not restricting the search window, false
-signals can be interpreted as large movement vectors by the algorithm.
-It is important, therefore, to critically assess any estimate movement
-estimated using DIC-based approaches–especially when estimates of speed
-are unusually large.
-
 To plot vector fields produced by functions in *ICvectorfields* one can
 use ggplot2, and its extensions in the metR, and ggnewscale packages:
 
@@ -138,4 +116,4 @@ SimVF
 #> Warning: Removed 403 rows containing missing values (geom_raster).
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
