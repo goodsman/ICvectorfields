@@ -4,9 +4,7 @@
 \alias{RastStackData}
 \title{Creating a raster stack from formatted datasets}
 \usage{
-outputstack <- RastStackData(inputdf)
-
-outputstack <- terra::rast(outputstack)
+RastStackData(inputdf)
 }
 \arguments{
 \item{inputdf}{a data frame object in which the first column is longitude (or
@@ -23,11 +21,7 @@ The function returns a raster stack constructed using inputdf. Each
 layer in the stack corresponds to a column of the input dataset (after the
 first two columns, which are longitude and latitude). The extent of all of
 the rasters in the stack is constructed using the minimum and maximum
-longitudes and latitudes. \bold{It is very important that the output object
-be coerced to a Spatial Raster object prior to subsequent analyses as
-demonstrated under the usage heading and in the examples secton below.}
-Otherwise some of the characteristics and operability of raster stacks in
-the terra package will not be transferred to the output object.
+longitudes and latitudes.
 }
 \description{
 This function converts the data that accompany the ICvectorfields R package
@@ -39,9 +33,7 @@ for the following ICvectorfields functions: \code{\link{DispFieldST}},
 \details{
 Once a raster stack has been created, individual layers can be subsetted
 using rasterstack[[index]], where index is an integer index for the third
-dimension of the raster stack. Two individual raster layers are the only
-accepted data input format for the following ICvectorfields functions:
-\code{\link{DispField}}, \code{\link{DispFieldbb}}.
+dimension of the raster stack.
 }
 \examples{
 
@@ -52,11 +44,6 @@ xyzdf$z2 <- runif(9)
 xyzdf$z3 <- runif(9)
 
 zstack <- RastStackData(xyzdf)
-
-# This step is important to ensure that
-# terra recognizes the output object as
-# SpatRaster
-zstack <- terra::rast(zstack)
 
 dim(zstack)
 terra::plot(zstack[[1]])

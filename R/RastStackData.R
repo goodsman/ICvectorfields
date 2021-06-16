@@ -8,9 +8,7 @@
 #'
 #' Once a raster stack has been created, individual layers can be subsetted
 #' using rasterstack[\[index\]], where index is an integer index for the third
-#' dimension of the raster stack. Two individual raster layers are the only
-#' accepted data input format for the following ICvectorfields functions:
-#' \code{\link{DispField}}, \code{\link{DispFieldbb}}.
+#' dimension of the raster stack.
 #'
 #' @param inputdf a data frame object in which the first column is longitude (or
 #'   x coordinate), the second column is latitude (or y coordinate), and all of
