@@ -1,6 +1,6 @@
 Package: ICvectorfields
 Title: An R package for Producing Vector Fields From Spatial Time Series of Population Abundance
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: 
     person(given = "Devin",
            family = "Goodsman",
