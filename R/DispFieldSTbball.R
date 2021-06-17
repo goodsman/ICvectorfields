@@ -61,24 +61,16 @@
 #'   function documentation).
 #'
 #' @examples
-#' Vec1 <- c(1:5, 0, 0, 0, 0)
-#' Mat1 <- Vec1
-#' for (i in 2:9) Mat1 <- rbind(Mat1, Vec1)
+#' Mat1 <- matrix(rep(c(1:5, 0, 0, 0, 0), 9), nrow = 9, byrow = TRUE)
 #' Mat1
 #'
-#' Vec2 <- c(0, 1:5, 0, 0, 0)
-#' Mat2 <- Vec2
-#' for (i in 2:9) Mat2 <- rbind(Mat2, Vec2)
+#' Mat2 <- matrix(rep(c(0, 1:5, 0, 0, 0), 9), nrow = 9, byrow = TRUE)
 #' Mat2
 #'
-#' Vec3 <- c(0, 0, 1:5, 0, 0)
-#' Mat3 <- Vec3
-#' for (i in 2:9) Mat3 <- rbind(Mat3, Vec3)
+#' Mat3 <- matrix(rep(c(0, 0, 1:5, 0, 0), 9), nrow = 9, byrow = TRUE)
 #' Mat3
 #'
-#' Vec4 <- c(0, 0, 0, 1:5, 0)
-#' Mat4 <- Vec4
-#' for (i in 2:9) Mat4 <- rbind(Mat4, Vec4)
+#' Mat4 <- matrix(rep(c(0, 0, 0, 1:5, 0), 9), nrow = 9, byrow = TRUE)
 #' Mat4
 #'
 #' # Note that rasterizing a matrix causes it to be rotated 90 degrees.
