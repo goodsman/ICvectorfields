@@ -61,17 +61,10 @@
 #'   function documentation).
 #'
 #' @examples
-#' Mat1 <- matrix(rep(c(1:5, 0, 0, 0, 0), 9), nrow = 9, byrow = TRUE)
-#' Mat1
-#'
-#' Mat2 <- matrix(rep(c(0, 1:5, 0, 0, 0), 9), nrow = 9, byrow = TRUE)
-#' Mat2
-#'
-#' Mat3 <- matrix(rep(c(0, 0, 1:5, 0, 0), 9), nrow = 9, byrow = TRUE)
-#' Mat3
-#'
-#' Mat4 <- matrix(rep(c(0, 0, 0, 1:5, 0), 9), nrow = 9, byrow = TRUE)
-#' Mat4
+#' (Mat1 <- matrix(rep(c(1:5, 0, 0, 0, 0), 9), nrow = 9, byrow = TRUE))
+#' (Mat2 <- matrix(rep(c(0, 1:5, 0, 0, 0), 9), nrow = 9, byrow = TRUE))
+#' (Mat3 <- matrix(rep(c(0, 0, 1:5, 0, 0), 9), nrow = 9, byrow = TRUE))
+#' (Mat4 <- matrix(rep(c(0, 0, 0, 1:5, 0), 9), nrow = 9, byrow = TRUE))
 #'
 #' # Note that rasterizing a matrix causes it to be rotated 90 degrees.
 #' # Therefore, any shift in the x direction is in fact now a shift in the y direction
