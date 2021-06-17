@@ -75,7 +75,7 @@ terra::plot(SimStack[[6]], legend = FALSE, main = "t6")
 To decide which *ICvectorfields* function to use, the user can consult the table in the overview section of this vignette. We will first use the *DispField* function estimate displacement based on a pair of images using a grid to define regions of interest from whence displacement will be estimated:
 
 ```{r}
-VFdf1 <- DispField(SimStack[[1]], SimStack[[6]], factv1 = 101, facth1 = 101)
+VFdf1 <- DispField(SimStack[[1]], SimStack[[6]], factv1 = 101, facth1 = 101, restricted = TRUE)
 VFdf1
 ```
 
