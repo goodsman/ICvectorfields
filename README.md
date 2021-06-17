@@ -9,8 +9,7 @@
 status](https://travis-ci.com/goodsman/ICvectorfields.svg?branch=main)](https://travis-ci.com/goodsman/ICvectorfields)
 <!-- badges: end -->
 
-An R Package for Producing Vector Fields from Spatial Time Series of
-Population Abundance
+Vector Fields from Spatial Time Series of Population Abundance
 
 ## Overview
 
