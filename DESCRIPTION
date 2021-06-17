@@ -16,7 +16,7 @@ Description: Functions for converting time series of abundance or density data i
     digital image correlation algorithm that is designed to detect persistent 
     directional movement when image time series extend beyond a sequence of 
     two raster images. 
-License: GPL (>= 3)
+License: GPL (>= 3) + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
