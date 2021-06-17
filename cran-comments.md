@@ -10,7 +10,16 @@ output: html_document
 
 ## R CMD check results
 
-There were 0 ERRORs, 0 WARNINGs, and 0 NOTEs. 
+There were 0 ERRORs, 0 WARNINGs, and 1 NOTEs. 
+
+There was 1 NOTE:
+
+* New submission
+  License components with restrictions and base license permitting such:
+  GPL (>= 3) + file LICENSE
+  File 'LICENSE':
+  YEAR: 2021
+  COPYRIGHT HOLDER: Devin Goodsman 
 
 This is the first submission of the ICvectorfields package to CRAN.
 
