@@ -6,7 +6,7 @@ output: html_document
 ## Test environments
 * Local windows 10 install, R 4.0.5
 * Mac OSx using xcode12.5 (on travis-ci), R 4.1.0
-* win-builder (release), R 4.1.0
+* win-builder (devel and release), R 4.1.0
 
 ## R CMD check results
 
