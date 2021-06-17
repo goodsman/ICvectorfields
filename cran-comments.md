@@ -23,6 +23,11 @@ There was 1 NOTE:
 
 There are currently no downstream dependencies for this package.
 
+## Third resubmission 
+Again the *ICvectorfields* package did not pass the incoming checks automatically. To mitigate the issues with failing the pre-submission tests I have:
+
+* Added a faster version of the DispField function to the package vignette, which I think was taking longer than 10 second to run on CRAN windows servers.
+
 ## Second resubmission 
 This is a resubmission. I received a message indicating to shorten the title and add any methodological references to the description field of the DESCRIPTION file. To address these concerns I
 
