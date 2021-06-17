@@ -12,6 +12,18 @@ status](https://travis-ci.com/goodsman/ICvectorfields.svg?branch=main)](https://
 An R Package for Producing Vector Fields from Spatial Time Series of
 Population Abundance
 
+## Overview
+
+Functions for converting time series of spatial abundance or density
+data in raster format to vector fields of population movement using the
+digital image correlation technique. More specifically, the functions in
+the package compute cross-covariance using discrete fast Fourier
+transforms for computational efficiency. Vectors in vector fields point
+in the direction of highest two dimensional cross-covariance. The
+package has a novel implementation of the digital image correlation
+algorithm that is designed to detect persistent directional movement
+when image time series extend beyond a sequence of two raster images.
+
 ## Installation
 
 <!-- You can install the released version of ICvectorfields from [CRAN](https://CRAN.R-project.org) with: -->
