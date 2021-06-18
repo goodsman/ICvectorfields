@@ -102,7 +102,11 @@ restricted argument restricts the search for cross-covariance to areas
 within each of the grids that are designated using the factv1, and
 facth1 arguments to the function when set to TRUE. When restricted is
 set to false the algorithm searches the entire spatial domain to look
-for maximum cross-covariance.
+for maximum cross-covariance.The estimated speed is a little under the
+simulated advection speed of 0.2 spatial units per unit time in all
+directions. The bias in the estimate is likely due to the diffusion term
+in the partial differential equation as diffusion obfuscates the impact
+of advection.
 
 To plot vector fields produced by functions in *ICvectorfields* one can
 use ggplot2, and its extensions in the metR, and ggnewscale packages:
