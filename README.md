@@ -25,7 +25,12 @@ when image time series extend beyond a sequence of two raster images.
 
 ## Installation
 
-<!-- You can install the released version of ICvectorfields from [CRAN](https://CRAN.R-project.org) with: -->
+You can install the released version of ICvectorfields from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("ICvectorfields")
+```
 
 You can install the released version of ICvectorfields from GitHub with:
 
