@@ -23,6 +23,11 @@ There was 1 NOTE:
 
 There are currently no downstream dependencies for this package.
 
+## Fourth resubmission 
+CRAN checks indicated a false-dependency on the fftw package in the imports section.
+
+* Removed fftw from imports
+
 ## Third resubmission 
 Again the *ICvectorfields* package did not pass the incoming checks automatically. To mitigate the issues with failing the pre-submission tests I have:
 
