@@ -7,3 +7,4 @@ output: html_document
 * Accepted on CRAN (commit 6f85218)
 
 # ICvectorfields 0.0.1.9000
+* Removed false fftw dependency (commit 487bd8de)
