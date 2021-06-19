@@ -1,6 +1,6 @@
 Package: ICvectorfields
 Title: Vector Fields from Spatial Time Series of Population Abundance
-Version: 0.0.2.9000
+Version: 0.0.1.9000
 Authors@R: 
     person(given = "Devin",
            family = "Goodsman",
