@@ -190,7 +190,7 @@ sqrt((176^2) + (176^2))
 # (pythagorean theorem)
 ```
 
-The hypotenuse of a right angle triangle with velocities in the horizontal and vertical direction of 176 km per year produces a velocity vector in the north-eastern direction with speed equal to 249 km per year--an estimate that is much closer to previous published estimates of larch budmoth population movement speed [@Bjornstad2002, @Johnson2004].
+The hypotenuse of a right angle triangle with velocities in the horizontal and vertical direction of 176 km per year produces a velocity vector in the north-eastern direction with speed equal to 249 km per year--an estimate that is much closer to previous published estimates of larch budmoth population movement speed [@Bjornstad2002; @Johnson2004].
 
 # Expected Uses of Software
 
