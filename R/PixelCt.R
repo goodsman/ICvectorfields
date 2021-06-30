@@ -65,7 +65,7 @@ PixelCt <- function(inputstack1, factv1, facth1) {
   Summedmatrix <- RastToMatrix(SummedStack)
 
   # obtaining the row and column indices for subsamples
-  Outdf <- ThinMat(inputmat1, factv1, facth1)
+  Outdf <- ThinMat(Summedmatrix, factv1, facth1)
   if (dim(Outdf)[1] < 1) stop("no viable grid locations: try smaller values
                              for factv1 and facth1")
 
