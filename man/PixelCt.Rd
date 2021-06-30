@@ -56,4 +56,7 @@ rast2 <- terra::rast(Mat2)
 terra::plot(rast2)
 
 (Confdf1 <- PixelCt(c(rast1, rast2), factv1 = 9, facth1 = 9))
+# This should return a pixel count of 54: This is the number
+# of pixels that were occupied in either the first or second
+# time instance.
 }

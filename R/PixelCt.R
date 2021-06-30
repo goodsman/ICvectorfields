@@ -46,6 +46,9 @@
 #' terra::plot(rast2)
 #'
 #' (Confdf1 <- PixelCt(c(rast1, rast2), factv1 = 9, facth1 = 9))
+#' # This should return a pixel count of 54: This is the number
+#' # of pixels that were occupied in either the first or second
+#' # time instance.
 PixelCt <- function(inputstack1, factv1, facth1) {
   if (factv1 / 2 == round(factv1 / 2)) {
     stop("factv1 and facth1 must be odd integers")
