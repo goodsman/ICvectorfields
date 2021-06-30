@@ -1,7 +1,7 @@
 #' Count populated pixels in a raster stack
 #'
 #' In order to produce reliable results, the cross-covariance approach
-#' implemented in code{\link{DispField}}. \code{\link{DispFieldST}}, and
+#' implemented in \code{\link{DispField}}. \code{\link{DispFieldST}}, and
 #' \code{\link{DispFieldSTall}} needs a certain minimum number of non-zero or
 #' non-NA valued pixels in pairs of images or pairs of arrays derived from a
 #' raster stack that it uses to compute cross-covariance. The user may define a
