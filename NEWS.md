@@ -11,3 +11,4 @@ output: html_document
 * Accepted by CRAN (commit 2d40b14)
 
 # ICvectorfields 0.0.2.9000
+* Added PixelCt function which allows assessment of confidence placed in displacement estimates.
