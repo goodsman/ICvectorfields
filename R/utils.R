@@ -135,7 +135,7 @@ RastToMatrix <- function(inrast) {
 MoransI = function(mat1, rad1){
   n1 = dim(mat1)[1]*dim(mat1)[2]
   # computing sum of squared differences from the mean
-  ssq1 = var(as.numeric(mat1), na.rm = TRUE)*(dim(mat1)[1]*dim(mat1)[2] - 1)
+  ssq1 = stats::var(as.numeric(mat1), na.rm = TRUE)*(dim(mat1)[1]*dim(mat1)[2] - 1)
   if (ssq1 == 0) {
     stop("variance equal to zero")
   }

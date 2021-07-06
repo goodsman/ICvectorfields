@@ -82,7 +82,7 @@ SubgridStats <- function(inputrast1, factv1, facth1, statistic = "MoransI", rad1
     # cycling through all grid locations
     for (i in 1:dim(Outdf)[1]) {
       mat1sub <- inputmat1[c(Outdf$frowmin[i]:Outdf$frowmax[i]), c(Outdf$fcolmin[i]:Outdf$fcolmax[i])]
-      Outdf$Var[i] <- var(as.numeric(mat1sub), na.rm = TRUE)
+      Outdf$Var[i] <- stats::var(as.numeric(mat1sub), na.rm = TRUE)
     }
   }
   if (statistic == "sum") {
