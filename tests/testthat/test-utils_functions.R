@@ -65,5 +65,5 @@ test_that("MoransI correctly computes Moran's I", {
 
 
   expect_equal(MoransI(mat1 = TestMat1, rad1 = 1), -1)
-  expect_equal(MoransI(mat1 = TestMat2, rad1 = 1), 0.6987179)
+  expect_equal(round(MoransI(mat1 = TestMat2, rad1 = 1), 4), 0.6987)
 })
