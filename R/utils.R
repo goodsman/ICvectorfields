@@ -133,37 +133,38 @@ RastToMatrix <- function(inrast) {
 # based on proximity in terms of pixels or rows/columns. Any cell within a
 # radius of rad1 rows/columns is considered a neighbour.
 MoransI = function(mat1, rad1){
-  n1 = dim(mat1)[1]*dim(mat1)[2]
+  n1 <- dim(mat1)[1]*dim(mat1)[2]
   # computing sum of squared differences from the mean
-  ssq1 = stats::var(as.numeric(mat1), na.rm = TRUE)*(dim(mat1)[1]*dim(mat1)[2] - 1)
-  if (ssq1 == 0) {
-    stop("variance equal to zero")
-  }
+  ssq1 <- stats::var(as.numeric(mat1), na.rm = TRUE)*(dim(mat1)[1]*dim(mat1)[2] - 1)
 
   # mean centering
-  mat1 = mat1 - mean(mat1, na.rm = TRUE)
+  mat1 <- mat1 - mean(mat1, na.rm = TRUE)
 
   # Obtaining row and column indices
-  RowCol = matrix(rep(0, 2*n1), nrow = n1)
+  RowCol <- matrix(rep(0, 2*n1), nrow = n1)
   for (i in 1:n1) {
-    RowCol[i,] = GetRowCol(i, dim(mat1)[1], dim(mat1)[2])
+    RowCol[i,] <- GetRowCol(i, dim(mat1)[1], dim(mat1)[2])
   }
 
   # computing the distance matrix
-  xdiff = outer(RowCol[, 2], RowCol[, 2], FUN = "-")
-  ydiff = outer(RowCol[, 1], RowCol[, 1], FUN = "-")
-  dmat = sqrt((xdiff^2) + ydiff^2)
+  xdiff <- outer(RowCol[, 2], RowCol[, 2], FUN = "-")
+  ydiff <- outer(RowCol[, 1], RowCol[, 1], FUN = "-")
+  dmat <- sqrt((xdiff^2) + ydiff^2)
 
   # Creating the neighbourhood matrix
-  Cmat = dmat
-  Cmat[Cmat <= rad1 & Cmat > 0] = 1
-  Cmat[Cmat > rad1] = 0
+  Cmat <- dmat
+  Cmat[Cmat <= rad1 & Cmat > 0] <- 1
+  Cmat[Cmat > rad1] <- 0
 
   # computing all possible products
-  Prod1 = outer(as.numeric(mat1), as.numeric(mat1), FUN = "*")
+  Prod1 <- outer(as.numeric(mat1), as.numeric(mat1), FUN = "*")
 
   # MoransIout = sum(apply(Prod1*Cmat, 1, FUN = "+"))*n1/sum(Cmat)/ssq1
-  MoransIout = sum(Prod1*Cmat)*n1/sum(Cmat)/ssq1
+  MoransIout <- sum(Prod1*Cmat)*n1/sum(Cmat)/ssq1
+
+  if (ssq1 == 0) {
+    MoransIout <- NA
+  }
 
   return(MoransIout)
 }
