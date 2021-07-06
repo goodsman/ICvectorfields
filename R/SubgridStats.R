@@ -27,9 +27,9 @@
 #' TestRast <- terra::rast(TestMat)
 #' terra::plot(TestRast)
 #'
-#' SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "mean", rad1 = 1)
-#' SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "var", rad1 = 1)
-#' SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "sum", rad1 = 1)
+#' SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "mean")
+#' SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "var")
+#' SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "sum")
 #'
 SubgridStats <- function(inputrast1, factv1, facth1, statistic = "var") {
   if (factv1 / 2 == round(factv1 / 2)) {

@@ -4,7 +4,7 @@
 \alias{SubgridStats}
 \title{Compute statistics for subgrids.}
 \usage{
-SubgridStats(inputrast1, factv1, facth1, statistic = "MoransI", rad1 = 1)
+SubgridStats(inputrast1, factv1, facth1, statistic = "var")
 }
 \arguments{
 \item{inputrast1}{a raster as produced by terra::rast}
@@ -13,12 +13,8 @@ SubgridStats(inputrast1, factv1, facth1, statistic = "MoransI", rad1 = 1)
 
 \item{facth1}{an odd integer for the horizontal dimension of sub-grids}
 
-\item{statistic}{desired output statistic: It should be one of "MoransI",
-"mean", "var", or "sum". Default setting is Moran's I.}
-
-\item{rad1}{The radius of the neighbourhood for defining nearest neighbours
-for computing Moran's I. The radius is in terms of pixels or rows/columns,
-which are assumed to represent square cells.}
+\item{statistic}{desired output statistic: It should be one of "mean",
+"var", or "sum". Default setting is var.}
 }
 \value{
 A data frame is returned with the following column names: rowcent,
@@ -42,9 +38,8 @@ used in tandem with \code{\link{DispField}}, \code{\link{DispFieldST}}, or
 TestRast <- terra::rast(TestMat)
 terra::plot(TestRast)
 
-SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "MoransI", rad1 = 1)
-SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "mean", rad1 = 1)
-SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "var", rad1 = 1)
-SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "sum", rad1 = 1)
+SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "mean")
+SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "var")
+SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "sum")
 
 }
