@@ -46,3 +46,24 @@ test_that("ExtractMat extracts relevant elements and sets the rest to zero", {
   matz <- matrix(c(rep(0, 5), 6, 10, 0, 0, 7, 11, rep(0, 5)), nrow = 4, byrow = TRUE)
   expect_equal(ExtractMat(matrix(c(1:16), nrow = 4), rowmin = 2, rowmax = 3, colmin = 2, colmax = 3), matz)
 })
+
+test_that("MoransI correctly computes Moran's I", {
+
+  TestMat1 = matrix(c(1, 0, 1, 0, 1,
+                      0, 1, 0, 1, 0,
+                      1, 0, 1, 0, 1,
+                      0, 1, 0, 1, 0,
+                      1, 0, 1, 0, 1),
+                    nrow = 5)
+
+  TestMat2 = matrix(c(1, 1, 1, 1, 1,
+                      1, 1, 1, 1, 1,
+                      1, 1, 1, 0, 0,
+                      0, 0, 0, 0, 0,
+                      0, 0, 0, 0, 0),
+                    nrow = 5)
+
+
+  expect_equal(MoransI(mat1 = TestMat1, rad1 = 1), -1)
+  expect_equal(MoransI(mat1 = TestMat2, rad1 = 1), 0.6987179)
+})
