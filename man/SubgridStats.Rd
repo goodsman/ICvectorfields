@@ -39,8 +39,8 @@ used in tandem with \code{\link{DispField}}, \code{\link{DispFieldST}}, or
                     1, 0, 1, 0, 1),
                     nrow = 5))
 
-TestRast <- rast(TestMat)
-plot(TestRast)
+TestRast <- terra::rast(TestMat)
+terra::plot(TestRast)
 
 SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "MoransI", rad1 = 1)
 SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "mean", rad1 = 1)
