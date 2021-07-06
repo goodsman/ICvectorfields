@@ -8,12 +8,10 @@ test_that("SubgridStats calculates statistics correctly", {
 
   TestRast <- terra::rast(TestMat)
 
-  DF1 = SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "MoransI", rad1 = 1)
-  DF2 = SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "mean", rad1 = 1)
-  DF3 = SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "var", rad1 = 1)
-  DF4 = SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "sum", rad1 = 1)
-  expect_equal(DF1$MoransI[1], -1)
-  expect_equal(DF2$Mean[1], 0.52)
-  expect_equal(DF3$Var[1], 0.26)
-  expect_equal(DF4$Sum[1], 13)
+  DF1 = SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "mean")
+  DF2 = SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "var")
+  DF3 = SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "sum")
+  expect_equal(DF1$Mean[1], 0.52)
+  expect_equal(DF2$Var[1], 0.26)
+  expect_equal(DF3$Sum[1], 13)
 })
