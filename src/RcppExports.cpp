@@ -17,21 +17,9 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// timesTwo
-NumericVector timesTwo(NumericVector x);
-RcppExport SEXP _ICvectorfields_timesTwo(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_ICvectorfields_MoransI", (DL_FUNC) &_ICvectorfields_MoransI, 2},
-    {"_ICvectorfields_timesTwo", (DL_FUNC) &_ICvectorfields_timesTwo, 1},
     {NULL, NULL, 0}
 };
 

@@ -5,7 +5,3 @@ MoransI <- function(mat1, r1) {
     .Call('_ICvectorfields_MoransI', PACKAGE = 'ICvectorfields', mat1, r1)
 }
 
-timesTwo <- function(x) {
-    .Call('_ICvectorfields_timesTwo', PACKAGE = 'ICvectorfields', x)
-}
-
