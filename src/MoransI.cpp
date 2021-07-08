@@ -43,30 +43,42 @@ double MoransI(SEXP mat1, SEXP r1) {
   Mat1 = Mat1 - sum(Mat1)/n1;
 
   // computing row and column indices
-  // and filling in mvec
+  // and filling in mvec (sticking
+  // to the R convention of column major
+  // order rather than cpp row major order)
   for(int i = 0; i < n1; ++i) {
-    ColIndex[i] = ceil(i / Rows);
-    RowIndex[i] = i - (ColIndex[i] - 1) * Rows;
+    ColIndex(i) = ceil(i / Rows);
+    RowIndex(i) = i - (ColIndex[i] - 1) * Rows;
 
     // vectorizing the matrix
-    m = RowIndex[i] - 1;
-    n = ColIndex[i] - 1;
-    mvec[i] = Mat1[m, n];
+    m = RowIndex(i) - 1;
+    n = ColIndex(i) - 1;
+    mvec(i) = Mat1(m, n);
   }
 
   double MoransIout = 0.0;
   double WtSum = 0.0;
   for(int j = 0; j < n1; ++j) {
-
-    diff1 = RowIndex[j] - RowIndex;
-    diff2 = ColIndex[j] - ColIndex;
+    // calculating the distance matrix/vector
+    diff1 = RowIndex(j) - RowIndex;
+    diff2 = ColIndex(j) - ColIndex;
     dvec = sqrt(pow(diff1, 2) + pow(diff2, 2));
 
-    nvec[dvec <= R1] = 1.0;
-    nvec[dvec == 0.0] = 0.0;
-    nvec[dvec > R1] = 0.0;
+    // creating the neighbourhood classifier
+    for(int k = 0; k < n1; ++k) {
+      if (dvec(k) <= R1) {
+        nvec(k) = 1.0;
+      }
+      if (dvec(k) == 0) {
+        nvec(k) = 0.0;
+      }
+      if (dvec(k) > R1) {
+        nvec(k) = 0.0;
+      }
+    }
 
-    prod1 = mvec[j] * mvec;
+    // calculating the cross product
+    prod1 = mvec(j) * mvec;
 
     MoransIout += sum(prod1 * nvec);
     WtSum += sum(nvec);
@@ -81,12 +93,3 @@ double MoransI(SEXP mat1, SEXP r1) {
 
   return MoransIout;
 }
-
-// You can include R code blocks in C++ files processed with sourceCpp
-// (useful for testing and development). The R code will be automatically
-// run after the compilation.
-//
-
-/*** R
-MoransI(runif(9) nrow = 3), 1)
-*/
