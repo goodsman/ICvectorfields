@@ -22,12 +22,12 @@ using namespace Rcpp;
 //'                     1, 0, 1, 0, 1),
 //'                   nrow =5))
 //' # the code below should return -1
-//' MoransI(TestMat, rad1 = 1)
+//' MoransI(TestMat, r1 = 1)
 //[[Rcpp::export]]
 double MoransI(SEXP mat1, SEXP r1) {
 
   NumericMatrix Mat1(mat1);
-  int R1 = as<int>(r1);
+  double R1 = as<double>(r1);
   int Rows = Mat1.nrow();
   int Cols = Mat1.ncol();
   int n1 = Rows * Cols;

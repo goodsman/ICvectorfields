@@ -23,7 +23,7 @@
 #'                     1, 0, 1, 0, 1),
 #'                   nrow =5))
 #' # the code below should return -1
-#' MoransI(TestMat, rad1 = 1)
+#' MoransI(TestMat, r1 = 1)
 MoransI <- function(mat1, r1) {
     .Call('_ICvectorfields_MoransI', PACKAGE = 'ICvectorfields', mat1, r1)
 }
