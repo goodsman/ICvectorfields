@@ -5,28 +5,17 @@ using namespace Rcpp;
 double MoransI(SEXP mat1, SEXP r1) {
 
   NumericMatrix Mat1(mat1);
-  double R1 = as<double>(r1);
+  int R1 = as<int>(r1);
   int Rows = Mat1.nrow();
   int Cols = Mat1.ncol();
   int n1 = Rows * Cols;
+  int k;
+  int lowerp;
+  int lowerq;
 
-  IntegerVector RowIndex(n1);
-  IntegerVector ColIndex(n1);
-
-  // containers for the distance matrix
-  // and neighbour matrix in vector form
-  NumericVector dvec(n1);
-  NumericVector nvec(n1);
-
-  // containers for products and for
-  // the vectorized matrix
-  NumericVector prod1(n1);
-  NumericVector mvec(n1);
-
-  // containers for differences in first
-  // and second dimension.
-  IntegerVector diff1(n1);
-  IntegerVector diff2(n1);
+  // containers for distance neighbour classifier
+  double dist;
+  double neigh;
 
   // containers for mean and sum of squares
   double mu;
@@ -42,46 +31,54 @@ double MoransI(SEXP mat1, SEXP r1) {
   ssq = sum(pow(Mat1 - mu, 2));
   Mat1 = Mat1 - mu;
 
-  // computing row and column indices
-  // and filling in mvec (sticking
-  // to the R convention of column major
-  // order rather than cpp row major order)
-  for(int i = 0; i < n1; ++i) {
-    ColIndex(i) = floor(i / Rows);
-    RowIndex(i) = i - ColIndex[i] * Rows;
-
-    // vectorizing the matrix
-    m = RowIndex(i);
-    n = ColIndex(i);
-    mvec(i) = Mat1(m, n);
-  }
-
   double MoransIout = 0.0;
   double WtSum = 0.0;
   for(int j = 0; j < n1; ++j) {
-    // calculating the distance matrix/vector
-    diff1 = RowIndex(j) - RowIndex;
-    diff2 = ColIndex(j) - ColIndex;
-    dvec = sqrt(pow(diff1, 2) + pow(diff2, 2));
-
     // creating the neighbourhood classifier
-    for(int k = 0; k < n1; ++k) {
-      if (dvec(k) <= R1) {
-        nvec(k) = 1.0;
-      }
-      if (dvec(k) == 0) {
-        nvec(k) = 0.0;
-      }
-      if (dvec(k) > R1) {
-        nvec(k) = 0.0;
+    // first figure out a smaller subset
+    // of locations that are in the neighbourhood.
+    n = floor(j / Rows);    // column index
+    m = j - n * Rows;       // row index
+    if (m - R1 < 0) {
+      lowerp = 0;
+    } else {
+      lowerp = m - R1;
+    }
+    if (n - R1 < 0) {
+      lowerq = 0;
+    } else {
+      lowerq = n - R1;
+    }
+    for(int p = lowerp; p < m + R1 + 1; ++p){
+      for(int q = lowerq; q < n + R1 + 1; ++q){
+        // computing the corresponding vector indices
+        // again I preserve consistency with R's
+        // column major approach.
+        k = q*Rows + p;
+
+        // calculating the distance matrix/vector
+        if (k >= 0 && k < n1) {
+          dist = sqrt(pow(m - p, 2) + pow(n - q, 2));
+        }
+
+        // filling in the neighbourhood matrix/vector
+        if (k >= 0 && k < n1 && dist <= R1) {
+          neigh = 1.0;
+        }
+        if (k >= 0 && k < n1 && dist == 0) {
+          neigh = 0.0;
+        }
+        if (k >= 0 && k < n1 && dist > R1) {
+          neigh = 0.0;
+        }
+
+        // adding to the cross-product
+        if (k >= 0 && k < n1 && p < Rows && q < Cols) {
+          MoransIout += Mat1(m, n) * Mat1(p, q) * neigh;
+          WtSum += neigh;
+        }
       }
     }
-
-    // calculating the cross product
-    prod1 = mvec(j) * mvec;
-
-    MoransIout += sum(prod1 * nvec);
-    WtSum += sum(nvec);
   }
 
   // re-scaling
