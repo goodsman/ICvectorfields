@@ -6,6 +6,7 @@
 #' \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}.
 #'
 #' @importFrom Rcpp sourceCpp
+#' @useDynLib ICvectorfields
 #'
 #' @param inputrast1 a raster as produced by terra::rast
 #' @param factv1 an odd integer for the vertical dimension of sub-grids
