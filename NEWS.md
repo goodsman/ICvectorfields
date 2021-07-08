@@ -13,3 +13,4 @@ output: html_document
 # ICvectorfields 0.0.2.9000
 * Added PixelCt function which allows assessment of confidence placed in displacement estimates (commit a9cc8367).
 * Added SubgridStats function for computing statistics on variables that may influence movement (commit 8450d7c7)
+* Added SubgridMoransI function for computing Morans I at sub-grid level (commit 4e499d96)
