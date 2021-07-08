@@ -8,9 +8,7 @@ double MoransI(SEXP mat1, SEXP r1) {
   int R1 = as<int>(r1);
   int Rows = Mat1.nrow();
   int Cols = Mat1.ncol();
-  // row indices start at zero so
-  // must subtract one bellow
-  int n1 = Rows * Cols - 1;
+  int n1 = Rows * Cols;
 
   IntegerVector RowIndex(n1);
   IntegerVector ColIndex(n1);
@@ -48,7 +46,7 @@ double MoransI(SEXP mat1, SEXP r1) {
   // and filling in mvec (sticking
   // to the R convention of column major
   // order rather than cpp row major order)
-  for(int i = 0; i < n1; ++i) {
+  for(int i = 0; i < n1-1; ++i) {
     ColIndex(i) = ceil(i / Rows);
     RowIndex(i) = i - (ColIndex[i] - 1) * Rows;
 
@@ -60,14 +58,14 @@ double MoransI(SEXP mat1, SEXP r1) {
 
   double MoransIout = 0.0;
   double WtSum = 0.0;
-  for(int j = 0; j < n1; ++j) {
+  for(int j = 0; j < n1-1; ++j) {
     // calculating the distance matrix/vector
     diff1 = RowIndex(j) - RowIndex;
     diff2 = ColIndex(j) - ColIndex;
     dvec = sqrt(pow(diff1, 2) + pow(diff2, 2));
 
     // creating the neighbourhood classifier
-    for(int k = 0; k < n1; ++k) {
+    for(int k = 0; k < n1-1; ++k) {
       if (dvec(k) <= R1) {
         nvec(k) = 1.0;
       }
