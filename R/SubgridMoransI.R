@@ -5,9 +5,6 @@
 #' movement speed or direction if used in tandem with \code{\link{DispField}},
 #' \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}.
 #'
-#' @importFrom Rcpp sourceCpp
-#' @useDynLib ICvectorfields
-#'
 #' @param inputrast1 a raster as produced by terra::rast
 #' @param factv1 an odd integer for the vertical dimension of sub-grids
 #' @param facth1 an odd integer for the horizontal dimension of sub-grids
