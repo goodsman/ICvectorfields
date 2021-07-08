@@ -13,7 +13,7 @@ SubgridMoransI(inputrast1, factv1, facth1, rad1 = 1)
 
 \item{facth1}{an odd integer for the horizontal dimension of sub-grids}
 
-\item{rad1}{an integer indicating the neighbourhood radius in rows/columns.
+\item{rad1}{an number indicating the neighbourhood radius in rows/columns.
 Any cell within a distance of rad1 cells of the focal cell is considered to
 be in its neighbourhood.}
 }
@@ -27,6 +27,11 @@ A function that facilitates calculation of Moran's I at the sub-grid level.
 This may be useful for evaluating spatial autocorrelation as a driver  of
 movement speed or direction if used in tandem with \code{\link{DispField}},
 \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}.
+}
+\details{
+Note that when using radius to define the neighbourhood, a radius of one
+corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds
+to the queen's neighbourhood.
 }
 \examples{
 (TestMat <- matrix(c(1, 0, 1, 0, 1,

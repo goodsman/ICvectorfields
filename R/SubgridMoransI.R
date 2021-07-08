@@ -5,10 +5,14 @@
 #' movement speed or direction if used in tandem with \code{\link{DispField}},
 #' \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}.
 #'
+#' Note that when using radius to define the neighbourhood, a radius of one
+#' corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds
+#' to the queen's neighbourhood.
+#'
 #' @param inputrast1 a raster as produced by terra::rast
 #' @param factv1 an odd integer for the vertical dimension of sub-grids
 #' @param facth1 an odd integer for the horizontal dimension of sub-grids
-#' @param rad1 an integer indicating the neighbourhood radius in rows/columns.
+#' @param rad1 an number indicating the neighbourhood radius in rows/columns.
 #'   Any cell within a distance of rad1 cells of the focal cell is considered to
 #'   be in its neighbourhood.
 #'
