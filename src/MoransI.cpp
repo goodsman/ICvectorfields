@@ -8,7 +8,9 @@ double MoransI(SEXP mat1, SEXP r1) {
   int R1 = as<int>(r1);
   int Rows = Mat1.nrow();
   int Cols = Mat1.ncol();
-  int n1 = Rows * Cols;
+  // row indices start at zero so
+  // must subtract one bellow
+  int n1 = Rows * Cols - 1;
 
   IntegerVector RowIndex(n1);
   IntegerVector ColIndex(n1);
