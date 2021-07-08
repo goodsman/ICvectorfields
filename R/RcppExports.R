@@ -2,10 +2,10 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 MoransI <- function(mat1, r1) {
-    .Call(`_ICvectorfields_MoransI`, mat1, r1)
+    .Call('_ICvectorfields_MoransI', PACKAGE = 'ICvectorfields', mat1, r1)
 }
 
 timesTwo <- function(x) {
-    .Call(`_ICvectorfields_timesTwo`, x)
+    .Call('_ICvectorfields_timesTwo', PACKAGE = 'ICvectorfields', x)
 }
 
