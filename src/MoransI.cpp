@@ -2,7 +2,7 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-double MoransI(SEXP mat1, int r1) {
+double MoransI(SEXP mat1, SEXP r1) {
 
   NumericMatrix Mat1(mat1);
   int Rows = Mat1.nrow();
