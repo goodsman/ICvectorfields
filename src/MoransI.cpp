@@ -40,32 +40,32 @@ double MoransI(SEXP mat1, SEXP r1) {
   // from the mean and then mean centering the matrix
   mu = sum(Mat1)/n1;
   ssq = sum(pow(Mat1 - mu, 2));
-  Mat1 = Mat1 - sum(Mat1)/n1;
+  Mat1 = Mat1 - mu;
 
   // computing row and column indices
   // and filling in mvec (sticking
   // to the R convention of column major
   // order rather than cpp row major order)
-  for(int i = 0; i < n1-1; ++i) {
-    ColIndex(i) = ceil(i / Rows);
-    RowIndex(i) = i - (ColIndex[i] - 1) * Rows;
+  for(int i = 0; i < n1; ++i) {
+    ColIndex(i) = floor(i / Rows);
+    RowIndex(i) = i - ColIndex[i] * Rows;
 
     // vectorizing the matrix
-    m = RowIndex(i) - 1;
-    n = ColIndex(i) - 1;
+    m = RowIndex(i);
+    n = ColIndex(i);
     mvec(i) = Mat1(m, n);
   }
 
   double MoransIout = 0.0;
   double WtSum = 0.0;
-  for(int j = 0; j < n1-1; ++j) {
+  for(int j = 0; j < n1; ++j) {
     // calculating the distance matrix/vector
     diff1 = RowIndex(j) - RowIndex;
     diff2 = ColIndex(j) - ColIndex;
     dvec = sqrt(pow(diff1, 2) + pow(diff2, 2));
 
     // creating the neighbourhood classifier
-    for(int k = 0; k < n1-1; ++k) {
+    for(int k = 0; k < n1; ++k) {
       if (dvec(k) <= R1) {
         nvec(k) = 1.0;
       }
