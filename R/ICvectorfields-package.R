@@ -1,3 +1,3 @@
-#' @useDynLib ICvectorfields, .registration = TRUE
+#' @useDynLib ICvectorfields
 #' @importFrom Rcpp sourceCpp
 NULL
