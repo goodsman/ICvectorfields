@@ -30,7 +30,7 @@ double MoransI(SEXP mat1, SEXP r1) {
 
   // containers for mean and sum of squares
   double mu;
-  int ssq;
+  double ssq;
 
   // dummy variables for row and column indices
   int m;
