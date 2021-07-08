@@ -8,7 +8,7 @@ using namespace Rcpp;
 //'
 //' @param mat1 a matrix of values
 //' @param r1 the distance (radius), within which nearby cells are considered neighbours
-//'     in units of rows/column
+//'     in units of rows/columns
 //'
 //' @return a single numeric value for Moran's I
 //'

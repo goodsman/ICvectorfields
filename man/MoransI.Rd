@@ -14,7 +14,7 @@ MoransI(mat1, r1)
 \item{mat1}{a matrix of values}
 
 \item{r1}{the distance (radius), within which nearby cells are considered neighbours
-in units of rows/column}
+in units of rows/columns}
 }
 \value{
 a single numeric value for Moran's I
