@@ -5,6 +5,7 @@ using namespace Rcpp;
 double MoransI(SEXP mat1, SEXP r1) {
 
   NumericMatrix Mat1(mat1);
+  int R1 = as<int>(r1);
   int Rows = Mat1.nrow();
   int Cols = Mat1.ncol();
   int n1 = Rows * Cols;
@@ -61,9 +62,9 @@ double MoransI(SEXP mat1, SEXP r1) {
     diff2 = ColIndex[j] - ColIndex;
     dvec = sqrt(pow(diff1, 2) + pow(diff2, 2));
 
-    nvec[dvec <= r1] = 1.0;
+    nvec[dvec <= R1] = 1.0;
     nvec[dvec == 0.0] = 0.0;
-    nvec[dvec > r1] = 0.0;
+    nvec[dvec > R1] = 0.0;
 
     prod1 = mvec[j] * mvec;
 
