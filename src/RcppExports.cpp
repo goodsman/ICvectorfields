@@ -6,13 +6,13 @@
 using namespace Rcpp;
 
 // MoransI
-double MoransI(SEXP mat1, int r1);
+double MoransI(SEXP mat1, SEXP r1);
 RcppExport SEXP _ICvectorfields_MoransI(SEXP mat1SEXP, SEXP r1SEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< SEXP >::type mat1(mat1SEXP);
-    Rcpp::traits::input_parameter< int >::type r1(r1SEXP);
+    Rcpp::traits::input_parameter< SEXP >::type r1(r1SEXP);
     rcpp_result_gen = Rcpp::wrap(MoransI(mat1, r1));
     return rcpp_result_gen;
 END_RCPP
