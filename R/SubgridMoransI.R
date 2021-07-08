@@ -37,7 +37,7 @@ SubgridMoransI = function(inputrast1, factv1, facth1, rad1 = 1){
   # cycling through all grid locations
   for(i in 1:dim(Outdf)[1]){
     mat1sub <- inputmat1[c(Outdf$frowmin[i]:Outdf$frowmax[i]), c(Outdf$fcolmin[i]:Outdf$fcolmax[i])]
-    Outdf$MoransI[i] <- MoransI(mat1 = mat1sub, rad1 = rad1)
+    Outdf$MoransI[i] <- MoransI(mat1 = mat1sub, r1 = rad1)
   }
 
   return(Outdf)
