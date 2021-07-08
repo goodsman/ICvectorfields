@@ -36,11 +36,11 @@ movement speed or direction if used in tandem with \code{\link{DispField}},
                      1, 0, 1, 0, 1),
                     nrow = 5))
 
-YestRast <- terra::rast(TestMat)
+TestRast <- terra::rast(TestMat)
 terra::plot(TestRast)
 
 SubgridMoransI(TestRast, factv1 = 5, facth1 = 5, rad1 = 1)
-# using rad = 1 is equivalent to using the rooks neighbourhood
+# using rad1 = 1 is equivalent to using the rooks neighbourhood
 # and so the output should be -1.
 
 }
