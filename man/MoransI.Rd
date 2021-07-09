@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{MoransI}
 \alias{MoransI}
-\title{Efficiently compute Morans I statistic}
+\title{Efficiently compute Moran's I statistic}
 \usage{
 MoransI(mat1, r1)
 }

@@ -1,6 +1,6 @@
 #include <Rcpp.h>
 using namespace Rcpp;
-//' Efficiently compute Morans I statistic
+//' Efficiently compute Moran's I statistic
 //'
 //' Compute Moran's I for a matrix. A fast implementation of Moran's I for
 //' gridded data, with neighbours defined based on a radial distance. Note
