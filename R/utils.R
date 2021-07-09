@@ -127,10 +127,12 @@ RastToMatrix <- function(inrast, NAapproach = 0) {
   outmat <- matrix(as.vector(inrast), nrow = dim(inrast)[1], ncol = dim(inrast)[2], byrow = T)
   if (NAapproach == 0) {
     outmat[is.na(outmat) == TRUE] <- 0
+    outmat[is.nan(outmat) == TRUE] <- 0
     outmat[is.infinite(outmat) == TRUE] <- 0
   }
   if (NAapproach == -999.0) {
     outmat[is.na(outmat) == TRUE] <- -999.0
+    outmat[is.nan(outmat) == TRUE] <- -999.0
     outmat[is.infinite(outmat) == TRUE] <- -999.0
   }
 
