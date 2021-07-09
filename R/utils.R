@@ -122,7 +122,7 @@ ThinMat <- function(inputmat, factv, facth) {
 #This function takes a raster file in terra format and converts it to a
 #rectangular matrix of the same dimensions as the input raster. It also converts
 #NA values and infinite values to zero if NAapproach = 0 (the default), or to
-#-999.0 if NAapproach is -999.0.
+#NA if NAapproach = "NA".
 RastToMatrix <- function(inrast, NAapproach = 0) {
   outmat <- matrix(as.vector(inrast), nrow = dim(inrast)[1], ncol = dim(inrast)[2], byrow = T)
   if (NAapproach == 0) {
@@ -130,10 +130,10 @@ RastToMatrix <- function(inrast, NAapproach = 0) {
     outmat[is.nan(outmat) == TRUE] <- 0
     outmat[is.infinite(outmat) == TRUE] <- 0
   }
-  if (NAapproach == -999.0) {
-    outmat[is.na(outmat) == TRUE] <- -999.0
-    outmat[is.nan(outmat) == TRUE] <- -999.0
-    outmat[is.infinite(outmat) == TRUE] <- -999.0
+  if (NAapproach == "NA") {
+    outmat[is.na(outmat) == TRUE] <- NA
+    outmat[is.nan(outmat) == TRUE] <- NA
+    outmat[is.infinite(outmat) == TRUE] <- NA
   }
 
   return(outmat)

@@ -55,9 +55,9 @@ SubgridMoransI = function(inputrast1, factv1, facth1, rad1 = 1){
   # note it is very important to not simply
   # convert NA/Inf values to zeros when calculating
   # Moran's I because this greatly effects the statistic.
-  # Instead, NA/Inf values should be flagged as -999.9
+  # Instead, NA/Inf values should be flagged as NA
   # so that the MoransI function can disregard them.
-  inputmat1 <- RastToMatrix(inputrast1, NAapproach = -999.0)
+  inputmat1 <- RastToMatrix(inputrast1, NAapproach = "NA")
 
   # obtaining the row and column indices for subsamples
   Outdf <- ThinMat(inputmat1, factv1, facth1)

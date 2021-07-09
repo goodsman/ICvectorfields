@@ -7,7 +7,7 @@
 MoransI(mat1, r1)
 }
 \arguments{
-\item{mat1}{a matrix of values; NA/Inf values must be coded as -999.0 and are ignored}
+\item{mat1}{a matrix of values; NA/Inf values must be coded as NA and are ignored}
 
 \item{r1}{the distance (radius), within which nearby cells are considered neighbours
 in units of rows/columns}

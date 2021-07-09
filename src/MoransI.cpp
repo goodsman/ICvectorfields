@@ -8,7 +8,7 @@ using namespace Rcpp;
 //' corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds to
 //' the queen's neighbourhood.
 //'
-//' @param mat1 a matrix of values; NA/Inf values must be coded as -999.0 and are ignored
+//' @param mat1 a matrix of values; NA/Inf values must be coded as NA and are ignored
 //' @param r1 the distance (radius), within which nearby cells are considered neighbours
 //'     in units of rows/columns
 //'
@@ -51,11 +51,11 @@ double MoransI(SEXP mat1, SEXP r1) {
   int n;
 
   // computing mean while dropping NA/Inf
-  // values coded as -999.0
+  // values coded as NA
   for(int i = 0; i < n1; ++i) {
     n = floor(i / Rows);    // column index
     m = i - n * Rows;       // row index
-    if (Mat1(m, n) != -999.0) {
+    if (NumericVector::is_na(Mat1(m, n)) == 0) {
       mu += Mat1(m, n);
       n2 += 1;
     }
@@ -71,7 +71,7 @@ double MoransI(SEXP mat1, SEXP r1) {
     m = j - n * Rows;       // row index
 
     // computing the sum of squared differences from the mean
-    if (Mat1(m, n) != -999.0) {
+    if (NumericVector::is_na(Mat1(m, n)) == 0) {
       ssq += pow(Mat1(m, n) - mu, 2);
     }
 
@@ -112,7 +112,7 @@ double MoransI(SEXP mat1, SEXP r1) {
         }
 
         // adding to the cross-product
-        if (k >= 0 && k < n1 && p < Rows && q < Cols && Mat1(m, n) != -999.0 && Mat1(p, q) != -999.0) {
+        if (k >= 0 && k < n1 && p < Rows && q < Cols && NumericVector::is_na(Mat1(m, n)) == 0 && NumericVector::is_na(Mat1(p, q)) == 0) {
           MoransIout += (Mat1(m, n) - mu) * (Mat1(p, q) - mu) * neigh;
           WtSum += neigh;
         }

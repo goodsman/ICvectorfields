@@ -9,7 +9,7 @@
 #' corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds to
 #' the queen's neighbourhood.
 #'
-#' @param mat1 a matrix of values; NA/Inf values must be coded as -999.0 and are ignored
+#' @param mat1 a matrix of values; NA/Inf values must be coded as NA and are ignored
 #' @param r1 the distance (radius), within which nearby cells are considered neighbours
 #'     in units of rows/columns
 #'
