@@ -31,7 +31,8 @@ movement speed or direction if used in tandem with \code{\link{DispField}},
 \details{
 Note that when using radius to define the neighbourhood, a radius of one
 corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds
-to the queen's neighbourhood.
+to the queen's neighbourhood. Values that are NA or Inf are not included
+in calculations of the Moran's I statistic.
 }
 \examples{
 (TestMat <- matrix(c(1, 0, 1, 0, 1,

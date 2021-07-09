@@ -7,7 +7,8 @@
 #'
 #' Note that when using radius to define the neighbourhood, a radius of one
 #' corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds
-#' to the queen's neighbourhood.
+#' to the queen's neighbourhood. Values that are NA or Inf are not included
+#' in calculations of the Moran's I statistic.
 #'
 #' @param inputrast1 a raster as produced by terra::rast
 #' @param factv1 an odd integer for the vertical dimension of sub-grids
