@@ -2,11 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{MoransI}
 \alias{MoransI}
-\title{Compute Moran's I for a matrix ' ' A fast implementation of Moran's I for
-gridded data, with neighbours defined based on a radial distance. Note
-that when using radius to define the neighbourhood, a radius of one
-corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds to
-the queen's neighbourhood.}
+\title{Efficiently compute Morans I statistic}
 \usage{
 MoransI(mat1, r1)
 }
@@ -20,7 +16,7 @@ in units of rows/columns}
 a single numeric value for Moran's I
 }
 \description{
-Compute Moran's I for a matrix ' ' A fast implementation of Moran's I for
+Compute Moran's I for a matrix. A fast implementation of Moran's I for
 gridded data, with neighbours defined based on a radial distance. Note
 that when using radius to define the neighbourhood, a radius of one
 corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds to

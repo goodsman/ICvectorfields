@@ -1,6 +1,8 @@
 #include <Rcpp.h>
 using namespace Rcpp;
-//' Compute Moran's I for a matrix ' ' A fast implementation of Moran's I for
+//' Efficiently compute Morans I statistic
+//'
+//' Compute Moran's I for a matrix. A fast implementation of Moran's I for
 //' gridded data, with neighbours defined based on a radial distance. Note
 //' that when using radius to define the neighbourhood, a radius of one
 //' corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds to
