@@ -6,7 +6,7 @@ using namespace Rcpp;
 //' corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds to
 //' the queen's neighbourhood.
 //'
-//' @param mat1 a matrix of values
+//' @param mat1 a matrix of values; NA/Inf values must be coded as -999.0 and are ignored
 //' @param r1 the distance (radius), within which nearby cells are considered neighbours
 //'     in units of rows/columns
 //'
@@ -31,6 +31,7 @@ double MoransI(SEXP mat1, SEXP r1) {
   int Rows = Mat1.nrow();
   int Cols = Mat1.ncol();
   int n1 = Rows * Cols;
+  int n2;
   int k;
   int lowerp;
   int lowerq;
@@ -47,20 +48,34 @@ double MoransI(SEXP mat1, SEXP r1) {
   int m;
   int n;
 
-  // computing mean and sum of squared difference
-  // from the mean and then mean centering the matrix
-  mu = sum(Mat1)/n1;
-  ssq = sum(pow(Mat1 - mu, 2));
-  Mat1 = Mat1 - mu;
+  // computing mean while dropping NA/Inf
+  // values coded as -999.0
+  for(int i = 0; i < n1; ++i) {
+    n = floor(i / Rows);    // column index
+    m = i - n * Rows;       // row index
+    if (Mat1(m, n) != -999.0) {
+      mu += Mat1(m, n);
+      n2 += 1;
+    }
+  }
+
+  // normalizing the sum to obtain the mean
+  mu = mu/n2;
 
   double MoransIout = 0.0;
   double WtSum = 0.0;
   for(int j = 0; j < n1; ++j) {
+    n = floor(j / Rows);    // column index
+    m = j - n * Rows;       // row index
+
+    // computing the sum of squared differences from the mean
+    if (Mat1(m, n) != -999.0) {
+      ssq += pow(Mat1(m, n) - mu, 2);
+    }
+
     // creating the neighbourhood classifier
     // first figure out a smaller subset
     // of locations that are in the neighbourhood.
-    n = floor(j / Rows);    // column index
-    m = j - n * Rows;       // row index
     if (m - R1 < 0) {
       lowerp = 0;
     } else {
@@ -95,8 +110,8 @@ double MoransI(SEXP mat1, SEXP r1) {
         }
 
         // adding to the cross-product
-        if (k >= 0 && k < n1 && p < Rows && q < Cols) {
-          MoransIout += Mat1(m, n) * Mat1(p, q) * neigh;
+        if (k >= 0 && k < n1 && p < Rows && q < Cols && Mat1(m, n) != -999.0 && Mat1(p, q) != -999.0) {
+          MoransIout += (Mat1(m, n) - mu) * (Mat1(p, q) - mu) * neigh;
           WtSum += neigh;
         }
       }
@@ -105,7 +120,10 @@ double MoransI(SEXP mat1, SEXP r1) {
 
   // re-scaling
   if (ssq > 0) {
-    MoransIout = MoransIout*n1/WtSum/ssq;
+    // it is important to use n2 rather than n1 below, which is
+    // the number of observations with NA/Inf values flagged
+    // as -999.0 and removed.
+    MoransIout = MoransIout*n2/WtSum/ssq;
   } else {
     MoransIout = -999.0;
   }
