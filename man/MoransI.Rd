@@ -23,12 +23,12 @@ corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds to
 the queen's neighbourhood.
 }
 \examples{
-(TestMat = matrix(c(1, 0, 1, 0, 1,
-                    0, 1, 0, 1, 0,
-                    1, 0, 1, 0, 1,
-                    0, 1, 0, 1, 0,
-                    1, 0, 1, 0, 1),
-                  nrow =5))
+(TestMat <- matrix(c(1, 0, 1, 0, 1,
+                     0, 1, 0, 1, 0,
+                     1, 0, 1, 0, 1,
+                     0, 1, 0, 1, 0,
+                     1, 0, 1, 0, 1),
+                   nrow =5))
 # the code below should return -1
 MoransI(TestMat, r1 = 1)
 }
