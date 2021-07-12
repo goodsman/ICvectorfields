@@ -17,12 +17,12 @@ using namespace Rcpp;
 //' @export
 //'
 //' @examples
-//' (TestMat = matrix(c(1, 0, 1, 0, 1,
-//'                     0, 1, 0, 1, 0,
-//'                     1, 0, 1, 0, 1,
-//'                     0, 1, 0, 1, 0,
-//'                     1, 0, 1, 0, 1),
-//'                   nrow =5))
+//' (TestMat <- matrix(c(1, 0, 1, 0, 1,
+//'                      0, 1, 0, 1, 0,
+//'                      1, 0, 1, 0, 1,
+//'                      0, 1, 0, 1, 0,
+//'                      1, 0, 1, 0, 1),
+//'                    nrow =5))
 //' # the code below should return -1
 //' MoransI(TestMat, r1 = 1)
 //[[Rcpp::export]]
