@@ -42,9 +42,8 @@ double MoransI(SEXP mat1, SEXP r1) {
   double dist;
   double neigh;
 
-  // containers for mean and sum of squares
+  // container for mean
   double mu;
-  double ssq;
 
   // dummy variables for row and column indices
   int m;
@@ -66,6 +65,7 @@ double MoransI(SEXP mat1, SEXP r1) {
 
   double MoransIout = 0.0;
   double WtSum = 0.0;
+  double ssq = 0.0;
   for(int j = 0; j < n1; ++j) {
     n = floor(j / Rows);    // column index
     m = j - n * Rows;       // row index
