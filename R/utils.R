@@ -138,3 +138,92 @@ RastToMatrix <- function(inrast, NAapproach = 0) {
 
   return(outmat)
 }
+
+## =============================================================================
+#This function takes a matrix and shifts it by adding rows and columns of zeros
+#and deleting rows and columns. It returns a matrix of the same dimensions as
+#the input matrix (mat1).
+ShiftMat <- function(mat1, shiftrows, shiftcols) {
+  # first quadrant
+  if (shiftcols >= 0 & shiftrows > 0) {
+    ## vertical shift upwards
+    # adding empty rows to the bottom
+    shiftmat1 <- rbind(mat1,
+                       matrix(rep(0, dim(mat1)[2]*shiftrows), nrow = shiftrows))
+    # subtracting rows from the top
+    shiftmat1 <- shiftmat1[-c(1:shiftrows), ]
+
+    ## horizontal shift to the right
+    # adding empty columns to the left
+    if (shiftcols > 0) {
+      shiftmat1 <- cbind(matrix(rep(0, dim(mat1)[1]*shiftcols), ncol = shiftcols),
+                         shiftmat1)
+      # subtracting columns from the right
+      shiftmat1 <- shiftmat1[, -c((dim(mat1)[2] + 1):dim(shiftmat1)[2])]
+    }
+  }
+
+  # second quadrant
+  if (shiftcols > 0 & shiftrows <= 0) {
+    ## vertical shift downwards
+    if (shiftrows < 0) {
+      # adding empty rows to the top
+      shiftmat1 <- rbind(matrix(rep(0, dim(mat1)[2]*abs(shiftrows)), nrow = abs(shiftrows)),
+                         mat1)
+      # subtracting rows from the bottom
+      shiftmat1 <- shiftmat1[-c((dim(mat1)[1] + 1):dim(shiftmat1)[1]), ]
+    } else {
+      shiftmat1 <- mat1
+    }
+
+    ## horizontal shift to the right
+    # adding empty columns to the left
+    shiftmat1 <- cbind(matrix(rep(0, dim(mat1)[1]*shiftcols), ncol = shiftcols),
+                       shiftmat1)
+    # subtracting columns from the right
+    shiftmat1 <- shiftmat1[, -c((dim(mat1)[2] + 1):dim(shiftmat1)[2])]
+  }
+
+  # third quadrant
+  if (shiftcols <= 0 & shiftrows < 0) {
+    ## vertical shift downwards
+    # adding empty rows to the top
+    shiftmat1 <- rbind(matrix(rep(0, dim(mat1)[2]*abs(shiftrows)), nrow = abs(shiftrows)),
+                       mat1)
+    # subtracting rows from the bottom
+    shiftmat1 <- shiftmat1[-c((dim(mat1)[1] + 1):dim(shiftmat1)[1]), ]
+
+    if (shiftcols < 0) {
+      ## horizontal shift to the left
+      # adding empty columns to the right
+      shiftmat1 <- cbind(shiftmat1,
+                         matrix(rep(0, dim(mat1)[1]*abs(shiftcols)), ncol = abs(shiftcols)))
+      # subtracting columns from the left
+      shiftmat1 <- shiftmat1[, -c(1:abs(shiftcols))]
+    } else {
+      shiftmat1 <- shiftmat1
+    }
+
+  }
+  # fourth quadrant
+  if (shiftcols < 0 & shiftrows >= 0) {
+    ## vertical shift upwards
+    if (shiftrows > 0) {
+      # adding empty rows to the bottom
+      shiftmat1 <- rbind(mat1,
+                         matrix(rep(0, dim(mat1)[2]*shiftrows), nrow = shiftrows))
+      # subtracting rows from the top
+      shiftmat1 <- shiftmat1[-c(1:shiftrows), ]
+    } else {
+      shiftmat1 <- mat1
+    }
+    ## horizontal shift to the left
+    # adding empty columns to the right
+    shiftmat1 <- cbind(shiftmat1,
+                       matrix(rep(0, dim(mat1)[1]*abs(shiftcols)), ncol = abs(shiftcols)))
+    # subtracting columns from the left
+    shiftmat1 <- shiftmat1[, -c(1:abs(shiftcols))]
+  }
+
+  return(shiftmat1)
+}

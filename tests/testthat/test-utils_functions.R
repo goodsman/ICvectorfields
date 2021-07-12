@@ -46,3 +46,30 @@ test_that("ExtractMat extracts relevant elements and sets the rest to zero", {
   matz <- matrix(c(rep(0, 5), 6, 10, 0, 0, 7, 11, rep(0, 5)), nrow = 4, byrow = TRUE)
   expect_equal(ExtractMat(matrix(c(1:16), nrow = 4), rowmin = 2, rowmax = 3, colmin = 2, colmax = 3), matz)
 })
+
+test_that("ShiftMat shift matrices as expected", {
+  # Lower left quadrant
+  testmat1 = matrix(c(0,0,0,1,1, 0,0,0,1,1, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0), nrow = 5)
+  # Upper left quadrant
+  testmat2 = matrix(c(1,1,0,0,0, 1,1,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0), nrow = 5)
+  # Upper right quadrant
+  testmat3 = matrix(c(0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 1,1,0,0,0, 1,1,0,0,0), nrow = 5)
+  # Lower right quadrant
+  testmat4 = matrix(c(0,0,0,0,0, 0,0,0,0,0, 0,0,0,0,0, 0,0,0,1,1, 0,0,0,1,1), nrow = 5)
+
+  expect_equal(ShiftMat(testmat1, 3, 3), testmat3)
+  expect_equal(ShiftMat(testmat1, 0, 3), testmat4)
+  expect_equal(ShiftMat(testmat1, 3, 0), testmat2)
+
+  expect_equal(ShiftMat(testmat2, -3, 0), testmat1)
+  expect_equal(ShiftMat(testmat2, 0, 3), testmat3)
+  expect_equal(ShiftMat(testmat2, -3, 3), testmat4)
+
+  expect_equal(ShiftMat(testmat3, -3, 0), testmat4)
+  expect_equal(ShiftMat(testmat3, 0, -3), testmat2)
+  expect_equal(ShiftMat(testmat3, -3, -3), testmat1)
+
+  expect_equal(ShiftMat(testmat4, 3, 0), testmat3)
+  expect_equal(ShiftMat(testmat4, 0, -3), testmat1)
+  expect_equal(ShiftMat(testmat4, 3, -3), testmat2)
+})
