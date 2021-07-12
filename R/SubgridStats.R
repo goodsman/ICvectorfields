@@ -1,4 +1,4 @@
-#' Compute statistics for subgrids.
+#' Compute statistics for subgrids
 #'
 #' A function that facilitates calculation of statistics at the sub-grid level.
 #' This may be useful for computing predictors of movement speed or direction if

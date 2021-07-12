@@ -1,21 +1,22 @@
-#' Compute Moran's I for sub-grids
+#' Compute statistics for subgrids
 #'
 #' A function that facilitates calculation of Moran's I at the sub-grid level.
 #' This may be useful for evaluating spatial autocorrelation as a driver  of
 #' movement speed or direction if used in tandem with \code{\link{DispField}},
 #' \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}.
 #'
-#' Note that when using radius to define the neighbourhood, a radius of one
-#' corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds
-#' to the queen's neighbourhood. Values that are NA or Inf are not included
-#' in calculations of the Moran's I statistic.
+#' Note that when using radius to define the neighbourhood in Moran's I
+#' calculations, a radius of one corresponds to the rook's neibhourhood, whereas
+#' a radius of 1.5 corresponds to the queen's neighbourhood. Values that are NA
+#' or Inf are not included in calculations of the Moran's I statistic.
 #'
+#' @rdname SubgridStats
 #' @param inputrast1 a raster as produced by terra::rast
 #' @param factv1 an odd integer for the vertical dimension of sub-grids
 #' @param facth1 an odd integer for the horizontal dimension of sub-grids
-#' @param rad1 an number indicating the neighbourhood radius in rows/columns.
-#'   Any cell within a distance of rad1 cells of the focal cell is considered to
-#'   be in its neighbourhood.
+#' @param rad1 an number indicating the neighbourhood radius for Moran's I
+#'   statistic calculations in rows/columns. Any cell within a distance of rad1
+#'   cells of the focal cell is considered to be in its neighbourhood.
 #'
 #' @return A data frame is returned with the following column names: rowcent,
 #'   colcent, frowmin, frowmax, fcolmin, fcolmax, and a column for the output
