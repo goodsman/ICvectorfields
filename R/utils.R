@@ -225,5 +225,9 @@ ShiftMat <- function(mat1, shiftrows, shiftcols) {
     shiftmat1 <- shiftmat1[, -c(1:abs(shiftcols))]
   }
 
+  if (shiftcols == 0 & shiftrows == 0) {
+    shiftmat1 <- matrix(rep(0, dim(mat1)[1]*dim(mat1)[2]), nrow = dim(mat1)[1])
+  }
+
   return(shiftmat1)
 }
