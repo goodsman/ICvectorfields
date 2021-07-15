@@ -6,16 +6,15 @@
 #' \code{\link{DispFieldSTall}}.
 #'
 #' Note that when using radius to define the neighbourhood in Moran's I
-#' calculations, a radius of one corresponds to the rook's neibhourhood, whereas
-#' a radius of 1.5 corresponds to the queen's neighbourhood. Values that are NA
-#' or Inf are not included in calculations of the Moran's I statistic nor in any
-#' of the other statistics that can be computed.
+#' calculations, a radius of one corresponds to the rook's neibhourhood. Values
+#' that are NA or Inf are not included in calculations of the Moran's I
+#' statistic nor in any of the other statistics that can be computed.
 #'
 #' @rdname SubgridStats
 #' @param inputrast1 a raster as produced by terra::rast
 #' @param factv1 an odd integer for the vertical dimension of sub-grids
 #' @param facth1 an odd integer for the horizontal dimension of sub-grids
-#' @param rad1 a number indicating the neighbourhood radius for Moran's I
+#' @param rad1 an integer indicating the neighbourhood radius for Moran's I
 #'   statistic calculations in rows/columns. Any cell within a distance of rad1
 #'   cells of the focal cell is considered to be in its neighbourhood.
 #'

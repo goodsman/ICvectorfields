@@ -9,8 +9,7 @@
 #' were called, these functions compute statistics for presumed source (source =
 #' TRUE) locations or presumed sink locations (source = FALSE). Note that in the
 #' DispMornasI function, defining radius using distance means that a radius of
-#' one corresponds to the rook's neighbourhood, while a radius of 1.5 correponds
-#' to the Queen's neighbourhood.
+#' one corresponds to the rook's neighbourhood.
 #'
 #' @rdname DispStats
 #'
@@ -26,7 +25,7 @@
 #'   estimates
 #' @param source logical (TRUE or FALSE) indicating whether statistics are to be
 #'   returned at source or sink locations
-#' @param rad1 a number indicating the neighbourhood radius for Moran's I
+#' @param rad1 an ingeger indicating the neighbourhood radius for Moran's I
 #'   statistic calculations in rows/columns. Any cell within a distance of rad1
 #'   cells of the focal cell is considered to be in its neighbourhood.
 #'
