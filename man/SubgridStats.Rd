@@ -16,7 +16,7 @@ SubgridStats(inputrast1, factv1, facth1, statistic = "var")
 
 \item{facth1}{an odd integer for the horizontal dimension of sub-grids}
 
-\item{rad1}{an number indicating the neighbourhood radius for Moran's I
+\item{rad1}{a number indicating the neighbourhood radius for Moran's I
 statistic calculations in rows/columns. Any cell within a distance of rad1
 cells of the focal cell is considered to be in its neighbourhood.}
 
@@ -26,28 +26,20 @@ cells of the focal cell is considered to be in its neighbourhood.}
 \value{
 A data frame is returned with the following column names: rowcent,
 colcent, frowmin, frowmax, fcolmin, fcolmax, and a column for the output
-Moran's I statistic.
-
-A data frame is returned with the following column names: rowcent,
-colcent, frowmin, frowmax, fcolmin, fcolmax, and a column for the output
 statistic.
 }
 \description{
-A function that facilitates calculation of Moran's I at the sub-grid level.
-This may be useful for evaluating spatial autocorrelation as a driver  of
-movement speed or direction if used in tandem with \code{\link{DispField}},
-\code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}.
-
-A function that facilitates calculation of statistics at the sub-grid level.
-This may be useful for computing predictors of movement speed or direction if
-used in tandem with \code{\link{DispField}}, \code{\link{DispFieldST}}, or
+Functions that facilitate calculation of statistics at the sub-grid level.
+These may be useful for drivers  of movement speed or direction if used in
+tandem with \code{\link{DispField}}, \code{\link{DispFieldST}}, or
 \code{\link{DispFieldSTall}}.
 }
 \details{
 Note that when using radius to define the neighbourhood in Moran's I
 calculations, a radius of one corresponds to the rook's neibhourhood, whereas
 a radius of 1.5 corresponds to the queen's neighbourhood. Values that are NA
-or Inf are not included in calculations of the Moran's I statistic.
+or Inf are not included in calculations of the Moran's I statistic nor in any
+of the other statistics that can be computed.
 }
 \examples{
 (TestMat <- matrix(c(1, 0, 1, 0, 1,
@@ -78,4 +70,9 @@ SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "mean")
 SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "var")
 SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "sum")
 
+}
+\seealso{
+\code{\link{DispStats}} and \code{\link{DispMoransI}}for a functions
+that compute statistics at presumed source or sink locations in each region
+of interest.
 }

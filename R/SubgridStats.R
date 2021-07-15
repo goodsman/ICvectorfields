@@ -1,19 +1,10 @@
 #' Compute statistics for subgrids
 #'
-#' A function that facilitates calculation of statistics at the sub-grid level.
-#' This may be useful for computing predictors of movement speed or direction if
-#' used in tandem with \code{\link{DispField}}, \code{\link{DispFieldST}}, or
-#' \code{\link{DispFieldSTall}}.
-#'
 #' @param inputrast1 a raster as produced by terra::rast
 #' @param factv1 an odd integer for the vertical dimension of sub-grids
 #' @param facth1 an odd integer for the horizontal dimension of sub-grids
 #' @param statistic desired output statistic: It should be one of "mean",
 #'   "var", or "sum". Default setting is var.
-#'
-#' @return A data frame is returned with the following column names: rowcent,
-#'   colcent, frowmin, frowmax, fcolmin, fcolmax, and a column for the output
-#'   statistic.
 #' @export
 #'
 #' @examples

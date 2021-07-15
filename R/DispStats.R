@@ -1,14 +1,5 @@
 #' Calculate statistics in source or sink regions
 #'
-#' A function for computing statistics which may be driving variables of movement
-#' that has been quantified using the \code{\link{DispField}} or
-#' \code{\link{DispFieldbb}} functions. The same raster data as were supplied to
-#' the aforementioned functions must be supplied to this one in addition to a
-#' raster layer for which statistics are sought. Then for each region of
-#' interest defined when \code{\link{DispField}} or \code{\link{DispFieldbb}}
-#' were called, this function computes statistics for either presumed source
-#' (source = TRUE) locations or presumed sink locations (source = FALSE).
-#'
 #' @param inputrast1 a raster as produced by terra::rast
 #' @param inputrast2 a raster of equivalent dimension to inputrast1 as produced
 #'   by terra::rast
@@ -23,10 +14,6 @@
 #'   returned at source or sink locations
 #' @param statistic desired output statistic: It should be one of "mean", "var",
 #'   or "sum". Default setting is var.
-#'
-#' @return A data frame is returned with all of the same columns as the vfdf
-#'   input data frame plus an additional column containing the computed
-#'   statistic in each region of interest defined in vfdf.
 #' @export
 #'
 #' @examples

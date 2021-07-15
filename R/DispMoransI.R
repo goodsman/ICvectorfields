@@ -1,16 +1,16 @@
 #' Calculate statistics in source or sink regions
 #'
-#' A function for computing the Moran's I statistic which may be a driving
-#' variable of movement that has been quantified using the
-#' \code{\link{DispField}} or \code{\link{DispFieldbb}} functions. The same
-#' raster data as were supplied to the aforementioned functions must be supplied
-#' to this one in addition to a raster layer for which statistics are sought.
-#' Then for each region of interest defined when \code{\link{DispField}} or
-#' \code{\link{DispFieldbb}} were called, this function computes Moran's I for
-#' presumed source (source = TRUE) locations or presumed sink locations (source
-#' = FALSE). Note that defining radius using distance means that a radius of one
-#' corresponds to the rook's neighbourhood, while a radius of 1.5 correponds to
-#' the Queen's neighbourhood.
+#' Functions for computing the statistics which may be driving variables of
+#' movement that has been quantified using the \code{\link{DispField}} or
+#' \code{\link{DispFieldbb}} functions. The same raster data as were supplied to
+#' the aforementioned functions must be supplied to these in addition to a
+#' raster layer for which statistics are sought. Then for each region of
+#' interest defined when \code{\link{DispField}} or \code{\link{DispFieldbb}}
+#' were called, these functions compute statistics for presumed source (source =
+#' TRUE) locations or presumed sink locations (source = FALSE). Note that in the
+#' DispMornasI function, defining radius using distance means that a radius of
+#' one corresponds to the rook's neighbourhood, while a radius of 1.5 correponds
+#' to the Queen's neighbourhood.
 #'
 #' @rdname DispStats
 #'
@@ -26,13 +26,13 @@
 #'   estimates
 #' @param source logical (TRUE or FALSE) indicating whether statistics are to be
 #'   returned at source or sink locations
-#' @param rad1 an number indicating the neighbourhood radius for Moran's I
+#' @param rad1 a number indicating the neighbourhood radius for Moran's I
 #'   statistic calculations in rows/columns. Any cell within a distance of rad1
 #'   cells of the focal cell is considered to be in its neighbourhood.
 #'
 #' @return A data frame is returned with all of the same columns as the vfdf
-#'   input data frame plus an additional column containing the computed Moran's
-#'   I statistic in each region of interest defined in vfdf.
+#'   input data frame plus an additional column containing the computed
+#'   statistic in each region of interest defined in vfdf.
 #' @export
 #'
 #' @examples
