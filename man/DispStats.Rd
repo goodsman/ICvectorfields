@@ -107,6 +107,7 @@ terra::plot(rast2)
 # Now to compute the statistics at the source: the Moran's I of the original values
 # in each region of interest (should be minus one in first row)
 (VFdf2 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, rad1 = 1))
+
 # Illustrating use of DispStats:
 
 (Mat1 <- matrix(c(1,1,1,0,0,0,0,0,0,
