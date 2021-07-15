@@ -72,7 +72,7 @@ SubgridStats(TestRast, factv1 = 5, facth1 = 5, statistic = "sum")
 
 }
 \seealso{
-\code{\link{DispStats}} and \code{\link{DispMoransI}}for a functions
+\code{\link{DispStats}} and \code{\link{DispMoransI}}for functions
 that compute statistics at presumed source or sink locations in each region
 of interest.
 }

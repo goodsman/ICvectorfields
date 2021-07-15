@@ -24,7 +24,7 @@
 #'   statistic.
 #' @export
 #'
-#' @seealso \code{\link{DispStats}} and \code{\link{DispMoransI}}for a functions
+#' @seealso \code{\link{DispStats}} and \code{\link{DispMoransI}}for functions
 #'   that compute statistics at presumed source or sink locations in each region
 #'   of interest.
 #'
