@@ -9,7 +9,7 @@
 #' corresponds to the rook's neibhourhood. There is currently no
 #' equivalent to queen's neighbourhood.
 #'
-#' @param mat1 a matrix of values; NA/Inf values must be coded as NA and are ignored
+#' @param Mat1 a matrix of values; NA/Inf values must be coded as NA and are ignored
 #' @param r1 an integer representing the distance (radius), within which nearby
 #'     cells are considered neighbours in units of rows/columns
 #'
@@ -26,7 +26,7 @@
 #'                    nrow =5))
 #' # the code below should return -1
 #' MoransI(TestMat, r1 = 1)
-MoransI <- function(mat1, r1) {
-    .Call('_ICvectorfields_MoransI', PACKAGE = 'ICvectorfields', mat1, r1)
+MoransI <- function(Mat1, r1) {
+    .Call('_ICvectorfields_MoransI', PACKAGE = 'ICvectorfields', Mat1, r1)
 }
 

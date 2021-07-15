@@ -8,7 +8,7 @@ using namespace Rcpp;
 //' corresponds to the rook's neibhourhood. There is currently no
 //' equivalent to queen's neighbourhood.
 //'
-//' @param mat1 a matrix of values; NA/Inf values must be coded as NA and are ignored
+//' @param Mat1 a matrix of values; NA/Inf values must be coded as NA and are ignored
 //' @param r1 an integer representing the distance (radius), within which nearby
 //'     cells are considered neighbours in units of rows/columns
 //'
@@ -26,9 +26,7 @@ using namespace Rcpp;
 //' # the code below should return -1
 //' MoransI(TestMat, r1 = 1)
 //[[Rcpp::export]]
-double MoransI(SEXP mat1, SEXP r1) {
-   NumericMatrix Mat1(mat1);
-  int R1 = as<int>(r1);
+double MoransI(NumericMatrix Mat1, int r1) {
   int Rows = Mat1.nrow();
   int Cols = Mat1.ncol();
   int n1 = Rows * Cols;
@@ -78,18 +76,18 @@ double MoransI(SEXP mat1, SEXP r1) {
     // creating the neighbourhood classifier
     // first figure out a smaller subset
     // of locations that are in the neighbourhood.
-    if (m - R1 < 0) {
+    if (m - r1 < 0) {
       lowerp = 0;
     } else {
-      lowerp = m - R1;
+      lowerp = m - r1;
     }
-    if (n - R1 < 0) {
+    if (n - r1 < 0) {
       lowerq = 0;
     } else {
-      lowerq = n - R1;
+      lowerq = n - r1;
     }
-    for(int p = lowerp; p < m + R1 + 1; ++p){
-      for(int q = lowerq; q < n + R1 + 1; ++q){
+    for(int p = lowerp; p < m + r1 + 1; ++p){
+      for(int q = lowerq; q < n + r1 + 1; ++q){
         // computing the corresponding vector indices
         // again I preserve consistency with R's
         // column major approach.
@@ -101,13 +99,13 @@ double MoransI(SEXP mat1, SEXP r1) {
         }
 
         // filling in the neighbourhood matrix/vector
-        if (k >= 0 && k < n1 && dist <= R1) {
+        if (k >= 0 && k < n1 && dist <= r1) {
           neigh = 1.0;
         }
         if (k >= 0 && k < n1 && dist == 0) {
           neigh = 0.0;
         }
-        if (k >= 0 && k < n1 && dist > R1) {
+        if (k >= 0 && k < n1 && dist > r1) {
           neigh = 0.0;
         }
 
