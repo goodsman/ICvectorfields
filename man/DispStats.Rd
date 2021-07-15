@@ -43,22 +43,25 @@ or "sum". Default setting is var.}
 }
 \value{
 A data frame is returned with all of the same columns as the vfdf
-input data frame plus an additional column containing the computed
-Moran's I statistic in each region of interest defined in vfdf.
+input data frame plus an additional column containing the computed Moran's
+I statistic in each region of interest defined in vfdf.
 
 A data frame is returned with all of the same columns as the vfdf
 input data frame plus an additional column containing the computed
 statistic in each region of interest defined in vfdf.
 }
 \description{
-A function for computing statistics which may be driving variables of movement
-that has been quantified using the \code{\link{DispField}} or
-\code{\link{DispFieldbb}} functions. The same raster data as were supplied to
-the aforementioned functions must be supplied to this one in addition to a
-raster layer for which statistics are sought. Then for each region of
-interest defined when \code{\link{DispField}} or \code{\link{DispFieldbb}}
-were called, this function computes statistics for either presumed source
-(source = TRUE) locations or presumed sink locations (source = FALSE).
+A function for computing the Moran's I statistic which may be a driving
+variable of movement that has been quantified using the
+\code{\link{DispField}} or \code{\link{DispFieldbb}} functions. The same
+raster data as were supplied to the aforementioned functions must be supplied
+to this one in addition to a raster layer for which statistics are sought.
+Then for each region of interest defined when \code{\link{DispField}} or
+\code{\link{DispFieldbb}} were called, this function computes Moran's I for
+presumed source (source = TRUE) locations or presumed sink locations (source
+= FALSE). Note that defining radius using distance means that a radius of one
+corresponds to the rook's neighbourhood, while a radius of 1.5 correponds to
+the Queen's neighbourhood.
 
 A function for computing statistics which may be driving variables of movement
 that has been quantified using the \code{\link{DispField}} or
