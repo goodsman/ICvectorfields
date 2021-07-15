@@ -27,8 +27,8 @@ using namespace Rcpp;
 //' MoransI(TestMat, r1 = 1)
 //[[Rcpp::export]]
 double MoransI(NumericMatrix Mat1, int r1) {
-  int Rows = Mat1.nrow();
-  int Cols = Mat1.ncol();
+  int Rows = Mat1.rows();
+  int Cols = Mat1.cols();
   int n1 = Rows * Cols;
   int n2;
   int k;
