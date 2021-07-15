@@ -5,12 +5,12 @@ using namespace Rcpp;
 //' Compute Moran's I for a matrix. A fast implementation of Moran's I for
 //' gridded data, with neighbours defined based on a radial distance. Note
 //' that when using radius to define the neighbourhood, a radius of one
-//' corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds to
-//' the queen's neighbourhood.
+//' corresponds to the rook's neibhourhood. There is currently no
+//' equivalent to queen's neighbourhood.
 //'
-//' @param mat1 a matrix of values; NA/Inf values must be coded as NA and are ignored
-//' @param r1 the distance (radius), within which nearby cells are considered neighbours
-//'     in units of rows/columns
+//' @param Mat1 a matrix of values; NA/Inf values must be coded as NA and are ignored
+//' @param r1 an integer representing the distance (radius), within which nearby
+//'     cells are considered neighbours in units of rows/columns
 //'
 //' @return a single numeric value for Moran's I
 //'
@@ -26,10 +26,8 @@ using namespace Rcpp;
 //' # the code below should return -1
 //' MoransI(TestMat, r1 = 1)
 //[[Rcpp::export]]
-double MoransI(SEXP mat1, SEXP r1) {
-
-  NumericMatrix Mat1(mat1);
-  double R1 = as<double>(r1);
+double MoransI(NumericMatrix Mat1, SEXP r1) {
+  int R1 = as<int>(r1);
   int Rows = Mat1.nrow();
   int Cols = Mat1.ncol();
   int n1 = Rows * Cols;

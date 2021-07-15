@@ -4,13 +4,13 @@
 \alias{MoransI}
 \title{Efficiently compute Moran's I statistic}
 \usage{
-MoransI(mat1, r1)
+MoransI(Mat1, r1)
 }
 \arguments{
-\item{mat1}{a matrix of values; NA/Inf values must be coded as NA and are ignored}
+\item{Mat1}{a matrix of values; NA/Inf values must be coded as NA and are ignored}
 
-\item{r1}{the distance (radius), within which nearby cells are considered neighbours
-in units of rows/columns}
+\item{r1}{an integer representing the distance (radius), within which nearby
+cells are considered neighbours in units of rows/columns}
 }
 \value{
 a single numeric value for Moran's I
@@ -19,8 +19,8 @@ a single numeric value for Moran's I
 Compute Moran's I for a matrix. A fast implementation of Moran's I for
 gridded data, with neighbours defined based on a radial distance. Note
 that when using radius to define the neighbourhood, a radius of one
-corresponds to the rook's neibhourhood, whereas a radius of 1.5 corresponds to
-the queen's neighbourhood.
+corresponds to the rook's neibhourhood. There is currently no
+equivalent to queen's neighbourhood.
 }
 \examples{
 (TestMat <- matrix(c(1, 0, 1, 0, 1,
