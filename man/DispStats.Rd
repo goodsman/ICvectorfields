@@ -75,9 +75,9 @@ were called, this function computes statistics for either presumed source
 \examples{
 # Illustrating use of DispMoransI:
 
-(Mat1 <- matrix(c(0.1,1,0.1,0,0,0,0,0,0,
-                  1,0.1,1,0,0,0,0,0,0,
-                  0.1,1,0.1,0,0,0,0,0,0,
+(Mat1 <- matrix(c(0,1,0,0,0,0,0,0,0,
+                  1,0,1,0,0,0,0,0,0,
+                  0,1,0,0,0,0,0,0,0,
                   0,0,0,0,0,0,0,0,0,
                   0,0,0,0,0,0,0,0,0,
                   0,0,0,0,0,0,0,0,0,
@@ -91,9 +91,9 @@ were called, this function computes statistics for either presumed source
                   0,0,0,0,0,0,0,0,0,
                   0,0,0,0,0,0,0,0,0,
                   0,0,0,0,0,0,0,0,0,
-                  0,0.1,0,0,0,0,0,0,0,
-                  0.1,0,0.1,0,0,0,0,0,0,
-                  0,0.1,0,0,0,0,0,0,0),
+                  0,1,0,0,0,0,0,0,0,
+                  1,0,1,0,0,0,0,0,0,
+                  0,1,0,0,0,0,0,0,0),
                  nrow = 9))
 
 # Note that rasterizing a matrix causes it to be rotated 90 degrees.
