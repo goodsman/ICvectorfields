@@ -69,7 +69,7 @@
 #'
 #' # Now to compute the statistics at the source: the Moran's I of the original values
 #' # in each region of interest (should be minus one in first row)
-#' (VFdf2 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, rad1 = 1))
+#' (VFdf2 <- DispMoransI(rast1, rast2, rast1, VFdf1, source = TRUE, rad1 = 1))
 #'
 DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
                       source = TRUE, rad1) {
