@@ -65,9 +65,9 @@
 #' # Now to compute the statistics at the source: the mean of the original values
 #' # in each region of interest (should be one in first row)
 #' (VFdf2 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "mean"))
-#' sum in each region of interest (should be nine in first row)
+#' # sum in each region of interest (should be nine in first row)
 #' (VFdf3 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "sum"))
-#' #' variance in each region of interest (should be zero in all rows)
+#' # variance in each region of interest (should be zero in all rows)
 #' (VFdf4 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "sum"))
 DispStats <- function(inputrast1, inputrast2, statrast, vfdf,
                       source = TRUE, statistic = "var") {
