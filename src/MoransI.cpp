@@ -66,6 +66,7 @@ double MoransI(SEXP mat1, SEXP r1) {
   double WtSum = 0.0;
   double ssq = 0.0;
   for(int j = 0; j < n1; ++j) {
+    Rcpp::checkUserInterrupt();
     n = floor(j / Rows);    // column index
     m = j - n * Rows;       // row index
 
