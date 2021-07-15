@@ -33,6 +33,8 @@
 #' @export
 #'
 #' @examples
+#' # Illustrating use of DispMoransI:
+#'
 #' (Mat1 <- matrix(c(0,1,0,0,0,0,0,0,0,
 #'                   1,0,1,0,0,0,0,0,0,
 #'                   0,1,0,0,0,0,0,0,0,
