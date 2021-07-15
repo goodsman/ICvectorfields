@@ -26,7 +26,8 @@ using namespace Rcpp;
 //' # the code below should return -1
 //' MoransI(TestMat, r1 = 1)
 //[[Rcpp::export]]
-double MoransI(NumericMatrix Mat1, SEXP r1) {
+double MoransI(SEXP mat1, SEXP r1) {
+   NumericMatrix Mat1(mat1);
   int R1 = as<int>(r1);
   int Rows = Mat1.nrow();
   int Cols = Mat1.ncol();
@@ -123,7 +124,7 @@ double MoransI(NumericMatrix Mat1, SEXP r1) {
     // it is important to use n2 rather than n1 below, which is
     // the number of observations with NA/Inf values flagged
     // as -999.0 and removed.
-    MoransIout = MoransIout*n2/WtSum/ssq;
+    MoransIout = (MoransIout/ssq)*n2/WtSum;
   } else {
     MoransIout = -999.0;
   }
