@@ -8,7 +8,7 @@ using namespace Rcpp;
 //' corresponds to the rook's neibhourhood. There is currently no
 //' equivalent to queen's neighbourhood.
 //'
-//' @param Mat1 a matrix of values; NA/Inf values must be coded as NA and are ignored
+//' @param mat1 a matrix of values; NA/Inf values must be coded as NA and are ignored
 //' @param r1 an integer representing the distance (radius), within which nearby
 //'     cells are considered neighbours in units of rows/columns
 //'
