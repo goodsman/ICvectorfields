@@ -32,17 +32,17 @@ double MoransI(SEXP mat1, SEXP r1) {
   int Rows = Mat1.rows();
   int Cols = Mat1.cols();
   int n1 = Rows * Cols;
-  int n2;
+  int n2 = 0;
   int k;
   int lowerp;
   int lowerq;
 
   // containers for distance neighbour classifier
   double dist;
-  double neigh;
+  double neigh = 0.0;
 
   // container for mean
-  double mu;
+  double mu = 0.0;
 
   // dummy variables for row and column indices
   int m;
@@ -125,7 +125,7 @@ double MoransI(SEXP mat1, SEXP r1) {
     // it is important to use n2 rather than n1 below, which is
     // the number of observations with NA/Inf values flagged
     // as -999.0 and removed.
-    MoransIout = (MoransIout/ssq)*n2/WtSum;
+    MoransIout = MoransIout/ssq/WtSum*n2;
   } else {
     MoransIout = -999.0;
   }
