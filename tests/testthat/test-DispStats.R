@@ -29,9 +29,9 @@ test_that("DispStats computes shifted statistics correctly", {
   VFdf1 <- DispField(rast1, rast2, factv1 = 3, facth1 = 3)
 
   # Calculating statistics at the source
-  VFdf2 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "mean")
-  VFdf3 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "sum")
-  VFdf4 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "var")
+  VFdf2 <- DispStats(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, statistic = "mean")
+  VFdf3 <- DispStats(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, statistic = "sum")
+  VFdf4 <- DispStats(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, statistic = "var")
 
   expect_equal(VFdf2$Mean[1], 1)
   expect_equal(VFdf3$Sum[1], 9)
