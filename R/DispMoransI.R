@@ -120,7 +120,8 @@ DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
       # the na.rm argument is critical
       # Note that the variable for which
       # the statistic is sought is in inputmat3
-      MI <- MoransI(inputmat3*mat2back*mat1bin, r1 = rad1)
+      prodmat = inputmat3*mat2back*mat1bin
+      MI <- MoransI(mat1 = prodmat, r1 = rad1)
       if (MI == -999.0) {
         MI = NA
       }
@@ -145,7 +146,8 @@ DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
       # the na.rm argument is critical
       # Note that the variable for which
       # the statistic is sought is in inputmat3
-      MI <- MoransI(inputmat3*mat1forw*mat2bin, r1 = rad1)
+      prodmat = inputmat3*mat1forw*mat2bin
+      MI <- MoransI(mat1 = prodmat, r1 = rad1)
       if (MI == -999.0) {
         MI = NA
       }
