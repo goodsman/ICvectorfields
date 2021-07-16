@@ -6,8 +6,8 @@
 #' the aforementioned functions must be supplied to these in addition to a
 #' raster layer for which statistics are sought. Then for each region of
 #' interest defined when \code{\link{DispField}} or \code{\link{DispFieldbb}}
-#' were called, these functions compute statistics for presumed source (source =
-#' TRUE) locations or presumed sink locations (source = FALSE). Note that in the
+#' were called, these functions compute statistics for presumed source (sourceloc =
+#' TRUE) locations or presumed sink locations (sourceloc = FALSE). Note that in the
 #' DispMornasI function, defining radius using distance means that a radius of
 #' one corresponds to the rook's neighbourhood.
 #'
@@ -23,7 +23,7 @@
 #'   \code{\link{DispFieldbb}} functions, which contains all of the information
 #'   necessary for defining regions of interest as well as the displacement
 #'   estimates
-#' @param source logical (TRUE or FALSE) indicating whether statistics are to be
+#' @param sourceloc logical (TRUE or FALSE) indicating whether statistics are to be
 #'   returned at source or sink locations
 #' @param rad1 an ingeger indicating the neighbourhood radius for Moran's I
 #'   statistic calculations in rows/columns. Any cell within a distance of rad1
@@ -71,12 +71,12 @@
 #'
 #' # Now to compute the statistics at the source: the Moran's I of the original values
 #' # in each region of interest (should be minus one in first row)
-#' (VFdf2 <- DispMoransI(rast1, rast2, rast1, VFdf1, source = TRUE, rad1 = 1))
+#' (VFdf2 <- DispMoransI(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, rad1 = 1))
 #'
 DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
-                      source = TRUE, rad1) {
-  if (is.logical(source) == FALSE) {
-    stop("source must be either TRUE or FALSE")
+                      sourceloc = TRUE, rad1) {
+  if (is.logical(sourceloc) == FALSE) {
+    stop("sourceloc must be either TRUE or FALSE")
   }
 
   # Converting to matrix form
@@ -101,7 +101,7 @@ DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
     mat2sub <- inputmat2
 
     # shifting and computing local statistics
-    if (source == TRUE) {
+    if (sourceloc == TRUE) {
       # converting source matrix to binary
       mat1bin <- mat1sub
       mat1bin[mat1bin > 0] <- 1

@@ -10,7 +10,7 @@
 #'   \code{\link{DispFieldbb}} functions, which contains all of the information
 #'   necessary for defining regions of interest as well as the displacement
 #'   estimates
-#' @param source logical (TRUE or FALSE) indicating whether statistics are to be
+#' @param sourceloc logical (TRUE or FALSE) indicating whether statistics are to be
 #'   returned at source or sink locations
 #' @param statistic desired output statistic: It should be one of "mean", "var",
 #'   or "sum". Default setting is var.
@@ -53,15 +53,15 @@
 #'
 #' # Now to compute the statistics at the source: the mean of the original values
 #' # in each region of interest (should be one in first row)
-#' (VFdf2 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "mean"))
+#' (VFdf2 <- DispStats(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, statistic = "mean"))
 #' # sum in each region of interest (should be nine in first row)
-#' (VFdf3 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "sum"))
+#' (VFdf3 <- DispStats(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, statistic = "sum"))
 #' # variance in each region of interest (should be zero in all rows)
-#' (VFdf4 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "var"))
+#' (VFdf4 <- DispStats(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, statistic = "var"))
 DispStats <- function(inputrast1, inputrast2, statrast, vfdf,
-                      source = TRUE, statistic = "var") {
-  if (is.logical(source) == FALSE) {
-    stop("source must be either TRUE or FALSE")
+                      sourceloc = TRUE, statistic = "var") {
+  if (is.logical(sourceloc) == FALSE) {
+    stop("sourceloc must be either TRUE or FALSE")
   }
   if (is.element(statistic, c("mean", "var", "sum")) == FALSE) {
     stop("statistic must be 'mean', 'var', or 'sum'")
@@ -89,7 +89,7 @@ DispStats <- function(inputrast1, inputrast2, statrast, vfdf,
     mat2sub <- inputmat2
 
     # shifting and computing local statistics
-    if (source == TRUE) {
+    if (sourceloc == TRUE) {
       # converting source matrix to binary
       mat1bin <- mat1sub
       mat1bin[mat1bin > 0] <- 1

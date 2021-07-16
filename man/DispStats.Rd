@@ -5,14 +5,14 @@
 \alias{DispStats}
 \title{Calculate statistics in source or sink regions}
 \usage{
-DispMoransI(inputrast1, inputrast2, statrast, vfdf, source = TRUE, rad1)
+DispMoransI(inputrast1, inputrast2, statrast, vfdf, sourceloc = TRUE, rad1)
 
 DispStats(
   inputrast1,
   inputrast2,
   statrast,
   vfdf,
-  source = TRUE,
+  sourceloc = TRUE,
   statistic = "var"
 )
 }
@@ -31,7 +31,7 @@ statistics}
 necessary for defining regions of interest as well as the displacement
 estimates}
 
-\item{source}{logical (TRUE or FALSE) indicating whether statistics are to be
+\item{sourceloc}{logical (TRUE or FALSE) indicating whether statistics are to be
 returned at source or sink locations}
 
 \item{rad1}{an ingeger indicating the neighbourhood radius for Moran's I
@@ -53,8 +53,8 @@ movement that has been quantified using the \code{\link{DispField}} or
 the aforementioned functions must be supplied to these in addition to a
 raster layer for which statistics are sought. Then for each region of
 interest defined when \code{\link{DispField}} or \code{\link{DispFieldbb}}
-were called, these functions compute statistics for presumed source (source =
-TRUE) locations or presumed sink locations (source = FALSE). Note that in the
+were called, these functions compute statistics for presumed source (sourceloc =
+TRUE) locations or presumed sink locations (sourceloc = FALSE). Note that in the
 DispMornasI function, defining radius using distance means that a radius of
 one corresponds to the rook's neighbourhood.
 }
@@ -95,7 +95,7 @@ terra::plot(rast2)
 
 # Now to compute the statistics at the source: the Moran's I of the original values
 # in each region of interest (should be minus one in first row)
-(VFdf2 <- DispMoransI(rast1, rast2, rast1, VFdf1, source = TRUE, rad1 = 1))
+(VFdf2 <- DispMoransI(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, rad1 = 1))
 
 # Illustrating use of DispStats:
 
@@ -133,9 +133,9 @@ terra::plot(rast2)
 
 # Now to compute the statistics at the source: the mean of the original values
 # in each region of interest (should be one in first row)
-(VFdf2 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "mean"))
+(VFdf2 <- DispStats(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, statistic = "mean"))
 # sum in each region of interest (should be nine in first row)
-(VFdf3 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "sum"))
+(VFdf3 <- DispStats(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, statistic = "sum"))
 # variance in each region of interest (should be zero in all rows)
-(VFdf4 <- DispStats(rast1, rast2, rast1, VFdf1, source = TRUE, statistic = "var"))
+(VFdf4 <- DispStats(rast1, rast2, rast1, VFdf1, sourceloc = TRUE, statistic = "var"))
 }
