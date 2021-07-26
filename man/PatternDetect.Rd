@@ -13,7 +13,7 @@ five rows (more is better)}
 }
 \value{
 A data frame as returned by \code{\link{DispField}},
-\code{\link{DispFieldST}}, or \code{\link{DispFielSTall}}, with an
+\code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with an
 additional column called Pattern in which the patterns around each focal
 cell are categorized as convergence, divergence, wave or NA
 }
