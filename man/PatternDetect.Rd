@@ -8,7 +8,7 @@ PatternDetect(vfdf)
 }
 \arguments{
 \item{vfdf}{A data frame as returned by \code{\link{DispField}},
-\code{\link{DispFieldST}}, or \code{\link{DispFielSTall}} with at least
+\code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}} with at least
 five rows (more is better)}
 }
 \value{
