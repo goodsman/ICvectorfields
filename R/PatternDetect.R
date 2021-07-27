@@ -1,13 +1,10 @@
 #' Detect Patterns in Vector Fields
 #'
 #' Detect patterns in vector fields represented on a grid by looking in the
-#' rook's neighbourhood of each grid cell. Three patterns are detected: convergences
+#' rook's neighbourhood of each grid cell. Two patterns are detected: convergences
 #' occur when the vectors in the four adjacent cells point towards the focal
 #' cell; divergences occur when the vectors in the four adjacent cells point
-#' away from the focal cell; waves occur when directions of vectors are
-#' consistent across all of the adjacent cells as well as the focal cell. In the
-#' wave pattern vectors can point up and right, up and left, down and right, or
-#' down and left.
+#' away from the focal cell.
 #'
 #' @param vfdf A data frame as returned by \code{\link{DispField}},
 #'   \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}} with at least
@@ -16,7 +13,7 @@
 #' @return A data frame as returned by \code{\link{DispField}},
 #'   \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with an
 #'   additional column called Pattern in which the patterns around each focal
-#'   cell are categorized as convergence, divergence, wave or NA
+#'   cell are categorized as convergence, divergence, or NA
 #' @export
 #'
 #' @examples
@@ -56,6 +53,8 @@ PatternDetect <- function(vfdf) {
   # generating a output column for pattern analysis
   vfdfout <- vfdf
   vfdfout$Pattern <- rep(NA, dim(vfdf)[1])
+  vfdfout$dispx[is.na(vfdfout$dispx) == TRUE] = 0.0
+  vfdfout$dispy[is.na(vfdfout$dispy) == TRUE] = 0.0
 
   # computing the distance between centres of grids
   diffx <- diff(vfdf$colcent)
@@ -65,38 +64,39 @@ PatternDetect <- function(vfdf) {
   diffy[diffy <= 0] <- NA
   factv <- min(diffy, na.rm = TRUE)
 
-  for (i in 1:dim(vfdf)[1]) {
+  for (i in 1:dim(vfdfout)[1]) {
     # Computing distance between focal cell and all other cells
-    DistVec <- sqrt(((vfdf$rowcent - vfdf$rowcent[i])^2) + (vfdf$colcent - vfdf$colcent[i])^2)
+    DistVec <- sqrt(((vfdfout$rowcent - vfdfout$rowcent[i])^2) + (vfdfout$colcent - vfdfout$colcent[i])^2)
 
     # finding displacement in x and y in the cell above
-    Updx <- vfdf$dispx[is.na(match(vfdf$rowcent, vfdf$rowcent[i] - factv)) == FALSE &
+    Updx <- vfdfout$dispx[is.na(match(vfdfout$rowcent, vfdfout$rowcent[i] - factv)) == FALSE &
                          DistVec == factv]
-    Updy <- vfdf$dispy[is.na(match(vfdf$rowcent, vfdf$rowcent[i] - factv)) == FALSE &
+    Updy <- vfdfout$dispy[is.na(match(vfdfout$rowcent, vfdfout$rowcent[i] - factv)) == FALSE &
                          DistVec == factv]
 
     # finding displacement in x and y in the cell below
-    Downdx <- vfdf$dispx[is.na(match(vfdf$rowcent, vfdf$rowcent[i] + factv)) == FALSE &
+    Downdx <- vfdfout$dispx[is.na(match(vfdfout$rowcent, vfdfout$rowcent[i] + factv)) == FALSE &
                            DistVec == factv]
-    Downdy <- vfdf$dispy[is.na(match(vfdf$rowcent, vfdf$rowcent[i] + factv)) == FALSE &
+    Downdy <- vfdfout$dispy[is.na(match(vfdfout$rowcent, vfdfout$rowcent[i] + factv)) == FALSE &
                            DistVec == factv]
 
     # finding displacement in x and y in the cell to the left
-    Leftdx <- vfdf$dispx[is.na(match(vfdf$colcent, vfdf$colcent[i] - facth)) == FALSE &
+    Leftdx <- vfdfout$dispx[is.na(match(vfdfout$colcent, vfdfout$colcent[i] - facth)) == FALSE &
                            DistVec == factv]
-    Leftdy <- vfdf$dispy[is.na(match(vfdf$colcent, vfdf$colcent[i] - facth)) == FALSE &
+    Leftdy <- vfdfout$dispy[is.na(match(vfdfout$colcent, vfdfout$colcent[i] - facth)) == FALSE &
                            DistVec == factv]
 
     # finding displacement in x and y in the cell to the right
-    Rightdx <- vfdf$dispx[is.na(match(vfdf$colcent, vfdf$colcent[i] + facth)) == FALSE &
+    Rightdx <- vfdfout$dispx[is.na(match(vfdfout$colcent, vfdfout$colcent[i] + facth)) == FALSE &
                             DistVec == factv]
-    Rightdy <- vfdf$dispy[is.na(match(vfdf$colcent, vfdf$colcent[i] + facth)) == FALSE &
+    Rightdy <- vfdfout$dispy[is.na(match(vfdfout$colcent, vfdfout$colcent[i] + facth)) == FALSE &
                             DistVec == factv]
 
     if (length(Updx) == 1 & length(Updy) == 1 &
         length(Downdx) == 1 & length(Downdy) == 1 &
         length(Leftdx) == 1 & length(Leftdy) == 1 &
         length(Rightdx) == 1 & length(Rightdy) == 1) {
+
       # Finding convergences
       if (Updy < 0 & Downdy > 0 & Leftdx > 0 & Rightdx < 0) {
         vfdfout$Pattern[i] <- "convergence"
@@ -107,29 +107,6 @@ PatternDetect <- function(vfdf) {
         vfdfout$Pattern[i] <- "divergence"
       }
 
-      # Up-right waves
-      if (Updy > 0 & Downdy > 0 & Leftdy > 0 & Rightdy > 0 & vfdf$dispy[i] > 0 &
-          Updx > 0 & Downdx > 0 & Leftdx > 0 & Rightdx > 0 & vfdf$dispx[i] > 0) {
-        vfdfout$Pattern[i] <- "wave"
-      }
-
-      # Up-left waves
-      if (Updy > 0 & Downdy > 0 & Leftdy > 0 & Rightdy > 0 & vfdf$dispy[i] > 0 &
-          Updx < 0 & Downdx < 0 & Leftdx < 0 & Rightdx < 0 & vfdf$dispx[i] < 0) {
-        vfdfout$Pattern[i] <- "wave"
-      }
-
-      # Down-right waves
-      if (Updy < 0 & Downdy < 0 & Leftdy < 0 & Rightdy < 0 & vfdf$dispy[i] < 0 &
-          Updx > 0 & Downdx > 0 & Leftdx > 0 & Rightdx > 0 & vfdf$dispx[i] > 0) {
-        vfdfout$Pattern[i] <- "wave"
-      }
-
-      # Down-left waves
-      if (Updy < 0 & Downdy < 0 & Leftdy < 0 & Rightdy < 0 & vfdf$dispy[i] < 0 &
-          Updx < 0 & Downdx < 0 & Leftdx < 0 & Rightdx < 0 & vfdf$dispx[i] < 0) {
-        vfdfout$Pattern[i] <- "wave"
-      }
     }
   }
 

@@ -25,41 +25,4 @@ test_that("PatternDetect correctly classifies patterns", {
   VFdf2 <- DispField(rast2, rast1, factv1 = 3, facth1 = 3, restricted = TRUE)
   patdf2 <- PatternDetect(VFdf2)
   expect_equal(patdf2$Pattern[5], "convergence")
-
-  # matrices to create wave patterns
-  Mat3 <- matrix(rep(0, 9*9), nrow = 9)
-  Mat3[1, 1] <- 1
-  Mat3[4, 4] <- 1
-  Mat3[7, 7] <- 1
-  Mat3[1, 4] <- 1
-  Mat3[1, 7] <- 1
-  Mat3[4, 1] <- 1
-  Mat3[7, 1] <- 1
-  Mat3[7, 4] <- 1
-  Mat3[4, 7] <- 1
-
-  Mat4 <- matrix(rep(0, 9*9), nrow = 9)
-  Mat4[3, 3] <- 1
-  Mat4[6, 6] <- 1
-  Mat4[9, 9] <- 1
-  Mat4[3, 6] <- 1
-  Mat4[6, 3] <- 1
-  Mat4[3, 9] <- 1
-  Mat4[9, 3] <- 1
-  Mat4[6, 9] <- 1
-  Mat4[9, 6] <- 1
-
-  # rasterizing
-  rast3 <- terra::rast(Mat3)
-  rast4 <- terra::rast(Mat4)
-
-  # Detecting down-right wave
-  VFdf3 <- DispField(rast3, rast4, factv1 = 3, facth1 = 3, restricted = TRUE)
-  patdf3 <- PatternDetect(VFdf3)
-  expect_equal(patdf3$Pattern[5], "wave")
-
-  # Detecting up-left wave
-  VFdf4 <- DispField(rast4, rast3, factv1 = 3, facth1 = 3, restricted = TRUE)
-  patdf4 <- PatternDetect(VFdf4)
-  expect_equal(patdf4$Pattern[5], "wave")
 })

@@ -15,17 +15,14 @@ five rows (more is better)}
 A data frame as returned by \code{\link{DispField}},
 \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with an
 additional column called Pattern in which the patterns around each focal
-cell are categorized as convergence, divergence, wave or NA
+cell are categorized as convergence, divergence, or NA
 }
 \description{
 Detect patterns in vector fields represented on a grid by looking in the
-rook's neighbourhood of each grid cell. Three patterns are detected: convergences
+rook's neighbourhood of each grid cell. Two patterns are detected: convergences
 occur when the vectors in the four adjacent cells point towards the focal
 cell; divergences occur when the vectors in the four adjacent cells point
-away from the focal cell; waves occur when directions of vectors are
-consistent across all of the adjacent cells as well as the focal cell. In the
-wave pattern vectors can point up and right, up and left, down and right, or
-down and left.
+away from the focal cell.
 }
 \examples{
 # creating convergence/divergence patterns
