@@ -1,19 +1,22 @@
 #' Detect Patterns in Vector Fields
 #'
 #' Detect patterns in vector fields represented on a grid by looking in the
-#' rook's neighbourhood of each grid cell. Two patterns are detected: convergences
-#' occur when the vectors in the four adjacent cells point towards the focal
-#' cell; divergences occur when the vectors in the four adjacent cells point
-#' away from the focal cell.
+#' rook's neighbourhood of each grid cell. Two patterns are detected:
+#' convergences occur when the vectors in the four adjacent cells point towards
+#' the focal cell; divergences occur when the vectors in the four adjacent cells
+#' point away from the focal cell.
 #'
 #' @param vfdf A data frame as returned by \code{\link{DispField}},
 #'   \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}} with at least
 #'   five rows (more is better)
 #'
 #' @return A data frame as returned by \code{\link{DispField}},
-#'   \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with an
-#'   additional column called Pattern in which the patterns around each focal
-#'   cell are categorized as convergence, divergence, or NA
+#'   \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with two
+#'   additional columns. The first additional column is called Pattern in which
+#'   the patterns around each focal cell are categorized as convergence,
+#'   divergence, or NA. The second additional column is called PatternCt, which
+#'   contains a one if all four neighbourhood grid locations contain
+#'   displacement estimates and a NA otherwise.
 #' @export
 #'
 #' @examples
@@ -53,14 +56,15 @@ PatternDetect <- function(vfdf) {
   # generating a output column for pattern analysis
   vfdfout <- vfdf
   vfdfout$Pattern <- rep(NA, dim(vfdf)[1])
+  vfdfout$PatternCt <- rep(NA, dim(vfdf)[1])
   vfdfout$dispx[is.na(vfdfout$dispx) == TRUE] = 0.0
   vfdfout$dispy[is.na(vfdfout$dispy) == TRUE] = 0.0
 
   # computing the distance between centres of grids
-  diffx <- diff(vfdf$colcent)
+  diffx <- outer(vfdf$colcent, vfdf$colcent, FUN = "-")
   diffx[diffx <= 0] <- NA
   facth <- min(diffx, na.rm = TRUE)
-  diffy <- diff(vfdf$rowcent)
+  diffy <- outer(vfdf$rowcent, vfdf$rowcent, FUN = "-")
   diffy[diffy <= 0] <- NA
   factv <- min(diffy, na.rm = TRUE)
 
@@ -96,6 +100,9 @@ PatternDetect <- function(vfdf) {
         length(Downdx) == 1 & length(Downdy) == 1 &
         length(Leftdx) == 1 & length(Leftdy) == 1 &
         length(Rightdx) == 1 & length(Rightdy) == 1) {
+
+      # indicating whether all four neighbourhood cells have displacement estimates
+      vfdfout$PatternCt[i] = 1
 
       # Finding convergences
       if (Updy < 0 & Downdy > 0 & Leftdx > 0 & Rightdx < 0) {

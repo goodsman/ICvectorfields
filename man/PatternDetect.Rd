@@ -13,16 +13,19 @@ five rows (more is better)}
 }
 \value{
 A data frame as returned by \code{\link{DispField}},
-\code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with an
-additional column called Pattern in which the patterns around each focal
-cell are categorized as convergence, divergence, or NA
+\code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with two
+additional columns. The first additional column is called Pattern in which
+the patterns around each focal cell are categorized as convergence,
+divergence, or NA. The second additional column is called PatternCt, which
+contains a one if all four neighbourhood grid locations contain
+displacement estimates and a NA otherwise.
 }
 \description{
 Detect patterns in vector fields represented on a grid by looking in the
-rook's neighbourhood of each grid cell. Two patterns are detected: convergences
-occur when the vectors in the four adjacent cells point towards the focal
-cell; divergences occur when the vectors in the four adjacent cells point
-away from the focal cell.
+rook's neighbourhood of each grid cell. Two patterns are detected:
+convergences occur when the vectors in the four adjacent cells point towards
+the focal cell; divergences occur when the vectors in the four adjacent cells
+point away from the focal cell.
 }
 \examples{
 # creating convergence/divergence patterns
