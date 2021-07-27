@@ -2,9 +2,9 @@
 #'
 #' Detect patterns in vector fields represented on a grid by looking in the
 #' rook's neighbourhood of each grid cell. Two patterns are detected:
-#' convergences occur when the vectors in the four adjacent cells point towards
-#' the focal cell; divergences occur when the vectors in the four adjacent cells
-#' point away from the focal cell.
+#' convergences occur when the vectors in the four adjacent cells in the rook's
+#' neighbourhood point towards the focal cell; divergences occur when the
+#' vectors in the four adjacent cells point away from the focal cell.
 #'
 #' @param vfdf A data frame as returned by \code{\link{DispField}},
 #'   \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}} with at least
@@ -96,10 +96,17 @@ PatternDetect <- function(vfdf) {
     Rightdy <- vfdfout$dispy[is.na(match(vfdfout$colcent, vfdfout$colcent[i] + facth)) == FALSE &
                             DistVec == factv]
 
+    # calculating speed in each of the neighboring cells
+    UpSpeed = sqrt((Updx^2) + Updy^2)
+    DownSpeed = sqrt((Downdx^2) + Downdy^2)
+    LeftSpeed = sqrt((Leftdx^2) + Leftdy^2)
+    RightSpeed = sqrt((Rightdx^2) + Rightdy^2)
+
     if (length(Updx) == 1 & length(Updy) == 1 &
         length(Downdx) == 1 & length(Downdy) == 1 &
         length(Leftdx) == 1 & length(Leftdy) == 1 &
-        length(Rightdx) == 1 & length(Rightdy) == 1) {
+        length(Rightdx) == 1 & length(Rightdy) == 1 &
+        UpSpeed > 0 & DownSpeed > 0 & LeftSpeed > 0 & RightSpeed > 0) {
 
       # indicating whether all four neighbourhood cells have displacement estimates
       vfdfout$PatternCt[i] = 1
