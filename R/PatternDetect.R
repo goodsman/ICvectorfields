@@ -97,23 +97,33 @@ PatternDetect <- function(vfdf) {
                             DistVec == factv]
 
     # calculating speed in each of the neighboring cells
-    UpSpeed = sqrt((Updx^2) + Updy^2)
-    DownSpeed = sqrt((Downdx^2) + Downdy^2)
-    LeftSpeed = sqrt((Leftdx^2) + Leftdy^2)
-    RightSpeed = sqrt((Rightdx^2) + Rightdy^2)
+    if (length(Updx) == 1 & length(Updy) == 1) {
+      UpSpeed = sqrt((Updx^2) + Updy^2)
+    } else {
+      UpSpeed = 0.0
+    }
+    if (length(Downdx) == 1 & length(Downdy) == 1) {
+      DownSpeed = sqrt((Downdx^2) + Downdy^2)
+    } else {
+      DownSpeed = 0.0
+    }
+    if (length(Leftdx) == 1 & length(Leftdy) == 1) {
+      LeftSpeed = sqrt((Leftdx^2) + Leftdy^2)
+    } else {
+      LeftSpeed = 0.0
+    }
+    if (length(Rightdx) == 1 & length(Rightdy) == 1) {
+      RightSpeed = sqrt((Rightdx^2) + Rightdy^2)
+    } else {
+      RightSpeed = 0.0
+    }
 
+    if (UpSpeed != 0.0 & DownSpeed != 0.0 &
+        LeftSpeed != 0.0 & RightSpeed != 0.0) {
     # if (length(Updx) == 1 & length(Updy) == 1 &
     #     length(Downdx) == 1 & length(Downdy) == 1 &
     #     length(Leftdx) == 1 & length(Leftdy) == 1 &
-    #     length(Rightdx) == 1 & length(Rightdy) == 1 &
-    #     length(UpSpeed) == 1 & length(DownSpeed) == 1 &
-    #     length(LeftSpeed) == 1 & length(RightSpeed) == 1 &
-    #     UpSpeed != 0.0 & DownSpeed != 0.0 &
-    #     LeftSpeed != 0.0 & RightSpeed != 0.0) {
-    if (length(Updx) == 1 & length(Updy) == 1 &
-        length(Downdx) == 1 & length(Downdy) == 1 &
-        length(Leftdx) == 1 & length(Leftdy) == 1 &
-        length(Rightdx) == 1 & length(Rightdy) == 1) {
+    #     length(Rightdx) == 1 & length(Rightdy) == 1) {
 
       # indicating whether all four neighbourhood cells have displacement estimates
       vfdfout$PatternCt[i] = 1
