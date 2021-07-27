@@ -106,7 +106,7 @@ PatternDetect <- function(vfdf) {
         length(Downdx) == 1 & length(Downdy) == 1 &
         length(Leftdx) == 1 & length(Leftdy) == 1 &
         length(Rightdx) == 1 & length(Rightdy) == 1 &
-        UpSpeed > 0 & DownSpeed > 0 & LeftSpeed > 0 & RightSpeed > 0) {
+        UpSpeed != 0 & DownSpeed != 0 & LeftSpeed != 0 & RightSpeed != 0) {
 
       # indicating whether all four neighbourhood cells have displacement estimates
       vfdfout$PatternCt[i] = 1
