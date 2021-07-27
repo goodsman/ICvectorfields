@@ -69,7 +69,7 @@ RooksNeighCt <- function(vfdf) {
   }
 
   # Including only locations which have speed estimates on all four sides
-  vfdfout = subset(vfdf, PatternCt == 1)
+  vfdfout = subset(vfdf, vfdf$PatternCt == 1)
   vfdfout$IndPatternCt = rep(1, dim(vfdfout)[1])
 
   # calculate the spacing between grids
