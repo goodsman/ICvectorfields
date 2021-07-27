@@ -23,9 +23,9 @@ displacement estimates and a NA otherwise.
 \description{
 Detect patterns in vector fields represented on a grid by looking in the
 rook's neighbourhood of each grid cell. Two patterns are detected:
-convergences occur when the vectors in the four adjacent cells point towards
-the focal cell; divergences occur when the vectors in the four adjacent cells
-point away from the focal cell.
+convergences occur when the vectors in the four adjacent cells in the rook's
+neighbourhood point towards the focal cell; divergences occur when the
+vectors in the four adjacent cells point away from the focal cell.
 }
 \examples{
 # creating convergence/divergence patterns
