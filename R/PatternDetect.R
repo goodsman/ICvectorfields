@@ -61,10 +61,10 @@ PatternDetect <- function(vfdf) {
   vfdfout$dispy[is.na(vfdfout$dispy) == TRUE] = 0.0
 
   # computing the distance between centres of grids
-  diffx <- outer(vfdf$colcent, vfdf$colcent, FUN = "-")
+  diffx <- as.numeric(abs(outer(vfdf$colcent, vfdf$colcent, FUN = "-")))
   diffx[diffx <= 0] <- NA
   facth <- min(diffx, na.rm = TRUE)
-  diffy <- outer(vfdf$rowcent, vfdf$rowcent, FUN = "-")
+  diffy <- as.numeric(abs(outer(vfdf$rowcent, vfdf$rowcent, FUN = "-")))
   diffy[diffy <= 0] <- NA
   factv <- min(diffy, na.rm = TRUE)
 
