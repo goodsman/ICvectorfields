@@ -16,24 +16,22 @@ A data frame as returned by \code{\link{DispField}},
 \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with two
 additional columns. The first additional column is called Pattern in which
 the patterns around each focal cell are categorized as convergence,
-divergence, 'vertconv' or 'horizconv' for vertical and horizontal
-convergence 'vertdiv' or 'horizdiv' for vertical and horizontal
-divergence, or NA. The second additional column is called PatternCt, which
-contains a one if all four neighbourhood grid locations contain
-displacement estimates and a NA otherwise.
+divergence, partial convergence, partial divergence, or NA. The second
+additional column is called PatternCt, which contains a one if all four
+neighbourhood grid cells contain displacement estimates, and a NA
+otherwise.
 }
 \description{
 Detect patterns in vector fields represented on a grid by looking in the
-rook's neighbourhood of each grid cell. Six patterns are detected:
+rook's neighbourhood of each grid cell. Four patterns are detected:
 convergences occur when the vectors in the four adjacent cells in the rook's
 neighbourhood point towards the focal cell; divergences occur when the
-vectors in the four adjacent cells point away from the focal cell; vertical
-convergences occur when the vectors in the grids above and below the focal
-grid point towards it; horzontal convergences occur when the vectors to the
-right and left of the focal grid point towards it; vertical divergences occur
-when the vectors in the grids above and below the focal grid point away from
-it and horizontal divergences occur when the vectors in the grids to the left
-and right of the focal grid point away from it.
+vectors in the four adjacent cells point away from the focal cell; Partial
+convergences occur when three of the four vectors point towards the focal
+cell and the final vector points neither towards nor away from the focal
+cell; Partial divergences occur when three of the four vectors point away the
+focal grid cell and the final vector points neither towards nor away from the
+focal grid.
 }
 \examples{
 # creating convergence/divergence patterns
