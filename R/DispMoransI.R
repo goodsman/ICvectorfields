@@ -94,9 +94,14 @@ DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
   shiftx = Outdf$dispx/dx
   shifty = Outdf$dispy/dy
 
-  # preventing infinite shifts
+  # preventing NA, Inf, and NAN shifts
+  shiftx[is.na(shiftx) == TRUE] = 0.0
   shiftx[is.infinite(shiftx) == TRUE] = 0.0
+  shiftx[is.nan(shiftx) == TRUE] = 0.0
+
+  shifty[is.na(shifty) == TRUE] = 0.0
   shifty[is.infinite(shifty) == TRUE] = 0.0
+  shifty[is.nan(shifty) == TRUE] = 0.0
 
   # cycling through all grid locations
   for (i in 1:dim(Outdf)[1]) {
@@ -112,11 +117,11 @@ DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
       mat1bin[mat1bin == 0] <- NA
 
       # shifting displaced matrix back
-      if (abs(Outdf$dispy[i]/dy) < (dim(mat2sub)[1] - 1) &
-          abs(Outdf$dispx[i]/dy) < dim(mat2sub)[2] - 1) {
+      if (abs(shifty[i]) < (dim(mat2sub)[1] - 1) &
+          abs(shiftx[i]) < dim(mat2sub)[2] - 1) {
         mat2back <- ShiftMat(mat2sub,
-                             shiftrows = -Outdf$dispy[i]/dy,
-                             shiftcols = -Outdf$dispx[i]/dx)
+                             shiftrows = -shifty[i],
+                             shiftcols = -shiftx[i])
       } else {
         mat2back <- matrix(rep(0, dim(mat2sub)[1]*dim(mat2sub)[2]),
                            nrow = dim(mat2sub)[1])
@@ -144,11 +149,11 @@ DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
       mat2bin[mat2bin == 0] <- NA
 
       # shifting source matrix forward
-      if (abs(Outdf$dispy[i]/dy) < (dim(mat2sub)[1] - 1) &
-          abs(Outdf$dispx[i]/dy) < dim(mat2sub)[2] - 1) {
+      if (abs(shifty[i]) < (dim(mat2sub)[1] - 1) &
+          abs(shiftx[i]) < dim(mat2sub)[2] - 1) {
         mat1forw <- ShiftMat(mat1sub,
-                             shiftrows = Outdf$dispy[i]/dy,
-                             shiftcols = Outdf$dispx[i]/dx)
+                             shiftrows = shifty[i],
+                             shiftcols = shiftx[i])
       } else {
         mat1forw <- matrix(rep(0, dim(mat2sub)[1]*dim(mat2sub)[2]),
                            nrow = dim(mat2sub)[1])
