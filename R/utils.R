@@ -166,7 +166,7 @@ ShiftMat <- function(mat1, shiftrows, shiftcols) {
   # second quadrant
   if (shiftcols > 0 & shiftrows <= 0) {
     ## vertical shift downwards
-    if (shiftrows < 0) {
+    if (abs(shiftrows) > 0) {
       # adding empty rows to the top
       shiftmat1 <- rbind(matrix(rep(0, dim(mat1)[2]*abs(shiftrows)), nrow = abs(shiftrows)),
                          mat1)
