@@ -82,6 +82,10 @@ DispStats <- function(inputrast1, inputrast2, statrast, vfdf,
   shiftx = Outdf$dispx/dx
   shifty = Outdf$dispy/dy
 
+  # preventing infinite shifts
+  shiftx[is.infinite(shiftx) == TRUE] = 0.0
+  shifty[is.infinite(shifty) == TRUE] = 0.0
+
   # cycling through all grid locations
   for (i in 1:dim(Outdf)[1]) {
     # extracting the relevant subset.
