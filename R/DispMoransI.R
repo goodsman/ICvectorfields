@@ -112,9 +112,15 @@ DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
       mat1bin[mat1bin == 0] <- NA
 
       # shifting displaced matrix back
-      mat2back <- ShiftMat(mat2sub,
-                           shiftrows = -Outdf$dispy[i]/dy,
-                           shiftcols = -Outdf$dispx[i]/dx)
+      if (abs(Outdf$dispy[i]/dy) < (dim(mat2sub)[1] - 1) &
+          abs(Outdf$dispx[i]/dy) < dim(mat2sub)[2] - 1) {
+        mat2back <- ShiftMat(mat2sub,
+                             shiftrows = -Outdf$dispy[i]/dy,
+                             shiftcols = -Outdf$dispx[i]/dx)
+      } else {
+        mat2back <- matrix(rep(0, dim(mat2sub)[1]*dim(mat2sub)[2]),
+                           nrow = dim(mat2sub)[1])
+      }
 
       # converting displaced matrix to binary
       mat2back[mat2back > 0] <- 1
@@ -138,9 +144,15 @@ DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
       mat2bin[mat2bin == 0] <- NA
 
       # shifting source matrix forward
-      mat1forw <- ShiftMat(mat1sub,
-                           shiftrows = Outdf$dispy[i]/dy,
-                           shiftcols = Outdf$dispx[i]/dx)
+      if (abs(Outdf$dispy[i]/dy) < (dim(mat2sub)[1] - 1) &
+          abs(Outdf$dispx[i]/dy) < dim(mat2sub)[2] - 1) {
+        mat1forw <- ShiftMat(mat1sub,
+                             shiftrows = Outdf$dispy[i]/dy,
+                             shiftcols = Outdf$dispx[i]/dx)
+      } else {
+        mat1forw <- matrix(rep(0, dim(mat2sub)[1]*dim(mat2sub)[2]),
+                           nrow = dim(mat2sub)[1])
+      }
 
       # converting displaced matrix to binary
       mat1forw[mat1forw > 0] <- 1
