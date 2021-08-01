@@ -137,7 +137,7 @@ DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
       # the statistic is sought is in inputmat3
       prodmat = inputmat3*mat2back*mat1bin
       MI <- MoransI(mat1 = prodmat, r1 = rad1)
-      if (MI == -999.0) {
+      if (length(MI) == 0 || is.na(MI) || is.nan(MI) || is.infinite(MI) || MI == -999.0) {
         MI = NA
       }
       Outdf$MoransI[i] <- MI
