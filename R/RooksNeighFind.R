@@ -103,7 +103,7 @@ RooksNeighFind <- function(vfdf) {
     }
 
     # neighbours of convergence pattern
-    if (is.na(vfdfout$Pattern[i]) == FALSE & vfdfout$Pattern[i] == "covergence") {
+    if (is.na(vfdfout$Pattern[i]) == FALSE & vfdfout$Pattern[i] == "convergence") {
       vfdfout$NeighType[distmat[i,] > 0] <- 2
     }
 
