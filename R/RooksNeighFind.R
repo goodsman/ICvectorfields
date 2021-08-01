@@ -93,22 +93,22 @@ RooksNeighFind <- function(vfdf) {
 
   for (i in 1:dim(vfdfout)[1]) {
     # neighbours of partial convergence pattern
-    if (vfdfout$Pattern[i] == "partconv") {
+    if (is.na(vfdfout$Pattern[i]) == FALSE & vfdfout$Pattern[i] == "partconv") {
       VFdfout$NeighType[distmat[i,] > 0] <- 4
     }
 
     # neighbours of partial divergence pattern
-    if (vfdfout$Pattern[i] == "partdiv") {
+    if (is.na(vfdfout$Pattern[i]) == FALSE & vfdfout$Pattern[i] == "partdiv") {
       VFdfout$NeighType[distmat[i,] > 0] <- 3
     }
 
     # neighbours of convergence pattern
-    if (vfdfout$Pattern[i] == "covergence") {
+    if (is.na(vfdfout$Pattern[i]) == FALSE & vfdfout$Pattern[i] == "covergence") {
       VFdfout$NeighType[distmat[i,] > 0] <- 2
     }
 
     # neighbours of divergence pattern
-    if (vfdfout$Pattern[i] == "divergence") {
+    if (is.na(vfdfout$Pattern[i]) == FALSE & vfdfout$Pattern[i] == "divergence") {
       VFdfout$NeighType[distmat[i,] > 0] <- 1
     }
   }
