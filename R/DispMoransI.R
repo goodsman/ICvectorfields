@@ -91,8 +91,8 @@ DispMoransI <- function(inputrast1, inputrast2, statrast, vfdf,
   Outdf <- vfdf
 
   # calculating shift in units of rows/columns
-  shiftx = Outdf$dispx/dx
-  shifty = Outdf$dispy/dy
+  shiftx = round(Outdf$dispx/dx)
+  shifty = round(Outdf$dispy/dy)
 
   # preventing NA, Inf, and NAN shifts
   shiftx[is.na(shiftx) == TRUE] = 0.0
