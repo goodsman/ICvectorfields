@@ -74,7 +74,7 @@ SubgridMoransI = function(inputrast1, factv1, facth1, rad1 = 1){
   for(i in 1:dim(Outdf)[1]){
     mat1sub <- inputmat1[c(Outdf$frowmin[i]:Outdf$frowmax[i]), c(Outdf$fcolmin[i]:Outdf$fcolmax[i])]
     MI <- MoransI(mat1 = mat1sub, r1 = rad1)
-    if (MI == -999.0) {
+    if (length(MI) == 0 || is.na(MI) || is.nan(MI) || is.infinite(MI) || MI == -999.0) {
       MI = NA
     }
     Outdf$MoransI[i] <- MI
