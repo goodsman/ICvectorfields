@@ -25,7 +25,10 @@ cell using \code{\link{SubgridStats}}. Then for each grid, the RooksGradient
 function computes the arithmetic average of the difference between the
 statistic at the focal grid cell and the statistic in the four (or fewer)
 adjacent neighbours in its Rook's neibourhood. This arithmetically averaged
-difference is then returned under the column header of 'Gradient'.
+difference is then returned under the column header of 'Gradient'. A negative
+gradient estimate indicates that the statistic in the central cell is higher
+than that in neighbouring cells whereas a positive gradient estimate
+indicates the opposite.
 }
 \examples{
 # creating pattern patterns
