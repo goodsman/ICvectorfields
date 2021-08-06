@@ -15,6 +15,6 @@ test_that("RooksGradient correctly computes the gradient", {
   # computing the gradient statistic on the mean
   graddf1 <- RooksGradient(statsdf1, statistic = "mean")
 
-  expect_equal(graddf$Gradient[1], 1)
-  expect_equal(graddf$Gradient[5], -1)
+  expect_equal(graddf1$Gradient[1], 1)
+  expect_equal(graddf1$Gradient[5], -1)
 })
