@@ -9,20 +9,22 @@
 #' cell and the final vector points neither towards nor away from the focal
 #' cell; Partial divergences occur when three of the four vectors point away the
 #' focal grid cell and the final vector points neither towards nor away from the
-#' focal grid.
+#' focal grid. For all of the patterns above a sub-pattern is specified if all
+#' arrows point clockwise or counter-clockwise.
 #'
 #' @param vfdf A data frame as returned by \code{\link{DispField}},
 #'   \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}} with at least
 #'   five rows (more is better)
 #'
 #' @return A data frame as returned by \code{\link{DispField}},
-#'   \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with two
+#'   \code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with three
 #'   additional columns. The first additional column is called Pattern in which
 #'   the patterns around each focal cell are categorized as convergence,
 #'   divergence, partial convergence, partial divergence, or NA. The second
-#'   additional column is called PatternCt, which contains a one if all four
-#'   neighbourhood grid cells contain displacement estimates, and a NA
-#'   otherwise.
+#'   additional column, called SubPattern, indicates whether all arrows point
+#'   clockwise or counter-clockwise. The third additional column is called
+#'   PatternCt, which contains a one if all four neighbourhood grid cells
+#'   contain displacement estimates, and a NA otherwise.
 #' @export
 #'
 #' @examples
@@ -62,6 +64,7 @@ PatternDetect <- function(vfdf) {
   # generating a output column for pattern analysis
   vfdfout <- vfdf
   vfdfout$Pattern <- rep(NA, dim(vfdf)[1])
+  vfdfout$SubPattern <- rep(NA, dim(vfdf)[1])
   vfdfout$PatternCt <- rep(NA, dim(vfdf)[1])
   vfdfout$dispx[is.na(vfdfout$dispx) == TRUE] = 0.0
   vfdfout$dispy[is.na(vfdfout$dispy) == TRUE] = 0.0
@@ -178,6 +181,16 @@ PatternDetect <- function(vfdf) {
       # Finding partial divergences type 4
       if (Updy > 0 & Downdy < 0 & Leftdx < 0 & Rightdx == 0) {
         vfdfout$Pattern[i] <- "partdiv"
+      }
+
+      # Finding sub-patterns that are clockwise in all four neighbours
+      if (Updx > 0 & Downdx < 0 & Leftdy > 0 & Rightdy < 0) {
+        vfdfout$SubPattern[i] <- "clockwise"
+      }
+
+      # Finding sub-patterns that are counter-clockwise in all four neighbours
+      if (Updx < 0 & Downdx > 0 & Leftdy < 0 & Rightdy > 0) {
+        vfdfout$SubPattern[i] <- "counter"
       }
 
     }

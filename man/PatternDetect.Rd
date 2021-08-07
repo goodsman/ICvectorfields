@@ -13,13 +13,14 @@ five rows (more is better)}
 }
 \value{
 A data frame as returned by \code{\link{DispField}},
-\code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with two
+\code{\link{DispFieldST}}, or \code{\link{DispFieldSTall}}, with three
 additional columns. The first additional column is called Pattern in which
 the patterns around each focal cell are categorized as convergence,
 divergence, partial convergence, partial divergence, or NA. The second
-additional column is called PatternCt, which contains a one if all four
-neighbourhood grid cells contain displacement estimates, and a NA
-otherwise.
+additional column, called SubPattern, indicates whether all arrows point
+clockwise or counter-clockwise. The third additional column is called
+PatternCt, which contains a one if all four neighbourhood grid cells
+contain displacement estimates, and a NA otherwise.
 }
 \description{
 Detect patterns in vector fields represented on a grid by looking in the
@@ -31,7 +32,8 @@ convergences occur when three of the four vectors point towards the focal
 cell and the final vector points neither towards nor away from the focal
 cell; Partial divergences occur when three of the four vectors point away the
 focal grid cell and the final vector points neither towards nor away from the
-focal grid.
+focal grid. For all of the patterns above a sub-pattern is specified if all
+arrows point clockwise or counter-clockwise.
 }
 \examples{
 # creating convergence/divergence patterns
