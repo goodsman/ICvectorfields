@@ -24,7 +24,7 @@ There was 1 NOTE:
 There are currently no downstream dependencies for this package.
 
 ## Current updated submission
-* Errors arose in unit tests when terra was updated to latest version due to downstream dependencies of ICvectorfields on terra functions. The functions in terra and ICvectorfields have been repaired and all unit tests are passed in current version of ICvectorfields (0.0.3 if accepted on CRAN).
+* Errors arose in unit tests when terra was updated to latest version due to downstream dependencies of ICvectorfields on terra functions. The functions in terra and ICvectorfields have been repaired and all unit tests are passed in current version of ICvectorfields (0.1.0 if accepted on CRAN).
 
 ## Fourth resubmission 
 CRAN checks indicated a false-dependency on the fftw package in the imports section.
