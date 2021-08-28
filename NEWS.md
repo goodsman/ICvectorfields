@@ -17,3 +17,5 @@ output: html_document
 * Added DispStats function to compute shifted statistics at source or sink locations
 * Added DispMoransI function to compute shifted Moran's I at source or sink locations
 * Added PatternDetect function to classify vector field patterns as divergence or convergence
+* Added RotationDetect function to classify vector field patterns as divergence or convergence
+* Fixed errors caught by the majority of unit tests when terra was updated (commit 15ed0f27)
