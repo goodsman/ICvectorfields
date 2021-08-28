@@ -110,8 +110,7 @@
 #' Mat4[1:9, 4:9] <- rseq
 #' Mat4
 #'
-#' # Note that rasterizing a matrix causes it to be rotated 90 degrees.
-#' # Therefore, any shift in the x direction is in fact now a shift in the y direction
+#' # rasterizing
 #' rast1 <- terra::rast(Mat1)
 #' terra::plot(rast1)
 #' rast2 <- terra::rast(Mat2)
@@ -123,8 +122,8 @@
 #'
 #' teststack1 <- c(rast1, rast2, rast3, rast4)
 #' (VFdf3 <- DispFieldSTbb(teststack1, lag1 = 1, 2, 8, 2, 8))
-#' # block is moving downward at a speed of 0.1111111 units of space per unit of time
-#' # dispy = -0.1111111
+#' # block is moving rightward at a speed of 0.1111111 units of space per unit of time
+#' # dispx = 0.1111111
 DispFieldSTbb <- function(inputstack1, lag1, rowmn, rowmx, colmn, colmx, restricted = FALSE) {
   if (lag1 < 1 || lag1 != round(lag1)) {
     stop("lag1 must be an integer larger than zero")

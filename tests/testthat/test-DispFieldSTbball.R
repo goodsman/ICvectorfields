@@ -15,8 +15,6 @@ test_that("DispFieldSTbball correctly estimates vertical velocity", {
   Mat4 <- Vec4
   for (i in 2:9) Mat4 <- rbind(Mat4, Vec4)
 
-  # Note that rasterizing a matrix causes it to be rotated 90 degrees.
-  # Therefore, any shift in the x direction is in fact now a shift in the y direction
   rast1 <- terra::rast(Mat1)
   rast2 <- terra::rast(Mat2)
   rast3 <- terra::rast(Mat3)
@@ -24,6 +22,6 @@ test_that("DispFieldSTbball correctly estimates vertical velocity", {
 
   teststack1 <- c(rast1, rast2, rast3, rast4)
   VFdf5 <- DispFieldSTbball(teststack1, lagmax = 2, 1, 9, 1, 9)
-  expect_equal(round(VFdf5$dispy, 7), -0.1111111)
-  expect_equal(VFdf5$dispx, 0)
+  expect_equal(round(VFdf5$dispx, 7), 0.1111111)
+  expect_equal(VFdf5$dispy, 0)
 })

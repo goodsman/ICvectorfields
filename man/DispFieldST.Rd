@@ -107,8 +107,7 @@ single time lag by calling the related \code{\link{DispFieldSTall}} function.
 (Mat3 <- matrix(rep(c(0, 0, 1:5, 0, 0), 9), nrow = 9, byrow = TRUE))
 (Mat4 <- matrix(rep(c(0, 0, 0, 1:5, 0), 9), nrow = 9, byrow = TRUE))
 
-# Note that rasterizing a matrix causes it to be rotated 90 degrees.
-# Therefore, any shift in the x direction is in fact now a shift in the y direction
+# rasterizing
 rast1 <- terra::rast(Mat1)
 terra::plot(rast1)
 rast2 <- terra::rast(Mat2)
@@ -120,8 +119,8 @@ terra::plot(rast4)
 
 teststack1 <- c(rast1, rast2, rast3, rast4)
 (VFdf2 <- DispFieldST(teststack1, lag1 = 1, factv1 = 9, facth1 = 9))
-# block is moving downward at a speed of 0.1111111 units of space per unit of time
-# dispy = -0.1111111
+# block is moving rightward at a speed of 0.1111111 units of space per unit of time
+# dispx = 0.1111111
 }
 \seealso{
 \code{\link{DispField}} for a similar function with a grid of focal

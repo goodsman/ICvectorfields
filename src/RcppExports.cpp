@@ -5,6 +5,11 @@
 
 using namespace Rcpp;
 
+#ifdef RCPP_USE_GLOBAL_ROSTREAM
+Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
+Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
+#endif
+
 // MoransI
 double MoransI(SEXP mat1, SEXP r1);
 RcppExport SEXP _ICvectorfields_MoransI(SEXP mat1SEXP, SEXP r1SEXP) {

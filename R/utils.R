@@ -124,7 +124,7 @@ ThinMat <- function(inputmat, factv, facth) {
 #NA values and infinite values to zero if NAapproach = 0 (the default), or to
 #NA if NAapproach = "NA".
 RastToMatrix <- function(inrast, NAapproach = 0) {
-  outmat <- matrix(as.vector(inrast), nrow = dim(inrast)[1], ncol = dim(inrast)[2], byrow = T)
+  outmat <- matrix(as.vector(inrast), nrow = dim(inrast)[1], ncol = dim(inrast)[2], byrow = TRUE)
   if (NAapproach == 0) {
     outmat[is.na(outmat) == TRUE] <- 0
     outmat[is.nan(outmat) == TRUE] <- 0

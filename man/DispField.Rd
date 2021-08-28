@@ -65,16 +65,15 @@ function can produce erroneous results when sub-grids are too small.
 (Mat1 <- matrix(rep(c(1:5, 0, 0, 0, 0), 9), nrow = 9, byrow = TRUE))
 (Mat2 <- matrix(rep(c(0, 1:5, 0, 0, 0), 9), nrow = 9, byrow = TRUE))
 
-# Note that rasterizing a matrix causes it to be rotated 90 degrees.
-# Therefore, any shift in the x direction is in fact now a shift in the y direction
+# rasterizing
 rast1 <- terra::rast(Mat1)
 terra::plot(rast1)
 rast2 <- terra::rast(Mat2)
 terra::plot(rast2)
 
 (VFdf1 <- DispField(rast1, rast2, factv1 = 9, facth1 = 9))
-# The second raster is shifted down by 0.1111111 units relative to the first raster
-# dispy = -0.1111111
+# The second raster is shifted right by 0.1111111 units relative to the first raster
+# dispx = 0.1111111
 }
 \seealso{
 \code{\link{DispFieldbb}} for a similar function using a bounding
