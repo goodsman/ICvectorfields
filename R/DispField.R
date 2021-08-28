@@ -137,7 +137,7 @@ DispField <- function(inputrast1, inputrast2, factv1, facth1, restricted = FALSE
 
     # ensuring the algorithm does not predict movement across the entire
     # region of interest when the cross-covariance is less than or equal to zero.
-    if (abs(Outdf$dispx[i]) ==  factv1*dx & abs(Outdf$dispy[i]) == facth1*dy) {
+    if (restricted == TRUE & abs(Outdf$dispx[i]) >=  factv1*dx & abs(Outdf$dispy[i]) >= facth1*dy) {
       Outdf$dispx[i] = NA
       Outdf$dispx[i] = NA
     }
