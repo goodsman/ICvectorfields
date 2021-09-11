@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 # ICvectorfields
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.com/goodsman/ICvectorfields.svg?branch=main)](https://travis-ci.com/goodsman/ICvectorfields)
+[![Travis build status](https://app.travis-ci.com/github/goodsman/ICvectorfields.svg?branch=main)](https://app.travis-ci.com/github/goodsman/ICvectorfields)
 <!-- badges: end -->
 
 Vector Fields from Spatial Time Series of Population Abundance
