@@ -12,20 +12,20 @@ output: html_document
 
 ## R CMD check results
 
-There were 0 ERRORs, 1 WARNINGs, and 1 NOTEs. 
+There were 0 ERRORs, 1 WARNINGs, and 0 NOTEs. 
 
 There was 1 Warning:
 
 * 'qpdf' is needed for checks on size reduction of PDFs
 
-* Note: New submission--Package was archived on CRAN as check problems were not
-    corrected in time.
 
 ## Downstream dependencies
 
 There are currently no downstream dependencies for this package.
 
 ## Current updated submission
+* Note: New submission--Package was archived on CRAN as check problems were not
+    corrected in time.
 * Removed Travis-ci from README entirely to resolve broken URL link.
 * Corrected URL error in README file with Travis-ci
 * Errors arose in unit tests when terra was updated to latest version due to downstream dependencies of ICvectorfields on terra functions. The functions in terra and ICvectorfields have been repaired and all unit tests are passed in current version of ICvectorfields (0.1.0 if accepted on CRAN).
