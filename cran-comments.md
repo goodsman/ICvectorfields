@@ -12,11 +12,14 @@ output: html_document
 
 ## R CMD check results
 
-There were 0 ERRORs, 1 WARNINGs, and 0 NOTEs. 
+There were 0 ERRORs, 1 WARNINGs, and 1 NOTEs. 
 
 There was 1 Warning:
 
 * 'qpdf' is needed for checks on size reduction of PDFs
+
+* Note: New submission--Package was archived on CRAN as check problems were not
+    corrected in time.
 
 ## Downstream dependencies
 
