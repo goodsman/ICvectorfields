@@ -23,6 +23,7 @@ There was 1 Warning:
 There are currently no downstream dependencies for this package.
 
 ## Current updated submission
+* Removed Travis-ci from README immediately to resolve broken URL link.
 * Corrected URL error in README file with Travis-ci
 * Errors arose in unit tests when terra was updated to latest version due to downstream dependencies of ICvectorfields on terra functions. The functions in terra and ICvectorfields have been repaired and all unit tests are passed in current version of ICvectorfields (0.1.0 if accepted on CRAN).
 
