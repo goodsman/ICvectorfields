@@ -5,8 +5,6 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/goodsman/ICvectorfields.svg?branch=main)](https://travis-ci.com/goodsman/ICvectorfields)
 <!-- badges: end -->
 
 Vector Fields from Spatial Time Series of Population Abundance
