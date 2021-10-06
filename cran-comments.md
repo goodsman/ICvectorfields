@@ -23,7 +23,7 @@ There was 1 Warning:
 
 There are currently no downstream dependencies for this package.
 
-## Current updated submission
+## Current updated submission (v0.1.1)
 * There was an error installing on patched Solaris due to cross-compatibility of Rcpp code: now should be fixed.
 * Removed Travis-ci from README entirely to resolve broken URL link.
 * Corrected URL error in README file with Travis-ci
