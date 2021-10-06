@@ -19,3 +19,6 @@ output: html_document
 * Added PatternDetect function to classify vector field patterns as divergence or convergence
 * Added RotationDetect function to classify vector field patterns as divergence or convergence
 * Fixed errors caught by the majority of unit tests when terra was updated (commit 15ed0f27)
+
+# ICvectorfields 0.1.1
+* Updated for compatibility with the latest version of terra
