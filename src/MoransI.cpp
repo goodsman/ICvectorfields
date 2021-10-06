@@ -47,11 +47,20 @@ double MoransI(SEXP mat1, SEXP r1) {
   // dummy variables for row and column indices
   int m;
   int n;
+  // these are needed when calling floor because calling
+  // floor(int) doesn't make sense.
+  double rowratio;
+  double colratio;
+  // similarly, these are needed for pow(), because first
+  // argument should be double.
+  double mminusp;
+  double nminusq;
 
   // computing mean while dropping NA/Inf
   // values coded as NA
   for(int i = 0; i < n1; ++i) {
-    n = floor(i / Rows);    // column index
+    rowratio = i / Rows;
+    n = floor(rowratio);    // column index
     m = i - n * Rows;       // row index
     if (NumericVector::is_na(Mat1(m, n)) == 0) {
       mu += Mat1(m, n);
@@ -67,7 +76,8 @@ double MoransI(SEXP mat1, SEXP r1) {
   double ssq = 0.0;
   for(int j = 0; j < n1; ++j) {
     Rcpp::checkUserInterrupt();
-    n = floor(j / Rows);    // column index
+    colratio = j / Rows;
+    n = floor(colratio);    // column index
     m = j - n * Rows;       // row index
 
     // computing the sum of squared differences from the mean
@@ -97,7 +107,9 @@ double MoransI(SEXP mat1, SEXP r1) {
 
         // calculating the distance matrix/vector
         if (k >= 0 && k < n1) {
-          dist = sqrt(pow(m - p, 2) + pow(n - q, 2));
+          mminusp = m - p;
+          nminusq = n - q;
+          dist = sqrt(pow(mminusp, 2) + pow(nminusq, 2));
         }
 
         // filling in the neighbourhood matrix/vector
