@@ -18,7 +18,6 @@ There was 1 Warning:
 
 * 'qpdf' is needed for checks on size reduction of PDFs
 
-
 ## Downstream dependencies
 
 There are currently no downstream dependencies for this package.
