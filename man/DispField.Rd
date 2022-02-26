@@ -72,8 +72,8 @@ rast2 <- terra::rast(Mat2)
 terra::plot(rast2)
 
 (VFdf1 <- DispField(rast1, rast2, factv1 = 9, facth1 = 9))
-# The second raster is shifted right by 0.1111111 units relative to the first raster
-# dispx = 0.1111111
+# The second raster is shifted right by 1 unit relative to the first raster
+# dispx = 1
 }
 \seealso{
 \code{\link{DispFieldbb}} for a similar function using a bounding

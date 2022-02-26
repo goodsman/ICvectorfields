@@ -53,7 +53,7 @@ appropriate.
 The DispFieldSTall function has the same inner workings as the
 \code{\link{DispFieldST}} function except that instead of specifying a
 specific time lag, the user specifies a maximum time lag. The function then
-cycles through all lags up to the maximum time lag and choses the for each
+cycles through all lags up to the maximum time lag and chooses the for each
 location the maximum speed. The DispFieldSTall function is more appropriate
 than \code{\link{DispFieldST}} when velocity is variable in space.
 
@@ -78,8 +78,8 @@ terra::plot(rast4)
 
 teststack1 <- c(rast1, rast2, rast3, rast4)
 (VFdf4 <- DispFieldSTall(teststack1, lagmax = 2, factv1 = 9, facth1 = 9))
-# block is moving rightward at a speed of 0.1111111 units of space per unit of time
-# dispx = 0.1111111
+# block is moving rightward at a speed of 1 unit of space per unit of time
+# dispx = 1
 }
 \seealso{
 \code{\link{DispField}} for a similar function with a grid of focal

@@ -135,8 +135,8 @@ terra::plot(rast4)
 
 teststack1 <- c(rast1, rast2, rast3, rast4)
 (VFdf3 <- DispFieldSTbb(teststack1, lag1 = 1, 2, 8, 2, 8))
-# block is moving rightward at a speed of 0.1111111 units of space per unit of time
-# dispx = 0.1111111
+# block is moving rightward at a speed of 1 unit of space per unit of time
+# dispx = 1
 }
 \seealso{
 \code{\link{DispField}} for a similar function with a grid of focal
