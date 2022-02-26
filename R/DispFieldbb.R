@@ -75,8 +75,8 @@
 #' terra::plot(rast2)
 #'
 #' (VFdf1 <- DispFieldbb(rast1, rast2, 2, 8, 2, 8))
-#' # The second raster is shifted right by 0.1111111 units relative to the first raster
-#' # dispx = 0.1111111
+#' # The second raster is shifted right by 1 unit relative to the first raster
+#' # dispx = 1
 DispFieldbb <- function(inputrast1, inputrast2, rowmn, rowmx, colmn, colmx, restricted = FALSE) {
   if (rowmn != round(rowmn)) {
     stop("rowmn and rowmx must be positive integers")

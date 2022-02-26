@@ -22,6 +22,6 @@ test_that("DispFieldSTall correctly estimates vertical velocity", {
 
   teststack1 <- c(rast1, rast2, rast3, rast4)
   VFdf4 <- DispFieldSTall(teststack1, lagmax = 2, factv1 = 9, facth1 = 9)
-  expect_equal(round(VFdf4$dispx, 7), 0.1111111)
+  expect_equal(round(VFdf4$dispx, 7), 1)
   expect_equal(VFdf4$dispy, 0)
 })

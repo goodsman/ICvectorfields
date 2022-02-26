@@ -13,6 +13,6 @@ test_that("DispField correctly estimates displacement", {
   rast2 <- terra::rast(Mat2)
 
   VFdf1 <- DispField(rast1, rast2, factv1 = 9, facth1 = 9)
-  expect_equal(round(VFdf1$dispx, 7), 0.1111111)
+  expect_equal(round(VFdf1$dispx, 7), 1)
   expect_equal(VFdf1$dispy, 0)
 })

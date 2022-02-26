@@ -68,8 +68,8 @@
 #' terra::plot(rast2)
 #'
 #' (VFdf1 <- DispField(rast1, rast2, factv1 = 9, facth1 = 9))
-#' # The second raster is shifted right by 0.1111111 units relative to the first raster
-#' # dispx = 0.1111111
+#' # The second raster is shifted right by 1 unit relative to the first raster
+#' # dispx = 1
 DispField <- function(inputrast1, inputrast2, factv1, facth1, restricted = FALSE) {
   if (factv1 / 2 == round(factv1 / 2)) {
     stop("factv1 and facth1 must be odd integers")

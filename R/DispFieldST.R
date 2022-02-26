@@ -116,8 +116,8 @@
 #'
 #' teststack1 <- c(rast1, rast2, rast3, rast4)
 #' (VFdf2 <- DispFieldST(teststack1, lag1 = 1, factv1 = 9, facth1 = 9))
-#' # block is moving rightward at a speed of 0.1111111 units of space per unit of time
-#' # dispx = 0.1111111
+#' # block is moving rightward at a speed of 1 unit of space per unit of time
+#' # dispx = 1
 DispFieldST <- function(inputstack1, lag1, factv1, facth1, restricted = FALSE) {
   if (lag1 < 1 || lag1 != round(lag1)) {
     stop("lag1 must be an integer larger than zero")

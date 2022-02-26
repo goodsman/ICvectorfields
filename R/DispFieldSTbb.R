@@ -122,8 +122,8 @@
 #'
 #' teststack1 <- c(rast1, rast2, rast3, rast4)
 #' (VFdf3 <- DispFieldSTbb(teststack1, lag1 = 1, 2, 8, 2, 8))
-#' # block is moving rightward at a speed of 0.1111111 units of space per unit of time
-#' # dispx = 0.1111111
+#' # block is moving rightward at a speed of 1 unit of space per unit of time
+#' # dispx = 1
 DispFieldSTbb <- function(inputstack1, lag1, rowmn, rowmx, colmn, colmx, restricted = FALSE) {
   if (lag1 < 1 || lag1 != round(lag1)) {
     stop("lag1 must be an integer larger than zero")
