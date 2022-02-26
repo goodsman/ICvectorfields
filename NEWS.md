@@ -22,3 +22,7 @@ output: html_document
 
 # ICvectorfields 0.1.1
 * Updated for compatibility with the latest version of terra
+* Accepted by CRAN (commit 2d40b14)
+
+# ICvectorfields 0.1.2
+* Updated for compatibility with the latest version of terra: extents for rastsers derived from matrices changed
