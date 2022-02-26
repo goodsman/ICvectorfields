@@ -4,7 +4,7 @@ output: html_document
 ---
 
 ## Test environments
-* Local windows 10 install, R 4.0.5
+* Local Windows 11 pro install, R 4.1.2
 
 * Mac OSx using xcode12.5 (on travis-ci), R 4.1.0
 
@@ -22,11 +22,11 @@ There was 1 Warning:
 
 There are currently no downstream dependencies for this package.
 
-## Current updated submission (v0.1.1)
+## Current updated submission (v0.1.2)
 * There was an error installing on patched Solaris due to cross-compatibility of Rcpp code: now should be fixed.
 * Removed Travis-ci from README entirely to resolve broken URL link.
 * Corrected URL error in README file with Travis-ci
-* Errors arose in unit tests when terra was updated to latest version due to downstream dependencies of ICvectorfields on terra functions. The functions in terra and ICvectorfields have been repaired and all unit tests are passed in current version of ICvectorfields (0.1.0 if accepted on CRAN).
+* Errors arose in unit tests when terra was updated to latest version due to downstream dependencies of ICvectorfields on terra functions. The functions in terra and ICvectorfields have been repaired and all unit tests are passed in current version of ICvectorfields (0.1.2 if accepted on CRAN).
 
 ## Fourth resubmission 
 CRAN checks indicated a false-dependency on the fftw package in the imports section.
